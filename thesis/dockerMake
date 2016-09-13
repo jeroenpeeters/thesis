@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build -t markdown-latex . > /dev/null
+docker run --rm -v $PWD:/work -w /work markdown-latex make $1
