@@ -1,6 +1,9 @@
+# Thesis
+This repo contains the source text of my Master's thesis in Software Engineering. It is currently a work in progress.
+
 # Notes
 
-software process -> annotated bibliografie
+software process -> annotated bibliography.
 
 # Papers
 
