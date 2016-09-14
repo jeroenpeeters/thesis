@@ -5,17 +5,23 @@ This repo contains the source text of my Master's thesis in Software Engineering
 
 software process -> annotated bibliography.
 
-# Papers
+# Papers / Articles
 
 ## http://martinfowler.com/bliki/ContinuousDelivery.html
  -
 
 ## On the journey to continuous deployment: Technical and social challenges along the way
+Literature review and case study at Atlassian. Contains summary of challenges faced and mitigation strategies.
 
- -
+ - organisations need to be well prepared to handle technical and social adoption challenges
+ - requires proper hardware and software to handle the CD process
+ - software developers may feel an increased amount of pressure to have code ready to be deployed immediately
+ - lack of understanding / lack of motivation
+ - team members have to adapt to different tasks in new roles due to working in a CD environment
+ - customers may not notice the newly added features
 
 
-## Interesting reads
+## Read List
 
  * T. Fitz, Continuous Deployment at IMVU: Doing the Impossible Fifty Times a
 Day. **(coined term CD)**
