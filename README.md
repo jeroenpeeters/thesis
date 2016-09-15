@@ -66,3 +66,6 @@ Day. **(coined term CD)**
  -  H.H. Olsson, H. Alahyari, J. Bosch, Climbing the ‘‘Stairway to Heaven’’ – a multiple-case study exploring barriers in the transition from agile development towards continuous deployment of software
  - J. Humble, D. Farley, Continuous Delivery: Reliable Software Releases through
 Build, Test, and Deployment Automation
+ - J. Bosch (editor), Continuous Software Engineering, book
+ - Yuhong Liu, Chengbo Li and Wei Liu, Integrated Solution for Timely Delivery of Customer Change Requests: A Case Study of Using DevOps Approach
+ - Mathias Meyer, Continuous Integration and Its Tools
