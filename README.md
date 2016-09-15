@@ -60,12 +60,16 @@ Literature review and case study at Atlassian. Contains summary of challenges fa
 
 ## Read List
 
- * T. Fitz, Continuous Deployment at IMVU: Doing the Impossible Fifty Times a
-Day. **(coined term CD)**
+ * [T. Fitz, Continuous Deployment at IMVU: Doing the Impossible Fifty Times a
+Day.](http://timothyfitz.com/2009/02/10/continuous-deployment-at-imvu-doing-the-impossible-fifty-times-a-day/) **(coined term CD)**
 
- -  H.H. Olsson, H. Alahyari, J. Bosch, Climbing the ‘‘Stairway to Heaven’’ – a multiple-case study exploring barriers in the transition from agile development towards continuous deployment of software
- - J. Humble, D. Farley, Continuous Delivery: Reliable Software Releases through
-Build, Test, and Deployment Automation
- - J. Bosch (editor), Continuous Software Engineering, book
- - Yuhong Liu, Chengbo Li and Wei Liu, Integrated Solution for Timely Delivery of Customer Change Requests: A Case Study of Using DevOps Approach
- - Mathias Meyer, Continuous Integration and Its Tools
+ -  [H.H. Olsson, H. Alahyari, J. Bosch, Climbing the ‘‘Stairway to Heaven’’](http://ieeexplore.ieee.org/document/6328180/)
+ - [J. Humble, D. Farley, Continuous Delivery: Reliable Software Releases through
+Build, Test, and Deployment Automation](https://scholar.google.nl/scholar?hl=nl&q=Continuous+Delivery%3A+Reliable+Software+Releases+through+Build%2C+Test%2C+and+Deployment+Automation&btnG=&lr=)
+ - [J. Bosch (editor), Continuous Software Engineering, book](http://link.springer.com/book/10.1007/978-3-319-11283-1)
+ - [Yuhong Liu, Chengbo Li and Wei Liu, Integrated Solution for Timely Delivery of Customer Change Requests: A Case Study of Using DevOps Approach](http://www.sersc.org/journals/IJUNESST/vol7_no2/4.pdf)
+ - [Mathias Meyer, Continuous Integration and Its Tools](http://ieeexplore.ieee.org/document/6802994/)
+
+### Maybe's
+
+ - [Eric Ries, The Lean Startup](https://www.bol.com/nl/p/the-lean-startup/1001004011646750/?Referrer=ADVNLGOO002011I-NZRCXS3C4BP4A-48184046970)
