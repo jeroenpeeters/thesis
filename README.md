@@ -1,5 +1,5 @@
 # Thesis
-This repo contains the source text of my Master's thesis in Software Engineering. It is currently a work in progress.
+This repo contains the source text of my Master's thesis in Software Engineering. It is a work in progress.
 
 # Notes
 
@@ -22,15 +22,19 @@ If I look at the projects that we do it mainly comes down to the following setup
   9. Production like environment
 
 It is probably obvious that the setup of this combination of tools is non-trivial. To be able to make the tooling integrate seamlessly one needs to have in-depth knowledge of each of the tools.
-At the development organization we long have stopped with maintaining a single setup for all teams. In the past a single setup has proven to become difficult to upgrade without hurting anyone. It was also impossible for teams to request installation of plugins or to cater for different CI scenario's. We have since chosen for a team specific and on-demand service infrastructure based on Docker. This means that teams have their own cloud infrastructure for hosting the CI/CD tooling and for deploying the application(s) they develop. We can now with a couple of button clicks start a new team infrastructure including the CI/CD tooling.
+At the development organization we long have stopped with maintaining a single setup for all teams. In the past a single setup has proven to become difficult to upgrade without hurting anyone. It was also impossible for teams to request installation of plugins or to cater for different CI scenario's. We have since chosen for team specific and on-demand service infrastructure based on Docker. This means that teams have their own cloud infrastructure for hosting the CI/CD tooling and for deploying the application(s) they develop. We can now, with a couple of button clicks, start a new team infrastructure including the CI/CD tooling.
 
-While this is a big step forward it simply isn't enough. After provisioning the environment still needs configuration in order to integrate the CI/CD services. This means that after a push to Gitlab, Jenkins starts to build the software. Then you should run the unit tests, publish artifacts to nexus, run SonarQube for QA and build a cloud package. After that the cloud tooling should be informed to deploy a new version of the software and start the Selenium integration tests.
+While this is a big step forward it simply isn't enough. After provisioning, the environment still needs configuration in order to integrate the CI/CD services. Integration usually means that after a push to Gitlab, Jenkins starts to build the software. Then you should run the unit tests, publish artifacts to nexus, run SonarQube for QA and build a cloud package. After that the cloud tooling should be informed to deploy a new version of the software and start the Selenium integration tests.
 
-It is usually the responsibility of the team to configure this correctly. It means that one or more team members should have knowledge of all the systems mentioned before and how to configure them. It also entails repetitive work for every artifact that should go through the pipeline. Furthermore all teams usually configure it a bit differently which leads to non-uniform environments.
+It is usually the responsibility of the team to configure this correctly. It means that one or more team members should have knowledge of all systems mentioned and how to configure them. It also entails repetitive work for every artifact that should go through the pipeline. Furthermore all teams usually configure it a bit differently which leads to non-uniform environments.
 
-How to solve the CI/CD pipeline configuration?
+ - How to solve the CI/CD pipeline configuration?
+ - Usually CD is a major investment, can we reduce costs?
+ - Tooling in a particular configuration set are required; this is fragile since one change might break the pipeline. Can we make the pipeline more resilient?
 
 ## CD Adoption
+
+
 
 # Papers / Articles
 
