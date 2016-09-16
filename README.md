@@ -33,6 +33,14 @@ It is usually the responsibility of the team to configure this correctly. It mea
  - Tooling in a particular configuration set are required; this is fragile since one change might break the pipeline. Can we make the pipeline more resilient?
 
 ## CD Adoption
+Deciding that you want to do CD and actually doing CD are two completely different things. Depending on the current state of the project and the level of knowledge and commitment amongst its members and stakeholders it might be very hard to incorporate CD best practices and strategies into the development process.
+CD doesn't only heavily depend on tools but also on process. With the tooling in place CD can still fail. Team members should incorporate the CD philosophy into their every day activities. It demands a certain kind of work-flow and willingness of members to always produce production ready code.
+It also demands that people, to some extend, give up their preferred roles. Developers are not just developers. Testers are not just testers. Sysadmins are not just sysadmins. CD requires adoption of the DevOps philosophy. Everyone will be responsible for producing production quality code. Everyone will be responsible for tests. Everyone will be responsible for deploying the application and maintaining the automation of the CI/CD pipeline. Not everyone will be willing to give up or share their role.
+And then there is the business. The business might not be willing to have that many release cycles. How will they update customers? But even then, CD is valuable because it gives constant feedback about the quality of the entire system.
+
+Even if you can work out the process and everyone is willing to contribute it might still be a hard nut to crack because of legacy systems with low test coverage. Investment is needed to crank up the test coverage before decision makers might convinced to automatically roll-out changes.
+
+.....
 
 
 
