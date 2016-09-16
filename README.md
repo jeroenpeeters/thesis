@@ -3,8 +3,6 @@ This repo contains the source text of my Master's thesis in Software Engineering
 
 Looking for the latest compiled version? [Click here](thesis/output/thesis.pdf).
 
-The rest of this document I use as a scratch-pad for ideas.
-
 # Notes
 
 software process -> annotated bibliography.
