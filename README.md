@@ -42,8 +42,16 @@ And then there is the business. The business might not be willing to have that m
 
 Even if you can work out the process and everyone is willing to contribute it might still be a hard nut to crack because of legacy systems with low test coverage. Investment is needed to crank up the test coverage before decision makers might convinced to automatically roll-out changes.
 
-.....
-
+ - What are problems that teams encounter when CD is introduced?
+ - What are their mitigation strategies/solutions to these problems?
+ - What is the impact of CD on ...
+   - Software quality
+     - Are bugs found earlier (before production)
+   - Development pace
+ - What is the impact of CD on team roles?
+ - Do the proposed benefits of CD actually exist?
+   - Do the benefits outweigh the overhead of CD?
+ 
 
 
 # Papers / Articles
