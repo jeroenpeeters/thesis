@@ -7,6 +7,16 @@ Looking for the latest compiled version? [Click here](thesis/output/thesis.pdf).
 
 software process -> annotated bibliography.
 
+# Popularity
+
+![Popularity of Continuous Delivery according to Google Trends](images/google-trends-popularity-term-continuous-delivery.png)
+
+[source](https://www.google.com/trends/explore?date=2006-06-01%202016-06-01&q=Continuous%20Delivery)
+
+![Popularity of Continuous Integration according to Google Trends](images/google-trends-popularity-term-continuous-integration.png)
+
+[source](https://www.google.com/trends/explore?date=2006-06-01%202016-06-01&q=Continuous%20Integration)
+
 # Problems
 
 ## CD Tooling
@@ -51,7 +61,7 @@ Even if you can work out the process and everyone is willing to contribute it mi
  - What is the impact of CD on team roles?
  - Do the proposed benefits of CD actually exist?
    - Do the benefits outweigh the overhead of CD?
- 
+
 
 
 # Papers / Articles
