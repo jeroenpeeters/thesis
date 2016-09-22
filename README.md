@@ -5,10 +5,11 @@ Looking for the latest compiled version? [Click here](thesis/output/thesis.pdf).
 
 # Todo
 
- - [ ] Gestructureerde probleem beschrijving
- - [ ] Inventariseren CI oplossingen en de performance in de praktijk
- - [ ] Selecteren verbeteringen met goede analyse
- - [ ] Realiseren verbeteringen
+ - [ ] Create a structured problem description
+ - [ ] Identify CI solutions and performance in practice
+ - [ ] Identify improvements with thorough problem analysis
+ - [ ] Realize the improvements
+ - [ ] Report the performance of the improved situation
 
 # Popularity
 
