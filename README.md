@@ -9,7 +9,7 @@ Looking for the latest compiled version? [Click here](thesis/output/thesis.pdf).
  - [ ] Identify CI solutions and performance in practice
  - [ ] Identify improvements with thorough problem analysis
  - [ ] Realize the improvements
- - [ ] Report the performance of the improved situation
+ - [ ] Report on the performance of the improved situation
 
 # Popularity
 
