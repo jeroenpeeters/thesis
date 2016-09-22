@@ -3,9 +3,12 @@ This repo contains the source text of my Master's thesis in Software Engineering
 
 Looking for the latest compiled version? [Click here](thesis/output/thesis.pdf).
 
-# Notes
+# Todo
 
-software process -> annotated bibliography.
+ - [ ] Gestructureerde probleem beschrijving
+ - [ ] Inventariseren CI oplossingen en de performance in de praktijk
+ - [ ] Selecteren verbeteringen met goede analyse
+ - [ ] Realiseren verbeteringen
 
 # Popularity
 
