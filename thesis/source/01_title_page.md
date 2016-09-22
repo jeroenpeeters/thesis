@@ -9,7 +9,10 @@ and add the centred logo
       \vspace*{2.5cm}
 
       \huge
-      .. Continuous Software Delivery ..
+      Docker Driven Continuous Delivery
+      
+      \Large
+      On the gaps between tooling
 
       \vspace{1.5cm}
 
