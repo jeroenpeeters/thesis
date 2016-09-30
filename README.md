@@ -74,6 +74,27 @@ graph TD
   d-->|Create automation user|g
 ```
 
+```mermaid
+graph LR
+dev-->a
+a(Create git repo)-->b(push code)
+a-->z
+b-->c(obtain Jenkins key)
+c-->y(add jenkins user to gitlab)
+c-->d
+d-->e
+e-->f
+f-->g
+g-->h
+h-->i
+i-->j
+j-->k
+k-->l
+l-->m
+m-->o
+o-->p
+```
+
 # Popularity
 
 ![Popularity of Continuous Delivery according to Google Trends](images/google-trends-popularity-term-continuous-delivery.png)
