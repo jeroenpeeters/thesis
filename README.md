@@ -31,6 +31,8 @@ sequenceDiagram
 participant Developer
 participant Git
 participant Jenkins
+participant Nexus
+participant Target Server
 
 Developer->>Git:    code push
 Git-->>+Jenkins:    build trigger
@@ -38,9 +40,38 @@ Jenkins->>Git:      clone
 
 loop build
 Jenkins->>Nexus:    retrieve dependencies
-Jenkins->>Jenkins:  maven
+Jenkins-->>Jenkins:  maven
 Jenkins->>-Nexus:   publish
 end
+
+Developer->>+Jenkins:  run deploy job
+
+Jenkins->>+Target Server: run update script
+Target Server->>Nexus:    download artifacts
+Target Server-->>Target Server: restart app server
+```
+
+---
+
+```mermaid
+sequenceDiagram
+
+participant Developer
+participant Git
+participant Jenkins
+participant Nexus
+participant Releasemanager
+
+```
+
+---
+
+```mermaid
+graph TD
+  d(Developer)-->|initial code push|g(Git)
+  d-->|Create job|j(Jenkins)
+  d-->|Obtain or create private key|j
+  d-->|Create automation user|g
 ```
 
 # Popularity
