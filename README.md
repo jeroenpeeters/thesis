@@ -1,7 +1,7 @@
 # Thesis
 This repo contains the source text of my Master's thesis in Software Engineering. It is a work in progress.
 
-Looking for the latest compiled version? [Click here](thesis/output/thesis.pdf).
+Check [HISTORY.md](HISTORY.md) to see what changed. Looking for the latest pdf version? [Click here](thesis/output/thesis.pdf).
 
 
 # Todo
@@ -42,6 +42,10 @@ loop build
 Jenkins->>Nexus:    retrieve dependencies
 Jenkins-->>Jenkins:  maven
 Jenkins->>-Nexus:   publish
+end
+
+opt manual
+Developer-->>Target Server: update/reconfigure server
 end
 
 Developer->>+Jenkins:  run deploy job
