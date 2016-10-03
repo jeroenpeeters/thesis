@@ -9,7 +9,8 @@ to shape their project according to agile principles.
 In this thesis we are only concerned with the department responsible for software
 project realization. Within the Software Delivery (SD) department project teams
 build software in an agile way. Because some customers are still used to work
-according to a waterfall approach the department plays an important role in guiding customers. The SD project team helps the customer getting familiar with Agile/Scrum
+according to a waterfall approach the department plays an important role in guiding customers.
+The SD project team helps the customer getting familiar with Agile/Scrum
 principles in order for them to steer and make decisions about importance of tasks.
 Before a project ends up at SD it usually follows a pre-development
 process in which some architectural decisions are already made. This is mostly
@@ -36,7 +37,15 @@ The standardized process is based on Continuous Integration and Delivery (CI/CD)
 principles. In the next chapter we will take a closer look at the CI/CD process.
 
 
+## Initial situation
 
-# CI/CD at the development organization
+Figure \ref{basic_ci} shows the steps and interactions a developer has with
+build systems in order to deploy a change in the software to a target server.
 
-## The base case
+![Basic CI \label{basic_ci}](figures/mermaid/basic-ci-sequencediag.mermaid.png)
+
+Figure \ref{basic_ci_setup} shows the steps a developer needs to take in order
+to setup a single source repository and configure the continuous integration
+pipeline.
+
+![Basic CI setup \label{basic_ci}](figures/mermaid/basic-ci-initial-setup.mermaid.png)
