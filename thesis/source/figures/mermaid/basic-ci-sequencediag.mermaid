@@ -1,0 +1,38 @@
+sequenceDiagram
+
+participant Developer
+participant Tester
+participant Git
+participant Jenkins
+participant Nexus
+participant Target Server
+
+Developer->>Git:    code push
+Git-->>+Jenkins:    build trigger
+Jenkins->>Git:      clone
+
+loop build
+Jenkins->>Nexus:     retrieve dependencies
+Jenkins-->>Jenkins:  maven
+Jenkins->>-Nexus:    publish
+end
+
+opt manual
+Developer-->>Target Server: update/reconfigure server
+end
+
+Developer->>+Jenkins:  run deploy job
+
+Jenkins->>+Target Server: run update script
+Target Server->>Nexus:    download artifacts
+Target Server-->>Target Server: restart app server
+
+opt when target is test
+Developer-->>Tester:      tell: new version is deployed
+Tester->>+Jenkins:        Run test job
+Jenkins->>Git:            clone tests
+Jenkins-->>Target Server: Run tests
+Jenkins-->>-Jenkins:      publish test report
+end
+
+% Sonar is missing!
