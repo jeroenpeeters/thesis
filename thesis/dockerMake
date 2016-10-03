@@ -1,4 +1,6 @@
 #!/bin/bash
 
+ls -1a source/figures/mermaid/*.mermaid | xargs docker run --rm -v $PWD:/w -w /w arnau/mermaid mermaid --outputDir source/figures/mermaid/
+
 docker build -t jeroenpeeters/markdown-latex . > /dev/null
 docker run --rm -v $PWD:/work -w /work markdown-latex make $1
