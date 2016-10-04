@@ -21,6 +21,9 @@ Check [HISTORY.md](HISTORY.md) to see what changed. Looking for the latest pdf v
  - [ ] Identify improvements with thorough problem analysis
  - [ ] Realize the improvements
  - [ ] Report on the performance of the improved situation
+ 
+# Notes
+ - Tooling (maven, etc.) needs to be installed in Jenkins on initial setupp
 
 # Popularity
 
