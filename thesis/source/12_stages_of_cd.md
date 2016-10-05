@@ -6,12 +6,14 @@ development organization went through.
 ## Stage 1: CI in a shared environment
 
 **Characteristics**
+
 - Shared between teams
 - Maintenance by system administrators
 - Manual maintenance
 - Static deployment servers
 
 **Systems**
+
 - Subversion
 - Jenkins
 - Nexus
@@ -20,14 +22,17 @@ development organization went through.
 - Deployment server
 
 **Tools**
+
 - Maven
 - Java
 - Custom quality reporting
 
 **Setup**
+
 - Setup is done by system administrators
 
 **Manual steps**
+
 - Create build jobs, (once for every unit of development)
 - Configure quality reports, (once for every unit of development)
 - Manually maintain configuration of deployment server, (every time server configuration changes)
@@ -38,6 +43,7 @@ development organization went through.
 
 
  **Problems**
+
 - Limited resources per team
 - Doesn't scale beyond N teams
 - Changes/upgrades affect all teams
@@ -53,6 +59,7 @@ development organization went through.
 
 
 **Systems**
+
   - Gitlab
   - Jenkins
   - Nexus
@@ -62,6 +69,7 @@ development organization went through.
 
 
  **Tools**
+ 
   - Maven
   - Docker
   - Custom quality reporting
