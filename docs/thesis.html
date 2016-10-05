@@ -212,59 +212,288 @@ introduces methodology used throughout the thesis.
 <p>In order to understand the problems at the organization it is important to have a deeper understanding of the development organization's structure. The organization is a semi-governmental IT project organization who's mission is to help other (semi-)governmental organizations with IT project management and the realization of projects. They lead by example and help the customer to shape their project according to agile principles. In this thesis we are only concerned with the department responsible for software project realization. Within the Software Delivery (SD) department project teams build software in an agile way. Because some customers are still used to work according to a waterfall approach the department plays an important role in guiding customers. The SD project team helps the customer getting familiar with Agile/Scrum principles in order for them to steer and make decisions about importance of tasks. Before a project ends up at SD it usually follows a pre-development process in which some architectural decisions are already made. This is mostly because governments have to apply to standards and regulations. Usually the software realization team is not involved in this process since the team is not yet in existence. This procedure as described here may vary per project and customer, but it usually applies. When the realization team is formed most of the fundamental decisions have already been taken.</p>
 <p>To be able to quickly react to customer needs the development organization relies heavily on external hiring for the duration of a project. Within SD all project members are externals. This gives the organization the ability to quickly scale up or down depending on the number of active projects. However, it also implies that knowledge is easily lost. The organization tries to move people between projects as much as possible in order to retain them. In order to move people more easily between projects and bring new people up to speed more quickly the development phase is standardized within the department as much as possible. The standardization is targeted at process, tools and development frameworks and languages. This standardization is something that can change over time and is defined by SD itself. It is possible for a single project to differentiate from the standard following the &quot;comply or explain&quot;-principle.</p>
 <p>The standardized process is based on Continuous Integration and Delivery (CI/CD) principles. In the next chapter we will take a closer look at the CI/CD process.</p>
+<!-- Wat is code
+hoe organiseren we het nu
+laat afhankelijkheden zien tussen applicaties
+kan je laten zien hoeveel kennis er eigenlijk nodig is om dit voor mekaar te krijgen
+waarom is het zo.
+
+basic ci setup -> laat zien waar problemen zitten.
+
+specificatie template meta. wat moeten we vastleggen.
+van elk van de items een voorbeeld uitwerken. -->
 <h1 id="stages-of-continuous-delivery"><span class="header-section-number">4</span> Stages of Continuous Delivery</h1>
 <p>In this chapter I describe the different stages of continuous delivery that the development organization went through.</p>
 <h2 id="stage-1-ci-in-a-shared-environment"><span class="header-section-number">4.1</span> Stage 1: CI in a shared environment</h2>
+<div class="figure">
+<img src="figures/mermaid/basic-ci-schematic.mermaid.png" alt="CI/CD Schematic Overview " />
+<p class="caption">CI/CD Schematic Overview </p>
+</div>
 <p><strong>Characteristics</strong></p>
-<ul>
-<li>Shared between teams</li>
-<li>Maintenance by system administrators</li>
-<li>Manual maintenance</li>
-<li>Static deployment servers</li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">.</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CI/CD Environment</td>
+<td align="left">Shared</td>
+</tr>
+<tr class="even">
+<td align="left">Maintenance</td>
+<td align="left">System Administrator</td>
+</tr>
+<tr class="odd">
+<td align="left">Deployment</td>
+<td align="left">Manual</td>
+</tr>
+<tr class="even">
+<td align="left">Flexibility</td>
+<td align="left">Static</td>
+</tr>
+</tbody>
+</table>
+<!-- - Shared between teams
+- Maintenance by system administrators
+- Manual maintenance
+- Static deployment servers -->
 <p><strong>Systems</strong></p>
-<ul>
-<li>Subversion</li>
-<li>Jenkins</li>
-<li>Nexus</li>
-<li>Sonar</li>
-<li>Selenium</li>
-<li>Deployment server</li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Server</th>
+<th align="left">Type</th>
+<th align="left">Depends on</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Subversion</td>
+<td align="left">Version Control</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Jenkins</td>
+<td align="left">Build Server, CI</td>
+<td align="left">Nexus, Sonar, Selenium</td>
+</tr>
+<tr class="odd">
+<td align="left">Nexus</td>
+<td align="left">Artifact Repository</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Sonar</td>
+<td align="left">Static Code Analysis</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Selenium</td>
+<td align="left"></td>
+<td align="left">Deployment Server</td>
+</tr>
+<tr class="even">
+<td align="left">Deployment Server</td>
+<td align="left"></td>
+<td align="left">Nexus</td>
+</tr>
+</tbody>
+</table>
+<!-- - Subversion
+- Jenkins
+- Nexus
+- Sonar
+- Selenium
+- Deployment server -->
 <p><strong>Tools</strong></p>
-<ul>
-<li>Maven</li>
-<li>Java</li>
-<li>Custom quality reporting</li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tool</th>
+<th align="left">Type</th>
+<th align="left">Used by</th>
+<th align="left">Depends on</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Maven</td>
+<td align="left">Build</td>
+<td align="left">Dev, Jenkins</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Java</td>
+<td align="left">Language, platform</td>
+<td align="left">Dev, Jenkins</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Custom quality reporting</td>
+<td align="left">Reporting</td>
+<td align="left">Jenkins</td>
+<td align="left">Sonar, Selenium</td>
+</tr>
+</tbody>
+</table>
+<!--
+- Maven
+- Java
+- Custom quality reporting
+- *this list is incomplete* -->
 <p><strong>Setup</strong></p>
 <ul>
 <li>Setup is done by system administrators</li>
 </ul>
 <p><strong>Manual steps</strong></p>
-<ul>
-<li>Create build jobs, (once for every unit of development)</li>
-<li>Configure quality reports, (once for every unit of development)</li>
-<li>Manually maintain configuration of deployment server, (every time server configuration changes)</li>
-<li>Tester requests deployment of new version (direct communication)</li>
-<li>Trigger deployment job, (every time a tester requests a new version)</li>
-<li>Trigger automated tests</li>
-<li><em>this list is incomplete</em></li>
-</ul>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="37%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Task</th>
+<th align="left">Depends on</th>
+<th align="left">Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Create build job</td>
+<td align="left">Jenkins</td>
+<td align="left">every new unit of development</td>
+</tr>
+<tr class="even">
+<td align="left">Create deployment job</td>
+<td align="left">Jenkins</td>
+<td align="left">every new unit of development</td>
+</tr>
+<tr class="odd">
+<td align="left">Configure quality report</td>
+<td align="left">Jenkins, Quality reporting</td>
+<td align="left">every new unit of development</td>
+</tr>
+<tr class="even">
+<td align="left">Maintain server configuration</td>
+<td align="left">Deployment Server</td>
+<td align="left">on configuration change</td>
+</tr>
+<tr class="odd">
+<td align="left">Trigger deployment</td>
+<td align="left">Deployment Server, Jenkins</td>
+<td align="left">on request of tester or stakeholder</td>
+</tr>
+<tr class="even">
+<td align="left">Trigger automated tests</td>
+<td align="left">Deployment Server, Jenkins, Selenium</td>
+<td align="left">every iteration</td>
+</tr>
+</tbody>
+</table>
+<!--
+- Create build jobs, (once for every unit of development)
+- Configure quality reports, (once for every unit of development)
+- Manually maintain configuration of deployment server, (every time server configuration changes)
+- Tester requests deployment of new version (direct communication)
+- Trigger deployment job, (every time a tester requests a new version)
+- Trigger automated tests
+- *this list is incomplete* -->
 <p><strong>Problems</strong></p>
-<ul>
-<li>Limited resources per team</li>
-<li>Doesn't scale beyond N teams</li>
-<li>Changes/upgrades affect all teams</li>
-<li>Teams can't install plugins or make changes to the setup</li>
-<li>Teams can interfere with each other causing difficult to debug and random failures</li>
-<li>Teams request changes to the infrastructure from the system administrators</li>
-<li>Might take considerable amount of time</li>
-<li>Request can be denied</li>
-<li>Changes to deployment server are not repeatable</li>
-<li>Difficult to go back N versions of the application and server configuration</li>
-</ul>
+<table>
+<colgroup>
+<col width="76%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Description</th>
+<th align="left">Has negative impact on</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Resource sharing between all teams</td>
+<td align="left">Scalability</td>
+</tr>
+<tr class="even">
+<td align="left">Changes and upgrades affect all teams</td>
+<td align="left">Stability</td>
+</tr>
+<tr class="odd">
+<td align="left">Teams can't change setup or install plugins</td>
+<td align="left">Flexibility, Usability</td>
+</tr>
+<tr class="even">
+<td align="left">Teams can interfere with each other</td>
+<td align="left">Stability</td>
+</tr>
+<tr class="odd">
+<td align="left">Teams depend on sysadmins</td>
+<td align="left">Agility</td>
+</tr>
+<tr class="even">
+<td align="left">Deployment server changes are difficult to reverse</td>
+<td align="left">Flexibility, Scalability</td>
+</tr>
+<tr class="odd">
+<td align="left">Unable to deploy multiple instances of an application</td>
+<td align="left">Agility, Usability</td>
+</tr>
+</tbody>
+</table>
+<!--
+
+- Limited resources per team
+- Doesn't scale beyond N teams
+- Changes/upgrades affect all teams
+- Teams can't install plugins or make changes to the setup
+- Teams can interfere with each other causing difficult to debug and random failures
+- Teams request changes to the infrastructure from the system administrators
+ - Might take considerable amount of time
+ - Request can be denied
+- Changes to deployment server are not repeatable
+- Difficult to go back N versions of the application and server configuration -->
 <h2 id="stage-2-automated-cd-in-a-distributed-environment"><span class="header-section-number">4.2</span> Stage 2: Automated CD in a distributed environment</h2>
+<p><strong>Characteristics</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">.</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CI/CD Environment</td>
+<td align="left">Per team</td>
+</tr>
+<tr class="even">
+<td align="left">Maintenance</td>
+<td align="left">Team</td>
+</tr>
+<tr class="odd">
+<td align="left">Deployment</td>
+<td align="left">Automatic</td>
+</tr>
+<tr class="even">
+<td align="left">Flexibility</td>
+<td align="left">On-demand</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each team has his own CI/CD environment</li>
+<li>The team is responsible for the environment (DevOps)</li>
+<li>Dynamic deployment cluster</li>
+<li>Application deployment is scripted</li>
+<li>System administrators maintain the deployment cluster</li>
+<li>Teams decide what their CI/CD landscape looks like</li>
+</ul>
 <p><strong>Systems</strong></p>
 <ul>
 <li>Gitlab</li>
@@ -279,6 +508,14 @@ introduces methodology used throughout the thesis.
 <li>Maven</li>
 <li>Docker</li>
 <li>Custom quality reporting</li>
+</ul>
+<p><strong>Manual steps</strong></p>
+<ul>
+<li>s1</li>
+</ul>
+<p><strong>Problems</strong></p>
+<ul>
+<li>p1</li>
 </ul>
 <h2 id="stage-3-----next-evolution.."><span class="header-section-number">4.3</span> Stage 3: --- next evolution..</h2>
 <p>tbd..</p>
