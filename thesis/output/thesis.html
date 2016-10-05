@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta name="generator" content="pandoc" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                        <title></title>
+        <style type="text/css">code{white-space: pre;}</style>
+                                                    <style>
+            body {
+                font-family: Georgia;
+                max-width: 800px;
+                margin: 0 auto;
+                line-height: 30px;
+                font-size: 18px;
+                padding-left: 350px;
+                padding-right: 50px;
+                color: #111;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                font-family: Arial;
+            }
+            
+            h1 {
+                padding-top: 200px;
+                line-height: 50px;
+            }
+            h2 {
+                padding-top: 30px;
+            }
+            h3 {
+                padding-top: 20px;
+            }
+            h4 {
+                padding-top: 10px;
+            }
+            p {
+                text-align: justify;
+            }
+            p a {
+                word-wrap: break-word;
+                white-space: pre;
+            }
+            code {
+                word-wrap: break-word;
+            }
+            blockquote {
+                border-left: 3px solid #eee;
+                margin-left: 20px;
+                padding-left: 20px;
+            }
+            
+            ::selection {
+                background-color: #E4E4E4;
+            }
+            
+            table {
+                width: 100%;
+            }
+            table caption {
+                font-weight: bold;
+            }
+            table tr {
+                padding: 0;
+                margin: 0;
+                background-color: #f0f0f0;
+            }
+            table tr.even {
+                background-color: #fafafa;
+            }
+            table td {
+                margin: 0;
+                padding: 3px 5px;
+            }
+            
+            p span.added {
+                color: green;
+                background-color: #FFF3C5;
+            }
+            p span.removed {
+                color: red;
+                background-color: #FFF3C5;
+            }
+            
+            #title-page {
+                padding: 80px 0;
+            }
+            
+            #TOC {
+                position: fixed;
+                left: 0;
+                top: 0;
+                overflow-y: scroll;
+                height: 100%;
+                background: #fafafa;
+                max-width: 300px;
+                font-family: Arial;
+                font-size: 15px;
+                line-height: 30px;
+            }
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background-color: #ECECEC;
+            }
+            ::-webkit-scrollbar-thumb {
+                background-color: #B0B0B0;
+                border-radius: 8px;
+            }
+            #TOC > ul {
+                padding-right: 10px;
+            }
+            #TOC ul {
+                list-style: none;
+                padding-left: 20px;
+            }
+            #TOC ul li a {
+                text-decoration: none;
+                color: #364149;
+                text-overflow: ellipsis;
+                display: block;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            #TOC ul li a:hover {
+                color: #008cff;
+            }
+            
+            .figure {
+                text-align: center;
+            }
+            .figure p {
+                text-align: center;
+                font-style: italic;
+            }
+            .figure img {
+                  width: 100%;
+            }
+            </style>
+                <script src="js/jquery.js"></script>
+        <script src="js/diff.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+                <!--
+                -->
+        <div id="title-page">
+            <h1>Continuous Delivery</h1>
+            <h2>Jeroen Peeters</h2>
+        </div>
+                    <div id="TOC">
+                <ul>
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#acknowledgements">Acknowledgements</a></li>
+                <li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+                <li><a href="#literature-review"><span class="toc-section-number">2</span> Literature review</a><ul>
+                <li><a href="#introduction-1"><span class="toc-section-number">2.1</span> Introduction</a></li>
+                <li><a href="#tools"><span class="toc-section-number">2.2</span> Tools</a></li>
+                <li><a href="#process"><span class="toc-section-number">2.3</span> Process</a></li>
+                <li><a href="#people"><span class="toc-section-number">2.4</span> People</a></li>
+                <li><a href="#methodoloy"><span class="toc-section-number">2.5</span> Methodoloy</a></li>
+                </ul></li>
+                <li><a href="#the-development-organization"><span class="toc-section-number">3</span> The development organization</a></li>
+                <li><a href="#stages-of-continuous-delivery"><span class="toc-section-number">4</span> Stages of Continuous Delivery</a><ul>
+                <li><a href="#stage-1-ci-in-a-shared-environment"><span class="toc-section-number">4.1</span> Stage 1: CI in a shared environment</a></li>
+                <li><a href="#stage-2-automated-cd-in-a-distributed-environment"><span class="toc-section-number">4.2</span> Stage 2: Automated CD in a distributed environment</a></li>
+                <li><a href="#stage-3-----next-evolution.."><span class="toc-section-number">4.3</span> Stage 3: --- next evolution..</a></li>
+                <li><a href="#initial-situation"><span class="toc-section-number">4.4</span> Initial situation</a></li>
+                </ul></li>
+                <li><a href="#problem-description"><span class="toc-section-number">5</span> Problem description</a></li>
+                <li><a href="#observations-interviews"><span class="toc-section-number">6</span> Observations / Interviews</a></li>
+                <li><a href="#references">References</a></li>
+                </ul>
+            </div>
+                                <!--
+This is the Latex-heavy title page.
+People outside UCL may want to remove the header logo
+and add the centred logo
+-->
+
+<!-- This page is for an official declaration. -->
+
+<p>  </p>
+<h1 id="abstract" class="unnumbered">Abstract</h1>
+<p>tbd.</p>
+<p> </p>
+<h1 id="acknowledgements" class="unnumbered">Acknowledgements</h1>
+<p>tbd</p>
+<!-- Use the \newpage command to force a new page -->
+
+<p></p>
+<p></p>
+
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>tbd.</p>
+<h1 id="literature-review"><span class="header-section-number">2</span> Literature review</h1>
+<!--
+After the introductory chapter, it seems fairly common to
+include a chapter that reviews the literature and
+introduces methodology used throughout the thesis.
+-->
+<h2 id="introduction-1"><span class="header-section-number">2.1</span> Introduction</h2>
+<p>tbd.</p>
+<h2 id="tools"><span class="header-section-number">2.2</span> Tools</h2>
+<h2 id="process"><span class="header-section-number">2.3</span> Process</h2>
+<h2 id="people"><span class="header-section-number">2.4</span> People</h2>
+<h2 id="methodoloy"><span class="header-section-number">2.5</span> Methodoloy</h2>
+<h1 id="the-development-organization"><span class="header-section-number">3</span> The development organization</h1>
+<p>In order to understand the problems at the organization it is important to have a deeper understanding of the development organization's structure. The organization is a semi-governmental IT project organization who's mission is to help other (semi-)governmental organizations with IT project management and the realization of projects. They lead by example and help the customer to shape their project according to agile principles. In this thesis we are only concerned with the department responsible for software project realization. Within the Software Delivery (SD) department project teams build software in an agile way. Because some customers are still used to work according to a waterfall approach the department plays an important role in guiding customers. The SD project team helps the customer getting familiar with Agile/Scrum principles in order for them to steer and make decisions about importance of tasks. Before a project ends up at SD it usually follows a pre-development process in which some architectural decisions are already made. This is mostly because governments have to apply to standards and regulations. Usually the software realization team is not involved in this process since the team is not yet in existence. This procedure as described here may vary per project and customer, but it usually applies. When the realization team is formed most of the fundamental decisions have already been taken.</p>
+<p>To be able to quickly react to customer needs the development organization relies heavily on external hiring for the duration of a project. Within SD all project members are externals. This gives the organization the ability to quickly scale up or down depending on the number of active projects. However, it also implies that knowledge is easily lost. The organization tries to move people between projects as much as possible in order to retain them. In order to move people more easily between projects and bring new people up to speed more quickly the development phase is standardized within the department as much as possible. The standardization is targeted at process, tools and development frameworks and languages. This standardization is something that can change over time and is defined by SD itself. It is possible for a single project to differentiate from the standard following the &quot;comply or explain&quot;-principle.</p>
+<p>The standardized process is based on Continuous Integration and Delivery (CI/CD) principles. In the next chapter we will take a closer look at the CI/CD process.</p>
+<h1 id="stages-of-continuous-delivery"><span class="header-section-number">4</span> Stages of Continuous Delivery</h1>
+<p>In this chapter I describe the different stages of continuous delivery that the development organization went through.</p>
+<h2 id="stage-1-ci-in-a-shared-environment"><span class="header-section-number">4.1</span> Stage 1: CI in a shared environment</h2>
+<p>Systems:</p>
+<ul>
+<li>Subversion</li>
+<li>Jenkins</li>
+<li>Nexus</li>
+<li>Sonar</li>
+<li>Selenium</li>
+<li>Deployment server</li>
+</ul>
+<p>Tools</p>
+<ul>
+<li>Maven</li>
+<li>Java</li>
+<li>Custom quality reporting</li>
+</ul>
+<h2 id="stage-2-automated-cd-in-a-distributed-environment"><span class="header-section-number">4.2</span> Stage 2: Automated CD in a distributed environment</h2>
+<p>Systems:</p>
+<ul>
+<li>Gitlab</li>
+<li>Jenkins</li>
+<li>Nexus</li>
+<li>Sonar</li>
+<li>Selenium</li>
+<li>Deployment server</li>
+</ul>
+<p>Tools</p>
+<ul>
+<li>Maven</li>
+<li>Docker</li>
+<li>Custom quality reporting</li>
+</ul>
+<h2 id="stage-3-----next-evolution.."><span class="header-section-number">4.3</span> Stage 3: --- next evolution..</h2>
+<h2 id="initial-situation"><span class="header-section-number">4.4</span> Initial situation</h2>
+<p><strong>! This needs to be placed elsewhere and rewritten !</strong></p>
+<p>Figure  shows the steps and interactions a developer has with build systems in order to deploy a change in the software to a target server.</p>
+<div class="figure">
+<img src="figures/mermaid/basic-ci-sequencediag.mermaid.png" alt="Basic CI " />
+<p class="caption">Basic CI </p>
+</div>
+<p>Figure  shows the steps a developer needs to take in order to setup a single source repository and configure the continuous integration pipeline.</p>
+<div class="figure">
+<img src="figures/mermaid/basic-ci-initial-setup.mermaid.png" alt="Basic CI setup " />
+<p class="caption">Basic CI setup </p>
+</div>
+<h1 id="problem-description"><span class="header-section-number">5</span> Problem description</h1>
+<p>Explain the problem with CI/CD that the company was faced with.</p>
+<ul>
+<li></li>
+</ul>
+<p>The problem description follows naturally from the observations and/or interviews. The problems are categorized according to their origin.</p>
+<p>Describe the problems</p>
+<h1 id="observations-interviews"><span class="header-section-number">6</span> Observations / Interviews</h1>
+<p>Do interviews with a couple of teams to find and clarify on problems.</p>
+<p></p>
+<!-- 
+Do not edit this page.
+
+References are automatically generated from the BibTex file (References.bib)
+
+...which you should create using your reference manager.
+-->
+<h1 id="references" class="unnumbered">References</h1>
+<div id="refs" class="references">
+
+</div>
+            </body>
+</html>

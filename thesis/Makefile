@@ -29,7 +29,7 @@ pdf:
 	-o "$(OUTPUTDIR)/thesis.pdf" \
 	-H "$(STYLEDIR)/preamble.tex" \
 	--template="$(STYLEDIR)/template.tex" \
-	--bibliography="$(BIBFILE)" 2>pandoc.log \
+	--bibliography="$(BIBFILE)" 2>$(OUTPUTDIR)/pandoc.log \
 	--csl="$(STYLEDIR)/ref_format.csl" \
 	--highlight-style pygments \
 	-V fontsize=10pt \
@@ -70,6 +70,6 @@ html:
 	--number-sections
 	rm -rf "$(OUTPUTDIR)/source"
 	mkdir "$(OUTPUTDIR)/source"
-	cp -r "$(INPUTDIR)/figures" "$(OUTPUTDIR)/source/figures"
+	cp -r "$(INPUTDIR)/figures" "$(OUTPUTDIR)/figures"
 
 .PHONY: help pdf docx html tex
