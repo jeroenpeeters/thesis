@@ -1,9 +1,9 @@
-## Stages of Continuous Delivery
+# Stages of Continuous Delivery
 
 In this chapter I describe the different stages of continuous delivery that the
 development organization went through.
 
-### Stage 1: CI in a shared environment
+## Stage 1: CI in a shared environment
 
 Systems:
 
@@ -20,7 +20,7 @@ Tools
  - Java
  - Custom quality reporting
 
-### Stage 2: Automated CD in a distributed environment
+## Stage 2: Automated CD in a distributed environment
 
 Systems:
 
@@ -39,7 +39,7 @@ Systems:
   - Custom quality reporting
 
 
-### Stage 3: --- next evolution..
+## Stage 3: --- next evolution..
 
 
 
