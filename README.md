@@ -1,7 +1,11 @@
 # Thesis
 This repo contains the source text of my Master's thesis in Software Engineering. It is a work in progress.
 
-Check [HISTORY.md](HISTORY.md) to see what changed. Looking for the latest pdf version? [Click here](thesis/output/thesis.pdf).
+Check [HISTORY.md](HISTORY.md) to see what changed.
+
+Looking for the latest version?
+- [HTML](http://jeroenpeeters.nl/thesis/thesis.html)
+- [PDF](http://jeroenpeeters.nl/thesis/thesis.pdf)
 
 
 # Todo
@@ -21,7 +25,7 @@ Check [HISTORY.md](HISTORY.md) to see what changed. Looking for the latest pdf v
  - [ ] Identify improvements with thorough problem analysis
  - [ ] Realize the improvements
  - [ ] Report on the performance of the improved situation
- 
+
 # Notes
  - Tooling (maven, etc.) needs to be installed in Jenkins on initial setupp
 
