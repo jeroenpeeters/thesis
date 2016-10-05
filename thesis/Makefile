@@ -70,6 +70,6 @@ html:
 	--number-sections
 	rm -rf "$(OUTPUTDIR)/source"
 	mkdir "$(OUTPUTDIR)/source"
-	cp -r "$(INPUTDIR)/figures" "$(OUTPUTDIR)/figures"
+	cp -r "$(INPUTDIR)/figures/" "$(OUTPUTDIR)/figures"
 
 .PHONY: help pdf docx html tex
