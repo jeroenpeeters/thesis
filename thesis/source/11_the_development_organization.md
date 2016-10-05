@@ -49,3 +49,43 @@ to setup a single source repository and configure the continuous integration
 pipeline.
 
 ![Basic CI setup \label{basic_ci}](figures/mermaid/basic-ci-initial-setup.mermaid.png)
+
+## Stages of Continuous Delivery
+
+### Stage 1: Simple CD in a shared environment
+
+Systems:
+
+ - Subversion
+ - Jenkins
+ - Nexus
+ - Sonar
+ - Selenium
+ - Deployment server
+
+Tools
+
+ - Maven
+ - Java
+ - Custom quality reporting
+
+### Stage 2: Automated CD in a distributed environment
+
+Systems:
+
+  - Gitlab
+  - Jenkins
+  - Nexus
+  - Sonar
+  - Selenium
+  - Deployment server
+
+
+ Tools
+
+  - Maven
+  - Docker
+  - Custom quality reporting
+
+
+### Stage 3: --- next evolution..
