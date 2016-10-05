@@ -1,5 +1,6 @@
 
 # The development organization
+
 In order to understand the problems at the organization it is important to have
 a deeper understanding of the development organization's structure.
 The organization is a semi-governmental IT project organization who's mission is
@@ -35,57 +36,3 @@ to differentiate from the standard following the "comply or explain"-principle.
 
 The standardized process is based on Continuous Integration and Delivery (CI/CD)
 principles. In the next chapter we will take a closer look at the CI/CD process.
-
-
-## Initial situation
-
-Figure \ref{basic_ci} shows the steps and interactions a developer has with
-build systems in order to deploy a change in the software to a target server.
-
-![Basic CI \label{basic_ci}](figures/mermaid/basic-ci-sequencediag.mermaid.png)
-
-Figure \ref{basic_ci_setup} shows the steps a developer needs to take in order
-to setup a single source repository and configure the continuous integration
-pipeline.
-
-![Basic CI setup \label{basic_ci}](figures/mermaid/basic-ci-initial-setup.mermaid.png)
-
-## Stages of Continuous Delivery
-
-### Stage 1: Simple CD in a shared environment
-
-Systems:
-
- - Subversion
- - Jenkins
- - Nexus
- - Sonar
- - Selenium
- - Deployment server
-
-Tools
-
- - Maven
- - Java
- - Custom quality reporting
-
-### Stage 2: Automated CD in a distributed environment
-
-Systems:
-
-  - Gitlab
-  - Jenkins
-  - Nexus
-  - Sonar
-  - Selenium
-  - Deployment server
-
-
- Tools
-
-  - Maven
-  - Docker
-  - Custom quality reporting
-
-
-### Stage 3: --- next evolution..
