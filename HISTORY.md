@@ -1,3 +1,7 @@
+# 05-10-2016
+
+- Stages of Continuous Delivery: initial attempt to 'codify' tools, systems and problems 
+
 # 03-10-2016
 
  - Added two figures detailing interactions with build systems
