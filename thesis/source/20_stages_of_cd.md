@@ -15,6 +15,14 @@ In this chapter I describe the different stages of continuous delivery that the
 development organization went through.
 
 
+Right     Left     Center     Default
+-------     ------ ----------   -------
+   12     12        12            12
+  123     123       123          123
+    1     1          1             1
+
+Table:  Demonstration of simple table syntax.
+
 ## Stage 1: CI in a shared environment
 
 ![CI/CD Schematic Overview \label{basic_ci_schematic}](figures/mermaid/basic-ci-schematic.mermaid.png)
