@@ -59,6 +59,7 @@ docx:
 	--toc
 
 html:
+	rm -rf "$(OUTPUTDIR)/figures"
 	pandoc "$(INPUTDIR)"/*.md \
 	-o "$(OUTPUTDIR)/thesis.html" \
 	--standalone \
