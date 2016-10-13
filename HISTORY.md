@@ -1,3 +1,7 @@
+# 13-10-2016
+
+ - What is Continuous Delivery: Continuous Integration
+
 # 05-10-2016
 
 - Stages of Continuous Delivery: initial attempt to 'codify' tools, systems and problems 
