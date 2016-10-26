@@ -29,6 +29,9 @@ servers. The deployment servers are managed by the Ops team.
 ### Scenario: Upgrade the application server
 ...
 
+### Scenario: Application instance per tester
+...
+
 ### Scenario: Parallel frontend test execution
 ...
 
@@ -57,6 +60,9 @@ environment in which teams are able to deploy applications at will and on demand
 ...
 
 ### Scenario: Upgrade the application server
+...
+
+### Scenario: Application instance per tester
 ...
 
 ### Scenario: Parallel frontend test execution
