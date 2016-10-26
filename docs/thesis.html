@@ -163,18 +163,26 @@
                 <li><a href="#people"><span class="toc-section-number">2.4</span> People</a></li>
                 <li><a href="#methodoloy"><span class="toc-section-number">2.5</span> Methodoloy</a></li>
                 </ul></li>
-                <li><a href="#what-is-continuous-delivery"><span class="toc-section-number">3</span> What is Continuous Delivery</a><ul>
-                <li><a href="#continuous-integration"><span class="toc-section-number">3.1</span> Continuous Integration</a><ul>
-                <li><a href="#revision-control-system"><span class="toc-section-number">3.1.1</span> Revision Control System</a></li>
-                <li><a href="#continuous-integration-server"><span class="toc-section-number">3.1.2</span> Continuous Integration Server</a></li>
+                <li><a href="#the-development-organization"><span class="toc-section-number">3</span> The development organization</a></li>
+                <li><a href="#what-is-continuous-delivery"><span class="toc-section-number">4</span> What is Continuous Delivery</a><ul>
+                <li><a href="#continuous-integration"><span class="toc-section-number">4.1</span> Continuous Integration</a><ul>
+                <li><a href="#revision-control-system"><span class="toc-section-number">4.1.1</span> Revision Control System</a></li>
+                <li><a href="#continuous-integration-server"><span class="toc-section-number">4.1.2</span> Continuous Integration Server</a></li>
+                </ul></li>
+                <li><a href="#continuous-delivery"><span class="toc-section-number">4.2</span> Continuous Delivery</a></li>
+                </ul></li>
+                <li><a href="#continuous-delivery-at-the-development-organization"><span class="toc-section-number">5</span> Continuous Delivery at the Development Organization</a><ul>
+                <li><a href="#a-new-project"><span class="toc-section-number">5.1</span> A new project</a><ul>
+                <li><a href="#infrastructure-setup"><span class="toc-section-number">5.1.1</span> Infrastructure setup</a></li>
+                <li><a href="#project-setup"><span class="toc-section-number">5.1.2</span> Project setup</a></li>
+                <li><a href="#recurring-tasks"><span class="toc-section-number">5.1.3</span> Recurring tasks</a></li>
                 </ul></li>
                 </ul></li>
-                <li><a href="#the-development-organization"><span class="toc-section-number">4</span> The development organization</a></li>
-                <li><a href="#stages-of-continuous-delivery"><span class="toc-section-number">5</span> Stages of Continuous Delivery</a><ul>
-                <li><a href="#stage-1-ci-in-a-shared-environment"><span class="toc-section-number">5.1</span> Stage 1: CI in a shared environment</a></li>
-                <li><a href="#stage-2-automated-cd-in-a-distributed-environment"><span class="toc-section-number">5.2</span> Stage 2: Automated CD in a distributed environment</a></li>
-                <li><a href="#stage-3-----next-evolution.."><span class="toc-section-number">5.3</span> Stage 3: --- next evolution..</a></li>
-                <li><a href="#initial-situation"><span class="toc-section-number">5.4</span> Initial situation</a></li>
+                <li><a href="#stages-of-continuous-delivery"><span class="toc-section-number">6</span> Stages of Continuous Delivery</a><ul>
+                <li><a href="#stage-1-ci-in-a-shared-environment"><span class="toc-section-number">6.1</span> Stage 1: CI in a shared environment</a></li>
+                <li><a href="#stage-2-automated-cd-in-a-distributed-environment"><span class="toc-section-number">6.2</span> Stage 2: Automated CD in a distributed environment</a></li>
+                <li><a href="#stage-3-----next-evolution.."><span class="toc-section-number">6.3</span> Stage 3: --- next evolution..</a></li>
+                <li><a href="#initial-situation"><span class="toc-section-number">6.4</span> Initial situation</a></li>
                 </ul></li>
                 <li><a href="#references">References</a></li>
                 </ul>
@@ -212,9 +220,13 @@ introduces methodology used throughout the thesis.
 <h2 id="process"><span class="header-section-number">2.3</span> Process</h2>
 <h2 id="people"><span class="header-section-number">2.4</span> People</h2>
 <h2 id="methodoloy"><span class="header-section-number">2.5</span> Methodoloy</h2>
-<h1 id="what-is-continuous-delivery"><span class="header-section-number">3</span> What is Continuous Delivery</h1>
+<h1 id="the-development-organization"><span class="header-section-number">3</span> The development organization</h1>
+<p>In order to understand the problems at the organization it is important to have a deeper understanding of the development organization's structure. The organization is a semi-governmental IT project organization who's mission is to help other (semi-)governmental organizations with IT project management and the realization of projects. They lead by example and help the customer to shape their project according to agile principles. In this thesis we are only concerned with the department responsible for software project realization. Within the Software Delivery (SD) department project teams build software in an agile way. Because some customers are still used to work according to a waterfall approach the department plays an important role in guiding customers. The SD project team helps the customer getting familiar with Agile/Scrum principles in order for them to steer and make decisions about importance of tasks. Before a project ends up at SD it usually follows a pre-development process in which some architectural decisions are already made. This is mostly because governments have to apply to standards and regulations. Usually the software realization team is not involved in this process since the team is not yet in existence. This procedure as described here may vary per project and customer, but it usually applies. When the realization team is formed most of the fundamental decisions have already been taken.</p>
+<p>To be able to quickly react to customer needs the development organization relies heavily on external hiring for the duration of a project. Within SD all project members are externals. This gives the organization the ability to quickly scale up or down depending on the number of active projects. However, it also implies that knowledge is easily lost. The organization tries to move people between projects as much as possible in order to retain them. In order to move people more easily between projects and bring new people up to speed more quickly the development phase is standardized within the department as much as possible. The standardization is targeted at process, tools and development frameworks and languages. This standardization is something that can change over time and is defined by SD itself. It is possible for a single project to differentiate from the standard following the &quot;comply or explain&quot;-principle.</p>
+<p>The standardized process is based on Continuous Integration and Delivery (CI/CD) principles. In the next chapter we will take a closer look at the CI/CD process.</p>
+<h1 id="what-is-continuous-delivery"><span class="header-section-number">4</span> What is Continuous Delivery</h1>
 <p>In this chapter I will discuss what people generally understand by the term Continuous Delivery.</p>
-<h2 id="continuous-integration"><span class="header-section-number">3.1</span> Continuous Integration</h2>
+<h2 id="continuous-integration"><span class="header-section-number">4.1</span> Continuous Integration</h2>
 <p>Continuous Delivery is the natural evolution of Continuous Integration (CI). Practicing Continuous Integration is an absolute necessity before you can start with Continuous Delivery.</p>
 <p>CI focuses on integrating different software branches into a main line. This generally occurs when developers make changes to the main line in their development environments.</p>
 <p>To do CI one needs at least the following systems:</p>
@@ -227,14 +239,81 @@ introduces methodology used throughout the thesis.
 <img src="figures/arch-overview-CI.png" alt="Overview Continuous Integration " />
 <p class="caption">Overview Continuous Integration </p>
 </div>
-<h3 id="revision-control-system"><span class="header-section-number">3.1.1</span> Revision Control System</h3>
+<h3 id="revision-control-system"><span class="header-section-number">4.1.1</span> Revision Control System</h3>
 <p>The RCS covers the integration of code branches into a main line.</p>
-<h3 id="continuous-integration-server"><span class="header-section-number">3.1.2</span> Continuous Integration Server</h3>
+<h3 id="continuous-integration-server"><span class="header-section-number">4.1.2</span> Continuous Integration Server</h3>
 <p>A CI-server, sometimes referred to as the build server, automatically performs the build process when a code branch is integrated into the main line. This ensures that the software in the main line can still be build according to predefined rules. Furthermore it ensures that the change doesn't depend on development specific environments, reducing the 'it builds on my machine'-problem. Preferably the CI-server also executes tests to ensure that previous functionality is still intact.</p>
-<h1 id="the-development-organization"><span class="header-section-number">4</span> The development organization</h1>
-<p>In order to understand the problems at the organization it is important to have a deeper understanding of the development organization's structure. The organization is a semi-governmental IT project organization who's mission is to help other (semi-)governmental organizations with IT project management and the realization of projects. They lead by example and help the customer to shape their project according to agile principles. In this thesis we are only concerned with the department responsible for software project realization. Within the Software Delivery (SD) department project teams build software in an agile way. Because some customers are still used to work according to a waterfall approach the department plays an important role in guiding customers. The SD project team helps the customer getting familiar with Agile/Scrum principles in order for them to steer and make decisions about importance of tasks. Before a project ends up at SD it usually follows a pre-development process in which some architectural decisions are already made. This is mostly because governments have to apply to standards and regulations. Usually the software realization team is not involved in this process since the team is not yet in existence. This procedure as described here may vary per project and customer, but it usually applies. When the realization team is formed most of the fundamental decisions have already been taken.</p>
-<p>To be able to quickly react to customer needs the development organization relies heavily on external hiring for the duration of a project. Within SD all project members are externals. This gives the organization the ability to quickly scale up or down depending on the number of active projects. However, it also implies that knowledge is easily lost. The organization tries to move people between projects as much as possible in order to retain them. In order to move people more easily between projects and bring new people up to speed more quickly the development phase is standardized within the department as much as possible. The standardization is targeted at process, tools and development frameworks and languages. This standardization is something that can change over time and is defined by SD itself. It is possible for a single project to differentiate from the standard following the &quot;comply or explain&quot;-principle.</p>
-<p>The standardized process is based on Continuous Integration and Delivery (CI/CD) principles. In the next chapter we will take a closer look at the CI/CD process.</p>
+<h2 id="continuous-delivery"><span class="header-section-number">4.2</span> Continuous Delivery</h2>
+<p>Since Continuous Delivery (CD) builds on top of CI it reuses its systems.</p>
+<h1 id="continuous-delivery-at-the-development-organization"><span class="header-section-number">5</span> Continuous Delivery at the Development Organization</h1>
+<h2 id="a-new-project"><span class="header-section-number">5.1</span> A new project</h2>
+<p>This paragraph conceptually describes what happens when a new project is embedded within the development organization. Besides organizational arrangements a technical infrastructure is setup to accommodate the development of the software application.</p>
+<p>The following systems are employed:</p>
+<ul>
+<li>Gitlab</li>
+<li>Jenkins CI</li>
+<li>Jenkins build servers</li>
+<li>SonarQube</li>
+<li>Nexus</li>
+<li>Mediawiki</li>
+<li>Deployment servers</li>
+<li>Jira</li>
+<li>Releasemanager</li>
+<li>Quality dashboard</li>
+<li>Test reporting</li>
+</ul>
+<p>The next paragraphs talk about the tasks that happen initially and tasks that recur more frequently.</p>
+<h3 id="infrastructure-setup"><span class="header-section-number">5.1.1</span> Infrastructure setup</h3>
+<p>Initially every system used needs to be installed onto a target server. Depending on how you choose to do the installation, this might take some time.</p>
+<h4 id="gitlab"><span class="header-section-number">5.1.1.1</span> Gitlab</h4>
+<p>Gitlab is used as a revision control server.</p>
+<ol style="list-style-type: decimal">
+<li>Install Gitlab</li>
+<li>Configure authentication mechanism (LDAP)</li>
+<li>Set roles and permissions for users</li>
+</ol>
+<h4 id="jenkins-and-build-servers"><span class="header-section-number">5.1.1.2</span> Jenkins and build servers</h4>
+<p>Depending on the project one or more build servers are needed. A build server has specific tooling on-board to be able to build the application. The following list details the installation steps.</p>
+<ol style="list-style-type: decimal">
+<li>Install Jenkins CI</li>
+<li>Install one or more Jenkins build servers</li>
+<li>Install specific tooling on the build server</li>
+<li>Configure the build server in the main Jenkins server</li>
+<li>Configure authentication mechanism (LDAP)</li>
+</ol>
+<h4 id="sonarqube"><span class="header-section-number">5.1.1.3</span> SonarQube</h4>
+<p>SonarQube is used to continuously monitor the quality of the source code.</p>
+<ol style="list-style-type: decimal">
+<li>Install SonarQube</li>
+<li>Configure authentication mechanism (LDAP)</li>
+</ol>
+<h4 id="nexus"><span class="header-section-number">5.1.1.4</span> Nexus</h4>
+<p>Nexus is used to archive and distribute software artifacts.</p>
+<ol style="list-style-type: decimal">
+<li>Install Nexus</li>
+<li>Configure authentication mechanism (LDAP)</li>
+</ol>
+<h4 id="mediawiki"><span class="header-section-number">5.1.1.5</span> Mediawiki</h4>
+<p>Mediawiki is used as a team collaboration tool.</p>
+<ol style="list-style-type: decimal">
+<li>Install Mediawiki</li>
+<li>Configure authentication mechanism (LDAP)</li>
+</ol>
+<h4 id="deployment-servers"><span class="header-section-number">5.1.1.6</span> Deployment servers</h4>
+<p>For the purpose of deploying the application in a production like environment a deployment landscape has to be setup. Depending on the application this can be as simple as a single server, or as complex as a clustered setup of a Java application server with a corresponding complex database setup.</p>
+<h4 id="jira"><span class="header-section-number">5.1.1.7</span> Jira</h4>
+<p>Jira is readily available within the organization and doesn't need to be setup. However, it needs to be configured to accommodate the new project.</p>
+<h3 id="project-setup"><span class="header-section-number">5.1.2</span> Project setup</h3>
+<p>After the infrastructure is setup the project team adds configuration to the tools to be able to build and deploy their application.</p>
+<ol style="list-style-type: decimal">
+<li>A user for Jenkins needs to be created in Gitlab and configured in Jenkins so that Jenkins can checkout copies of the source code.</li>
+<li>Code repositories are created in Gitlab for the corresponding applications.</li>
+<li>Optional, import existing source code into Gitlab.</li>
+<li>Configure jobs in Jenkins to build, test and deploy (for every application)</li>
+<li>Configure the location of the SonarQube API in Jenkins</li>
+<li></li>
+</ol>
+<h3 id="recurring-tasks"><span class="header-section-number">5.1.3</span> Recurring tasks</h3>
 <!-- Wat is code
 hoe organiseren we het nu
 laat afhankelijkheden zien tussen applicaties
@@ -245,7 +324,7 @@ basic ci setup -> laat zien waar problemen zitten.
 
 specificatie template meta. wat moeten we vastleggen.
 van elk van de items een voorbeeld uitwerken. -->
-<h1 id="stages-of-continuous-delivery"><span class="header-section-number">5</span> Stages of Continuous Delivery</h1>
+<h1 id="stages-of-continuous-delivery"><span class="header-section-number">6</span> Stages of Continuous Delivery</h1>
 <p>In this chapter I describe the different stages of continuous delivery that the development organization went through.</p>
 <table>
 <caption>Demonstration of simple table syntax.</caption>
@@ -278,7 +357,7 @@ van elk van de items een voorbeeld uitwerken. -->
 </tr>
 </tbody>
 </table>
-<h2 id="stage-1-ci-in-a-shared-environment"><span class="header-section-number">5.1</span> Stage 1: CI in a shared environment</h2>
+<h2 id="stage-1-ci-in-a-shared-environment"><span class="header-section-number">6.1</span> Stage 1: CI in a shared environment</h2>
 <div class="figure">
 <img src="figures/mermaid/basic-ci-schematic.mermaid.png" alt="CI/CD Schematic Overview " />
 <p class="caption">CI/CD Schematic Overview </p>
@@ -512,7 +591,7 @@ van elk van de items een voorbeeld uitwerken. -->
  - Request can be denied
 - Changes to deployment server are not repeatable
 - Difficult to go back N versions of the application and server configuration -->
-<h2 id="stage-2-automated-cd-in-a-distributed-environment"><span class="header-section-number">5.2</span> Stage 2: Automated CD in a distributed environment</h2>
+<h2 id="stage-2-automated-cd-in-a-distributed-environment"><span class="header-section-number">6.2</span> Stage 2: Automated CD in a distributed environment</h2>
 <p><strong>Characteristics</strong></p>
 <table>
 <thead>
@@ -571,9 +650,9 @@ van elk van de items een voorbeeld uitwerken. -->
 <ul>
 <li>p1</li>
 </ul>
-<h2 id="stage-3-----next-evolution.."><span class="header-section-number">5.3</span> Stage 3: --- next evolution..</h2>
+<h2 id="stage-3-----next-evolution.."><span class="header-section-number">6.3</span> Stage 3: --- next evolution..</h2>
 <p>tbd..</p>
-<h2 id="initial-situation"><span class="header-section-number">5.4</span> Initial situation</h2>
+<h2 id="initial-situation"><span class="header-section-number">6.4</span> Initial situation</h2>
 <p><strong>! This needs to be placed elsewhere and rewritten !</strong></p>
 <p>Figure  shows the steps and interactions a developer has with build systems in order to deploy a change in the software to a target server.</p>
 <div class="figure">
