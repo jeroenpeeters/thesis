@@ -1,5 +1,77 @@
 # Continuous Delivery at the Development Organization
 
+## CI in a shared environment
+This paragraph describes the previous CI/CD landscape at the development organization.
+
+### The situation
+The systems needed for CI/CD are managed by an Ops team. All projects use a
+set of shared services. Figure \ref{relationship_ops_dev_shared} depicts the relationship between the Ops team
+  and the development teams. The shared services are:
+
+- Subversion
+- Jenkins CI
+- Jenkins build servers
+- SonarQube
+- Nexus
+- Jira
+
+![Relationship between Ops and Development teams in a shared environment \label{relationship_ops_dev_shared}](figures/teams-in-shared-environment2.png)
+
+Besides the shared services each project would be assigned one or more deployment
+servers. The deployment servers are managed by the Ops team.
+
+### Scenario: A new project
+...
+
+### Scenario: Use a new version of Java
+...
+
+### Scenario: Upgrade the application server
+...
+
+### Scenario: Parallel frontend test execution
+...
+
+### Scenario: Install a plugin in Jenkins CI
+...
+
+### Scenario: Upgrade Jenkins CI
+...
+
+### Scenario: Switch to another tool
+...
+
+## CI in a distributed environment
+This paragraph describes the current CI/CD landscape at the development organization.
+
+### The situation
+Instead of managing the systems needed for CI/CD the Ops team manages a distributed
+environment in which teams are able to deploy applications at will and on demand.
+
+![Relationship between Ops and Development teams in a distributed environment \label{relationship_ops_dev_distributed}](figures/teams-in-distributed-environment.png)
+
+### Scenario: A new project
+...
+
+### Scenario: Use a new version of Java
+...
+
+### Scenario: Upgrade the application server
+...
+
+### Scenario: Parallel frontend test execution
+...
+
+### Scenario: Install a plugin in Jenkins CI
+...
+
+### Scenario: Upgrade Jenkins CI
+...
+
+### Scenario: Switch to another tool
+...
+
+
 ## A new project
 
 This paragraph conceptually describes what happens when a new project is
