@@ -37,3 +37,8 @@ predefined rules. Furthermore it ensures that the change doesn't depend on
 development specific environments, reducing the 'it builds on my machine'-problem.
 Preferably the CI-server also executes tests to ensure that previous
 functionality is still intact.
+
+
+## Continuous Delivery
+
+Since Continuous Delivery (CD) builds on top of CI it reuses its systems.
