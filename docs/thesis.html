@@ -196,15 +196,17 @@
                 <li><a href="#recurring-tasks"><span class="toc-section-number">5.4.3</span> Recurring tasks</a></li>
                 </ul></li>
                 <li><a href="#configuring-the-cd-pipeline"><span class="toc-section-number">5.5</span> Configuring the CD-pipeline</a><ul>
-                <li><a href="#nexus-1"><span class="toc-section-number">5.5.1</span> Nexus</a></li>
-                <li><a href="#gitlab-1"><span class="toc-section-number">5.5.2</span> Gitlab</a></li>
-                <li><a href="#docker-registry"><span class="toc-section-number">5.5.3</span> Docker Registry</a></li>
-                <li><a href="#sonar"><span class="toc-section-number">5.5.4</span> Sonar</a></li>
-                <li><a href="#reporting"><span class="toc-section-number">5.5.5</span> Reporting</a></li>
-                <li><a href="#selenium"><span class="toc-section-number">5.5.6</span> Selenium</a></li>
-                <li><a href="#quality-dashboard"><span class="toc-section-number">5.5.7</span> Quality-dashboard</a></li>
-                <li><a href="#jenkins"><span class="toc-section-number">5.5.8</span> Jenkins</a></li>
-                <li><a href="#application"><span class="toc-section-number">5.5.9</span> Application</a></li>
+                <li><a href="#docker-dashboard"><span class="toc-section-number">5.5.1</span> Docker Dashboard</a></li>
+                <li><a href="#configuration"><span class="toc-section-number">5.5.2</span> Configuration</a></li>
+                <li><a href="#nexus-1"><span class="toc-section-number">5.5.3</span> Nexus</a></li>
+                <li><a href="#gitlab-1"><span class="toc-section-number">5.5.4</span> Gitlab</a></li>
+                <li><a href="#docker-registry"><span class="toc-section-number">5.5.5</span> Docker Registry</a></li>
+                <li><a href="#sonar"><span class="toc-section-number">5.5.6</span> Sonar</a></li>
+                <li><a href="#reporting"><span class="toc-section-number">5.5.7</span> Reporting</a></li>
+                <li><a href="#selenium"><span class="toc-section-number">5.5.8</span> Selenium</a></li>
+                <li><a href="#quality-dashboard"><span class="toc-section-number">5.5.9</span> Quality-dashboard</a></li>
+                <li><a href="#jenkins"><span class="toc-section-number">5.5.10</span> Jenkins</a></li>
+                <li><a href="#application-under-development"><span class="toc-section-number">5.5.11</span> Application under development</a></li>
                 </ul></li>
                 </ul></li>
                 <li><a href="#stages-of-continuous-delivery"><span class="toc-section-number">6</span> Stages of Continuous Delivery</a><ul>
@@ -392,13 +394,41 @@ introduces methodology used throughout the thesis.
 </ol>
 <h3 id="recurring-tasks"><span class="header-section-number">5.4.3</span> Recurring tasks</h3>
 <h2 id="configuring-the-cd-pipeline"><span class="header-section-number">5.5</span> Configuring the CD-pipeline</h2>
-<h3 id="nexus-1"><span class="header-section-number">5.5.1</span> Nexus</h3>
-<h4 id="add-nexus-to-docker-dashboard."><span class="header-section-number">5.5.1.1</span> Add nexus to Docker dashboard.</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App. Enter the following app definition:</p>
+<h3 id="docker-dashboard"><span class="header-section-number">5.5.1</span> Docker Dashboard</h3>
+<p>Every project team is equipped with a Docker Dashboard. The dashboard is a web application through which the team can manage running applications on the Docker infrastructure. The dashboard exposes a user interface and a programmable interface for automation purposes. Through the dashboard the team manages:</p>
+<ol style="list-style-type: decimal">
+<li>Deployment of CD-pipeline support services</li>
+<li>Deployment of the application under development</li>
+</ol>
+<p>Upon project start a vanilla dashboard is deployed. The team has the freedom to start any combination of Docker containers.</p>
+<h3 id="configuration"><span class="header-section-number">5.5.2</span> Configuration</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">jira-reporter-user</td>
+<td align="left">reporter</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">jira-reporter-password</td>
+<td align="left">****</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="nexus-1"><span class="header-section-number">5.5.3</span> Nexus</h3>
+<h4 id="add-nexus-to-docker-dashboard."><span class="header-section-number">5.5.3.1</span> Add nexus to Docker dashboard.</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: nexus
 version: 2.13.0-01
 description: Sonatype Nexus repository manager.
-pic: https://avatars0.githubusercontent.com/u/44938?v=3&amp;s=400
 
 #login with admin / admin123
 
@@ -409,50 +439,231 @@ www:
  user: root
  volumes:
  - /sonatype-work</code></pre>
-<p>Click Save changes</p>
-<p>Start app nexus</p>
-<h4 id="configure-security"><span class="header-section-number">5.5.1.2</span> Configure security</h4>
-<p>Go to Nexus &gt; Log in with username admin and password admin123</p>
-<p>Go to Security &gt; Users Select user anonymous Click Add, select Repo: All Repositories (Full Control), click OK Click Save</p>
-<h3 id="gitlab-1"><span class="header-section-number">5.5.2</span> Gitlab</h3>
-<h4 id="add-gitlab-to-docker-dashboard"><span class="header-section-number">5.5.2.1</span> Add gitlab to Docker dashboard</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App Enter the following app definition:</p>
+<p>Click 'Save changes' and start the application.</p>
+<h4 id="configure-security"><span class="header-section-number">5.5.3.2</span> Configure security</h4>
+<p>Go to the Nexus user interface and log in with</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Username</th>
+<th align="left">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Account</td>
+<td align="left">admin</td>
+<td align="left">admin123</td>
+</tr>
+</tbody>
+</table>
+<p>Go to 'Security', 'Users'. Select user <strong><em>anonymous</em></strong>. Give the user full control over all repositories. Click Add, select Repo: 'All Repositories (Full Control)'. Click 'OK' and 'Save'.</p>
+<h3 id="gitlab-1"><span class="header-section-number">5.5.4</span> Gitlab</h3>
+<h4 id="add-gitlab-to-docker-dashboard"><span class="header-section-number">5.5.4.1</span> Add Gitlab to Docker dashboard</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: gitlab
 version: 8.6.1
 
 #tags:infra
 
 www:
-  image: www.docker-registry.isd.ictu:5000/gitlab-ce:8.6.1
+  image: www.docker-registry.isd.tld:5000/gitlab-ce:8.6.1
   volumes:
     - /etc/gitlab
     - /var/log/gitlab
     - /var/opt/gitlab</code></pre>
-<p>Click Save changes</p>
-<p>Start app gitlab</p>
-<h4 id="create-root-account"><span class="header-section-number">5.5.2.2</span> Create root account</h4>
-<p>Go to Gitlab New password: root@123! Confirm new password: root@123! Click Change your password</p>
-<h4 id="create-usergroup-and-users"><span class="header-section-number">5.5.2.3</span> Create usergroup and user(s)</h4>
-<p>Go to Gitlab &gt; Log in with username root and password root123!</p>
-<p>Go to Admin Area &gt; Groups &gt; New Group Group path: test-group Visibility Level: Private Click Create Group</p>
-<p>Go to Admin Area &gt; Users &gt; New User Name: <name> Username: <username> Email: <email> Click Create user Click Edit Password: user@123! Password confirmation: user@123! Click Save Changes</p>
-<p>Go to Admin Area &gt; Groups &gt; test-group Add user <username> to group with role Developer</p>
-<h4 id="create-jenkins-user"><span class="header-section-number">5.5.2.4</span> Create jenkins user</h4>
-<p>Go to Gitlab &gt; Log in with username root and password root123!</p>
-<p>Go to Admin Area &gt; Users &gt; New User Name: Jenkins Username: jenkins Email: noreply@jenkins.ictu Click Create user Click Edit Password: jenkins@123! Password confirmation: jenkins@123! Click Save Changes</p>
-<p>Go to Admin Area &gt; Groups &gt; test-group Add user jenkins to group with role Master</p>
-<h4 id="import-jenkins-ssh-key"><span class="header-section-number">5.5.2.5</span> Import jenkins SSH key</h4>
-<p>Go to Gitlab &gt; Log in with username jenkins and password jenkins123!</p>
-<p>Go to Profile Settings &gt; SSH Keys</p>
-<p>Key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrSFSIYRJjTbWqYuU6cGQ0aNaewMQ/m0k3m/MA7mNb2LEGNb0CQAoJDwwuPiftfj9cP6UrTlFqKGRKuLlAD7qrf9kQOSzgfwDJ7lSYY8QqMP4U1CuL5IuMV/Zwg0npA9SnPpD8KcrxMQgKZ62F12xoR+vXLMSgMnTwu7olZVQphdMcvu2H5ugV4kBNyyRfKSeDDatsYKnwVirhLBRMtdFTLqo2wFe8dMM/2mZIiGl5KXg0gCXpD2VEFiVCINARGLsdh9nzn2gxLoagIbXzxWjGRo0tu69GuS2YqNj7GX5QJMpTP4UAWPvymx1TiJqmWAatejdfhYeJWoTLA6dnxaFV noreply@jenkins.ictu</p>
-<p>Click Add key</p>
-<h4 id="create-project-repo"><span class="header-section-number">5.5.2.6</span> Create project repo</h4>
-<p>Go to Gitlab &gt; Log in with username root and password root123!</p>
-<p>Go to Admin Area &gt; Projects &gt; New Project Project path: http://www.gitlab-test.digilevering.ictu/test-group/test-project Visibility: Private Click Create project</p>
-<p>Go to Admin Area &gt; Projects &gt; test-group/test-project &gt; Edit &gt; Protected Branches In table Already Protected select Developers can push for branch master</p>
-<h3 id="docker-registry"><span class="header-section-number">5.5.3</span> Docker Registry</h3>
-<h4 id="add-docker-registry-to-docker-dashboard"><span class="header-section-number">5.5.3.1</span> Add docker-registry to Docker dashboard</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App Enter the following app definition:</p>
+<p>Click 'Save changes' and start the application.</p>
+<h4 id="create-root-account"><span class="header-section-number">5.5.4.2</span> Create root account</h4>
+<p>Go to the Gitlab user interface. You will be asked to enter a new password for the root user. Enter the password twice and click 'Change your password'.</p>
+<h4 id="create-usergroup-and-users"><span class="header-section-number">5.5.4.3</span> Create usergroup and user(s)</h4>
+<p>Go to the Gitlab user interface. Log in with:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Username</th>
+<th align="left">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Account</td>
+<td align="left">root</td>
+<td align="left"><strong><em>see previous step</em></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Go to 'Admin Area', 'Groups', 'New Group'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Group path</th>
+<th align="left">Visibility Level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">test-group</td>
+<td align="left">Private</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Create Group'.</p>
+<p>Go to 'Admin Area', 'Users', 'New User'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Username</th>
+<th align="left">Email</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><name></td>
+<td align="left"><username></td>
+<td align="left"><email></td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Create user'.</p>
+<p>Click 'Edit' and enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Password</th>
+<th align="left">Password confirmation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">user@123!</td>
+<td align="left">user@123!</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save Changes'.</p>
+<p>Go to 'Admin Area' &gt; 'Groups' &gt; 'test-group' Add user <username> to group with role 'Developer'.</p>
+<p>Repeat for each user in the development team.</p>
+<h4 id="create-jenkins-user"><span class="header-section-number">5.5.4.4</span> Create Jenkins user</h4>
+<p>Jenkins should be able to login to Gitlab in order to be able to checkout copies of the source code. Therefore a dedicated user should be created.</p>
+<p>Go to the Gitlab user interface. Log in with:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Username</th>
+<th align="left">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Account</td>
+<td align="left">root</td>
+<td align="left"><strong><em>see previous step</em></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Go to 'Admin Area', 'Users', 'New User'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Username</th>
+<th align="left">Email</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Jenkins</td>
+<td align="left">jenkins</td>
+<td align="left">noreply@jenkins.tld</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Create User'.</p>
+<p>Click 'Edit' and enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Password</th>
+<th align="left">Password confirmation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">jenkins@123!</td>
+<td align="left">jenkins@123!</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save Changes'.</p>
+<p>Go to 'Admin Area' &gt; 'Groups' &gt; 'test-group' Add user jenkins to group with role 'Master'.</p>
+<h4 id="import-jenkins-ssh-public-key"><span class="header-section-number">5.5.4.5</span> Import Jenkins SSH public key</h4>
+<p>Go to the Gitlab user interface. Log in with:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Username</th>
+<th align="left">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Account</td>
+<td align="left">jenkins</td>
+<td align="left">jenkins@123!</td>
+</tr>
+</tbody>
+</table>
+<p>Go to 'Profile Settings', 'SSH Keys'. Enter the SSH public key:</p>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrSFSIYRJjTbWqYuU6cGQ0aNae
+wMQ/m0k3m/MA7mNb2LEGNb0CQAoJDwwuPiftfj9cP6UrTlFqKGRKuLlAD7qrf9kQ
+OSzgfwDJ7lSYY8QqMP4U1CuL5IuMV/Zwg0npA9SnPpD8KcrxMQgKZ62F12xoR+vX
+LMSgMnTwu7olZVQphdMcvu2H5ugV4kBNyyRfKSeDDatsYKnwVirhLBRMtdFTLqo2
+wFe8dMM/2mZIiGl5KXg0gCXpD2VEFiVCINARGLsdh9nzn2gxLoagIbXzxWjGRo0t
+u69GuS2YqNj7GX5QJMpTP4UAWPvymx1TiJqmWAatejdfhYeJWoTLA6dnxaFV</code></pre>
+<p>Click 'Add key'.</p>
+<h4 id="create-project-repository"><span class="header-section-number">5.5.4.6</span> Create project repository</h4>
+<p>Go to the Gitlab user interface. Log in with:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Username</th>
+<th align="left">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Account</td>
+<td align="left">root</td>
+<td align="left"><strong><em>see previous step</em></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Go to 'Admin Area' &gt; 'Projects' &gt; 'New Project'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Project Path</th>
+<th align="left">Visibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">/test-group/test-project</td>
+<td align="left">Private</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Create project'.</p>
+<p>Go to 'Admin Area' &gt; 'Projects' &gt; 'test-group/test-project' &gt; 'Edit' &gt; 'Protected Branches' In table: 'Already Protected', Select Developers can push for branch master.</p>
+<h3 id="docker-registry"><span class="header-section-number">5.5.5</span> Docker Registry</h3>
+<h4 id="add-docker-registry-to-docker-dashboard"><span class="header-section-number">5.5.5.1</span> Add docker-registry to Docker dashboard</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: docker-registry
 version: 2.1.1
 
@@ -462,29 +673,27 @@ www:
  image: distribution/registry:2.1.1
  mem_limit: 2048m
  environment:
- - REGISTRY_VERSION=0.1
- - REGISTRY_LOG_FIELDS_SERVICE=registry
- - REGISTRY_LOG_FIELDS_ENVIRONMENT=production
- - REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=inmemory
- - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/docker-registry/
- - &#39;REGISTRY_HTTP_ADDR=:5000&#39;
- - REGISTRY_HTTP_HEADERS_X-CONTENT-TYPE-OPTIONS=[nosniff]
- - REGISTRY_HEALTH_STORAGEDRIVER_ENABLED=true
- - REGISTRY_HEALTH_STORAGEDRIVER_INTERVAL=10s
- - REGISTRY_HEALTH_STORAGEDRIVER_THRESHOLD=3
+  - REGISTRY_VERSION=0.1
+  - REGISTRY_LOG_FIELDS_SERVICE=registry
+  - REGISTRY_LOG_FIELDS_ENVIRONMENT=production
+  - REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=inmemory
+  - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/docker-registry/
+  - &#39;REGISTRY_HTTP_ADDR=:5000&#39;
+  - REGISTRY_HTTP_HEADERS_X-CONTENT-TYPE-OPTIONS=[nosniff]
+  - REGISTRY_HEALTH_STORAGEDRIVER_ENABLED=true
+  - REGISTRY_HEALTH_STORAGEDRIVER_INTERVAL=10s
+  - REGISTRY_HEALTH_STORAGEDRIVER_THRESHOLD=3
  volumes:
- - /docker-registry</code></pre>
-<p>Click Save changes Start app docker-registry</p>
-<h3 id="sonar"><span class="header-section-number">5.5.4</span> Sonar</h3>
-<h4 id="add-sonar-to-docker-dashboard"><span class="header-section-number">5.5.4.1</span> Add sonar to Docker dashboard</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App Enter the following app definition:</p>
+  - /docker-registry</code></pre>
+<p>Click 'Save changes' and start the application.</p>
+<h3 id="sonar"><span class="header-section-number">5.5.6</span> Sonar</h3>
+<h4 id="add-sonar-to-docker-dashboard"><span class="header-section-number">5.5.6.1</span> Add sonar to Docker dashboard</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: sonar
 version: 4.5.7
 description: Manage code quality
-pic: http://docs.sonarqube.org/download/attachments/6951171/SONAR?version=1&amp;modificationDate=1452514709000&amp;api=v2
 
 #tags: infra
-
 #login with admin/admin
 
 www:
@@ -509,39 +718,73 @@ db:
     - MYSQL_PASSWORD=sonar
   volumes:
     - /var/lib/mysql</code></pre>
-<p>Click Save changes</p>
-<p>Start app sonar</p>
-<h4 id="install-plugins"><span class="header-section-number">5.5.4.2</span> Install plugins</h4>
-<p>Open terminal</p>
+<p>Click 'Save changes' and start the application.</p>
+<h4 id="install-plugins"><span class="header-section-number">5.5.6.2</span> Install plugins</h4>
+<p>From a local shell execute:</p>
 <pre><code>cd /path/to/dir/with/sonar/plugins
-scp sonar-checkstyle-plugin-2.4.jar sonar-findbugs-plugin-3.3.jar sonar-java-plugin-3.14.jar sonar-pmd-plugin-2.5.jar sonar-web-plugin-2.4.jar www.sonar.&lt;your-project&gt;.ictu:~
-ssh -p 22 www.sonar.&lt;your-project&gt;.ictu
+scp sonar-checkstyle-plugin-2.4.jar \
+    sonar-findbugs-plugin-3.3.jar   \
+    sonar-java-plugin-3.14.jar      \
+    sonar-pmd-plugin-2.5.jar        \
+    sonar-web-plugin-2.4.jar        \
+    www.sonar.&lt;your-project&gt;.tld
+
+ssh www.sonar.&lt;your-project&gt;.tld
 cd /opt/sonarqube/extensions/plugins
-rm *
-cp ~/* .
+rm * &amp;&amp; cp ~/* .
 exit</code></pre>
-<p>Go to Docker dashboard &gt; Apps Restart sonar app</p>
-<h4 id="add-quality-profiles"><span class="header-section-number">5.5.4.3</span> Add quality profiles</h4>
-<p>Go to Sonar &gt; Login with username admin and password admin</p>
-<p>Go to Quality Profiles Click Restore Profile Select ICTU Java profile to import and click Restore Click Restore Profile Select ICTU Web profile to import and click Restore</p>
-<h3 id="reporting"><span class="header-section-number">5.5.5</span> Reporting</h3>
-<h4 id="create-jira-filter"><span class="header-section-number">5.5.5.1</span> Create Jira filter</h4>
-<p>Go to Jira &gt; Log in with username isf-reporter and password Cf1NzS8INfJUB5wDQHI9</p>
-<p>Go to Issues &gt; Search for issues If the basic search is shown instead of the advanced search, click Advanced Enter the following query:</p>
-<p>project = <Jira project name> AND type in (Story, &quot;Logical Test Case&quot;, Systeemfunctie) ORDER BY type</p>
-<p>Click Save as Filter name: <name> Click Submit</p>
-<p>Write down the filter-id of the filter (it’s displayed in the URL, https://jira.ictu-sd.nl/jira/issues/?filter=<filter-id>)</p>
-<h4 id="add-reporting-to-docker-dashboard"><span class="header-section-number">5.5.5.2</span> Add reporting to Docker dashboard</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App Enter the following app definition:</p>
+<p>Go to the Docker Dashboard user interface and restart the Sonar application.</p>
+<h4 id="add-quality-profiles"><span class="header-section-number">5.5.6.3</span> Add quality profiles</h4>
+<p>Go to the Sonar user interface. Login with:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Username</th>
+<th align="left">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Account</td>
+<td align="left">admin</td>
+<td align="left">admin</td>
+</tr>
+</tbody>
+</table>
+<p>Go to 'Quality Profiles', Click 'Restore Profile'. Select 'Development Organization Java profile' to import and click 'Restore'. Click 'Restore Profile'. Select 'Development Organization Web profile' to import and click 'Restore'.</p>
+<h3 id="reporting"><span class="header-section-number">5.5.7</span> Reporting</h3>
+<h4 id="create-jira-filter"><span class="header-section-number">5.5.7.1</span> Create Jira filter</h4>
+<p>Go to the Jira user interface. Login with:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Username</th>
+<th align="left">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Account</td>
+<td align="left">jira-reporter-user</td>
+<td align="left">jira-reporter-password</td>
+</tr>
+</tbody>
+</table>
+<p>Go to 'Issues', 'Search for issues'. If the basic search is shown instead of the advanced search, click Advanced. Enter the following query:</p>
+<pre><code>project = &lt;Jira project name&gt; AND type in (Story, &quot;Logical Test Case&quot;, Systeemfunctie) ORDER BY type</code></pre>
+<p>Click 'Save as'. Filter name: <name>. Click 'Submit'. Write down the filter-id of the filter (it’s displayed in the URL, https://jira.development-organization.nl/jira/issues/?filter=<filter-id>).</p>
+<h4 id="add-reporting-application-to-docker-dashboard"><span class="header-section-number">5.5.7.2</span> Add reporting application to Docker Dashboard</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: reporting
 version: 2.2.2
-description: ISD quality reporting
-pic: http://www.timetell.nl/wp-content/uploads/2015/03/logo-ictu.png
+description: Quality reporting
 
 #tags: autorun
 
 www:
-  image: docker-registry.isd.ictu:5000/birt-reports:2.1.65
+  image: docker-registry.isd.tld:5000/birt-reports:2.1.65
   mem_limit: 2g
   environment:
     - REPORT_USER=reporter
@@ -554,7 +797,7 @@ www:
     - db
 
 importer:
-  image: docker-registry.isd.ictu:5000/birt-jira-importer:2.4.1
+  image: docker-registry.isd.tld:5000/birt-jira-importer:2.4.1
   environment:
     - &#39;report_jdbc_url=jdbc:postgresql://db:5432/birt&#39;
     - &#39;jira_filter=filter=&lt;filter-id&gt;&#39;
@@ -562,14 +805,14 @@ importer:
     - db
 
 trr:
-  image: docker-registry.isd.ictu:5000/birt-test-results-service:2.0.50
+  image: docker-registry.isd.tld:5000/birt-test-results-service:2.0.50
   environment:
     - &#39;report_jdbc_url=jdbc:postgresql://db:5432/birt&#39;
   links:
     - db
 
 db:
-    image: docker-registry.isd.ictu:5000/birt-database:2.0.37
+    image: docker-registry.isd.tld:5000/birt-database:2.0.37
     volumes:
         - /var/lib/postgresql/data
     environment:
@@ -577,7 +820,7 @@ db:
     mem_limit: 2g
 
 rm:
-  image: docker-registry.isd.ictu:5000/releasemanager:1.0.36
+  image: docker-registry.isd.tld:5000/releasemanager:1.0.36
   environment:
     - DB_DRIVER=pdo_pgsql
     - DB_HOST=db
@@ -589,30 +832,26 @@ rm:
     - /mnt/publish
   links:
     - db</code></pre>
-<p>Click Save changes</p>
-<p>Start app reporting</p>
-<h3 id="selenium"><span class="header-section-number">5.5.6</span> Selenium</h3>
-<h4 id="add-selenium-to-docker-dashboard"><span class="header-section-number">5.5.6.1</span> Add selenium to Docker dashboard</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App Enter the following app definition:</p>
+<p>Click 'Save changes' and start the application.</p>
+<h3 id="selenium"><span class="header-section-number">5.5.8</span> Selenium</h3>
+<h4 id="add-selenium-to-docker-dashboard"><span class="header-section-number">5.5.8.1</span> Add Selenium to Docker dashboard</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: selenium
 version: official
 
 #tags: autorun
 
 server:
- image: selenium/standalone-firefox</code></pre>
-<p>Click Save changes</p>
-<p>Start app selenium</p>
-<h3 id="quality-dashboard"><span class="header-section-number">5.5.7</span> Quality-dashboard</h3>
+  image: selenium/standalone-firefox</code></pre>
+<p>Click 'Save changes' and start the application.</p>
+<h3 id="quality-dashboard"><span class="header-section-number">5.5.9</span> Quality-dashboard</h3>
 <p><strong>TODO! detail how to setup the quality tracking and monitoring system</strong> See http://wiki.isd.org/index.php/HandleidingKwaliteitssysteem &gt; Opzet van een kwaliteitsdashboard</p>
-<h3 id="jenkins"><span class="header-section-number">5.5.8</span> Jenkins</h3>
-<h4 id="add-jenkins-to-docker-dashboard"><span class="header-section-number">5.5.8.1</span> Add jenkins to Docker dashboard</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App Enter the following app definition:</p>
+<h3 id="jenkins"><span class="header-section-number">5.5.10</span> Jenkins</h3>
+<h4 id="add-jenkins-to-docker-dashboard"><span class="header-section-number">5.5.10.1</span> Add Jenkins to Docker dashboard</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: jenkins
 version: 1.651.2
-description: An extendable open source automation server
-pic: http://rabellamy.github.io/DevOps-Sunset/images/jenkins.png
-
+description: An extendable open source CI server
 
 #tags: autorun
 
@@ -634,112 +873,811 @@ jnlp:
   mem_limit: 2g
   privileged: true
   enable_ssh: true</code></pre>
-<p>Click Save changes Start app jenkins</p>
-<h4 id="install-plugins-1"><span class="header-section-number">5.5.8.2</span> Install plugins</h4>
-<p>Go to Jenkins &gt; Manage Jenkins &gt; Manage Plugins &gt; Available</p>
-<p>Select the following plugins:</p>
-<p>Maven Release Plug-in Plug-in (0.14.0) Git plugin (3.0.0) SonarQube Plugin (2.4.4) OWASP Dependency-Check Plugin (1.4.3) Git client plugin (used by Git plugin) SCM API Plugin (used by Git plugin) Conditional BuildStep + Run Condition Plugin? Parameterized Trigger plugin? Static Analysis Utilities (used by OWASP Dependency-Check Plugin) Token Macro Plugin (used by OWASP Dependency-Check Plugin) Workspace Cleanup Plugin? Build Pipeline Plugin?</p>
-<h4 id="configure-system"><span class="header-section-number">5.5.8.3</span> Configure system</h4>
-<p>Go to Jenkins &gt; Manage Jenkins &gt; Configure System</p>
-<p>SonarQube servers Click Add SonarQube Name: SonarQube Server URL: http://www.sonar.<your-project>.ictu:9000 Server version: 5.1 or lower Click Advanced Version of sonar-maven-plugin: 3.0.1 Database URL: jdbc:mysql://db.sonar.<your-project>.ictu:3306/sonar Database login: sonar Database password: sonar</p>
-<p>Git plugin Global Config user.name Value: jenkins Global Config user.email Value: noreply@jenkins.ictu</p>
-<p>Maven Click Add Maven Name: Maven 3.3.9 Version: 3.3.9</p>
-<p>E-mail Notification SMTP server: smtp.isd.org</p>
-<p>Click Save</p>
-<h4 id="add-gitlab-user"><span class="header-section-number">5.5.8.4</span> Add gitlab user</h4>
-<p>Go to Jenkins &gt; Credentials &gt; (global) &gt; Add credentials Kind: SSH username with private key Scope: Global Username: jenkins Private key: Enter directly Key:</p>
-<p>-----BEGIN RSA PRIVATE KEY----- MIIEowIBAAKCAQEAq0hUiGESY021qmLlOnBkNGjWnsDEP5tJN5vzAO5jW9ixBjW9 AkAKCQ8MLj4n7X4/XD+lK05RaihkSri5QA+6q3/ZEDks4H8Aye5UmGPEKjD+FNQr i+SLjFf2cINJ6QPUpz6Q/CnK8TEICmethddsaEfr1yzEoDJ08Lu6JWVUKYXTHL7t h+boFeJATcskXykngw2rbGCp8FYq4SwUTLXRUy6qNsBXvHTDP9pmSIhpeSl4NIAl 6Q9lRBYlQiDQERi7HYfZ859oMS6GoCG188VoxkaNLbuvRrktmKjY+xl+UCTKUz+F AFj78psdU4iaplgGrXo3X4WHiVqEywOnZ8WhVQIDAQABAoIBAHSw9W5oe+eNpMut TrBuq8YM+tLzT4BqIgqxw2+J+cU0Lv6lE9z5lhyv1MOYcwlZLn+BmNyVIeBqHlHN 4d+kF7AJjO+BlHJp9DaemaGsrpN0B1ZXakeHcA8wSmRC/dKzWmiKtqolKu8BUZIN Kmn55xBwl1tkU500YvkzXFFn5FvYg7NzvdgajfrywgU6GIm6miGWzkb0F5MRnXtb hhx32sSu9H87Fu54DpMIWQzzpqJuPPLL8SxZKheuceYcV/tXT6IG5WnSl3KnNVYX cSLRN4miN6dVlX9GIdwsAxdrqexm/OLw/J5Mgf2SaIKslMNoGciojtaQaLt/ofde UWa0lWECgYEA3kg9Tv8/iIWIzIYvgC8D/ZyjyExlcX6jVSrbFCjZyYhDqxA2LPSa SQwcHesLk4c4GS1in47Mo/otxdPYnmu2o0Ob4hoICGLEJiWdiI7ljJ8CWtsjNGts GhCsv3guTT1WnfOpWbsaKDodinEa2YNekxAjh/9EQZR4x6Y9EQ61C8kCgYEAxUOm W8orY6M4YYeb1nA9izW1twjrK0jZ6u07n3ooAVJx5WNr69/ATZx/Lw4ou1RGZ3qb q4/iol5DwenxcaETV5h5q/170pvnhkLoRIWd+Rd+oEu+GtYwVrLd/ybJZswJMYc/ KIRHrw3DpM0yVxrilENe3TQ8k2O3VJRsucmHly0CgYEA2Jq+m5dh2vB9MQhli1zF X8LfWxUPGXzVPu4HFGsGZzvQ7QZcNIybOCmD0Ke13So8QVSXsXJe+j+VkRxyD1ZZ YFlGsxq4zysnhyDKlULib5iXm9/FO5Sef/vVyrMbM4tdN4g0c8s+nwqatMio6GL6 qwZkCWd3pQxAchUNluylAfkCgYArkDIH6VDFs0D7QOBobecZfCYCIuUUbQU6/WMC aA63pAZlGxy1PXeRbDMmKCFUpVra9Ve1fpQVOW4LP+fDKUhFOvX7xoH209lAbDwx DbUCUm7zZWa5NH3+V4fxFha6LesF1hFbmELgZNDE70/jrptFFM+5WBTck9PjyNdt /BSGjQKBgDS8bI/B6uMos882AG4eOcUBEVdaTaOIBqJEM0s5u8PPNBaXsx4kfH62 9vnfrX3tf8fj3UgrIsqEg/N2Pze2ktj8ikqz4cIJqX0fHHvEYC+FvqDcdit14Cv9 q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY -----END RSA PRIVATE KEY-----</p>
-<p>Description: gitlab user</p>
-<p>Click OK</p>
-<h4 id="add-ssh-user-to-connect-to-dind-slave"><span class="header-section-number">5.5.8.5</span> Add SSH user to connect to dind-slave</h4>
-<p>Go to Jenkins &gt; Credentials &gt; (global) &gt; Add credentials</p>
-<p>Kind: Username with password Scope: Global Username: jenkins Password: jenkins Description: SSH user to connect to dind-slave</p>
-<p>Click OK</p>
-<h4 id="add-dind-slave"><span class="header-section-number">5.5.8.6</span> Add dind-slave</h4>
-<p>Go to Jenkins &gt; Manage Jenkins &gt; Manage Nodes &gt; New Node</p>
-<p>Node name: dind-slave Select Dumb Slave Click OK</p>
-<p>number of executors: 2 Remote root directory: /tmp Labels: docker Usage: Only build jobs with label restrictions matching this node Launch method: Launch slave agents on Unix machines via SSH Host: jnlp.jenkins.<your-project>.ictu Credentials: jenkins (SSH user to connect to dind-slave)</p>
-<p>Click Save</p>
-<h4 id="create-job-sonar-app"><span class="header-section-number">5.5.8.7</span> Create job sonar-app</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: sonar-app Select Maven project</p>
-<p>Click OK Configure job sonar-app Go to Jenkins &gt; sonar-app &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Source Code Management Select Git Repository URL: git@www.gitlab.<your-project>.ictu:test-group/test-project.git Credentials: jenkins (gitlab user)</p>
-<p>Build Triggers Unselect all options</p>
-<p>Build Root POM: testapp/pom.xml Goals and options: clean install -DskipTests</p>
-<p>Post-build Actions Click Add post-build action, select SonarQube analysis with Maven</p>
-<p>Click Save</p>
-<h4 id="create-job-dependency-check-app"><span class="header-section-number">5.5.8.8</span> Create job dependency-check-app</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: dependency-check-app Select Maven project</p>
-<p>Click OK Configure job dependency-check-app Go to Jenkins &gt; dependency-check-app &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Source Code Management Select Git Repository URL: git@www.gitlab.<your-project>.ictu:test-group/test-project.git Credentials: jenkins (gitlab user)</p>
-<p>Build Triggers Unselect all options</p>
-<p>Build Root POM: testapp/pom.xml Goals and options: clean install -DskipTests</p>
-<p>Post Steps Select Run regardless of build resultaat Click Add post-build step, select InvokeOWASP Dependency-Check analysis Click Advanced Select Generate optional HTML reports</p>
-<p>Post-build Actions Click Add post-build action, select Publish OWASP Dependency-Check analysis results</p>
-<p>Click Save</p>
-<h4 id="create-job-build-app"><span class="header-section-number">5.5.8.9</span> Create job build-app</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: build-app Select Maven project</p>
-<p>Click OK</p>
-<h4 id="configure-job-build-app"><span class="header-section-number">5.5.8.10</span> Configure job build-app</h4>
-<p>Go to Jenkins &gt; build-app &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Source Code Management Select Git Repository URL: git@www.gitlab.<your-project>.ictu:test-group/test-project.git Credentials: jenkins (gitlab user) Additional Behaviours Click Add, select Check out to specific local branch Branch name: master</p>
-<p>Build Triggers Select Poll SCM Schedule: H/5 * * * *</p>
-<p>Build environment Select Maven release build Default versioning mode: None</p>
-<p>Build Root POM: testapp/pom.xml Goals and options: clean install</p>
-<p>Click Save</p>
-<h4 id="create-job-build-image"><span class="header-section-number">5.5.8.11</span> Create job build-image</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: build-image Select Freestyle project</p>
-<p>Click OK</p>
-<h4 id="configure-job-build-image"><span class="header-section-number">5.5.8.12</span> Configure job build-image</h4>
-<p>Go to Jenkins &gt; build-image &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Select Restrict where this project can be run Label Expression: docker</p>
-<p>Source Code Management Select Git Repository URL: git@www.gitlab.<your-project>.ictu:test-group/test-project.git Credentials: jenkins (gitlab user)</p>
-<p>Build Click Add build step, select Execute shell Command:</p>
-<p>cd docker ./build.sh</p>
-<h4 id="create-job-sonar-art"><span class="header-section-number">5.5.8.13</span> Create job sonar-art</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: sonar-art Select Maven project</p>
-<p>Click OK</p>
-<h4 id="configure-job-sonar-art"><span class="header-section-number">5.5.8.14</span> Configure job sonar-art</h4>
-<p>Go to Jenkins &gt; sonar-art &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Source Code Management Select Git Repository URL: git@www.gitlab.<your-project>.ictu:test-group/test-project.git Credentials: jenkins (gitlab user)</p>
-<p>Build Triggers Unselect all options</p>
-<p>Build Root POM: testART/pom.xml Goals and options: clean install -DskipTests</p>
-<p>Post-build Actions Click Add post-build action, select SonarQube analysis with Maven</p>
-<p>Click Save</p>
-<h4 id="create-job-build-art"><span class="header-section-number">5.5.8.15</span> Create job build-art</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: build-art Select Maven project</p>
-<p>Click OK</p>
-<h4 id="configure-job-build-art"><span class="header-section-number">5.5.8.16</span> Configure job build-art</h4>
-<p>Go to Jenkins &gt; build-art &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Source Code Management Select Git Repository URL: git@www.gitlab.<your-project>.ictu:test-group/test-project.git Credentials: jenkins (gitlab user) Additional Behaviours Click Add, select Check out to specific local branch Branch name: master</p>
-<p>Build environment Select Maven release build Release goals and options: -Dresume=false release:prepare release:perform -Darguments=&quot;-DskipTests&quot; DryRun goals and options: -Dresume=false -DdryRun=true release:prepare -Darguments=&quot;-DskipTests&quot; Default versioning mode: None</p>
-<p>Build Root POM: testART/pom.xml Goals and options: clean install -DskipTests</p>
-<p>Click Save</p>
-<h4 id="create-job-run-art"><span class="header-section-number">5.5.8.17</span> Create job run-art</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: run-art Select Maven project</p>
-<p>Click OK</p>
-<h4 id="configure-job-run-art"><span class="header-section-number">5.5.8.18</span> Configure job run-art</h4>
-<p>Go to Jenkins &gt; run-art &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Select This build is parametrized Click Add Parameter, select String Parameter Name: browserType Default Value: FIREFOX Click Add Parameter, select String Parameter Name: seleniumServerUrl Default Value: http://server.selenium.<your-project>.ictu:4444/wd/hub Click Add Parameter, select String Parameter Name: applicationServerUrl Default Value: http://www.testapp.digilevering.ictu:8080</p>
-<p>Source Code Management Select Git Repository URL: git@www.gitlab.<your-project>.ictu:test-group/test-project.git Credentials: jenkins (gitlab user)</p>
-<p>Build Root POM: testART/pom.xml Goals and options: -DbrowserType=<span class="math inline"><em>b</em><em>r</em><em>o</em><em>w</em><em>s</em><em>e</em><em>r</em><em>T</em><em>y</em><em>p</em><em>e</em> − <em>D</em><em>s</em><em>e</em><em>l</em><em>e</em><em>n</em><em>i</em><em>u</em><em>m</em><em>S</em><em>e</em><em>r</em><em>v</em><em>e</em><em>r</em><em>U</em><em>r</em><em>l</em>=</span>seleniumServerUrl -DapplicationServerUrl=$applicationServerUrl clean test</p>
-<p>Post Steps Select Run only if build succeeds Click Add post-build step, select Execute shell Command:</p>
+<p>Click 'Save changes' and start the application.</p>
+<h4 id="install-plugins-1"><span class="header-section-number">5.5.10.2</span> Install plugins</h4>
+<p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Manage Plugins', 'Available'. Tick the box next to the following plugins:</p>
+<ul>
+<li>Maven Release Plug-in Plug-in (0.14.0)</li>
+<li>Git plugin (3.0.0)</li>
+<li>SonarQube Plugin (2.4.4)</li>
+<li>OWASP Dependency-Check Plugin (1.4.3)</li>
+<li>Git client plugin (used by Git plugin)</li>
+<li>SCM API Plugin (used by Git plugin)</li>
+<li>Conditional BuildStep</li>
+<li>Run Condition Plugin</li>
+<li>Parameterized Trigger plugin</li>
+<li>Workspace Cleanup Plugin</li>
+<li>Build Pipeline Plugin</li>
+</ul>
+<h4 id="configure-system"><span class="header-section-number">5.5.10.3</span> Configure system</h4>
+<p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Configure System'. Look for the section 'SonarQube servers'. Click 'Click Add SonarQube'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">SonarQube</td>
+</tr>
+<tr class="even">
+<td align="left">Server URL</td>
+<td align="left">http://www.sonar.<your-project>.tld:9000</td>
+</tr>
+<tr class="odd">
+<td align="left">Server version</td>
+<td align="left">5.1 or lower</td>
+</tr>
+<tr class="even">
+<td align="left">Version of sonar-maven-plugin</td>
+<td align="left">3.0.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Database URL</td>
+<td align="left">jdbc:mysql://db.sonar.<your-project>.tld:3306/sonar</td>
+</tr>
+<tr class="even">
+<td align="left">Database login</td>
+<td align="left">sonar</td>
+</tr>
+<tr class="odd">
+<td align="left">Database password</td>
+<td align="left">sonar</td>
+</tr>
+</tbody>
+</table>
+<p>Look for the section 'Git plugin, Global config'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">user.name</td>
+<td align="left">jenkins</td>
+</tr>
+<tr class="even">
+<td align="left">user.email</td>
+<td align="left">noreply@jenkins.tld</td>
+</tr>
+</tbody>
+</table>
+<p>Look for the section 'Maven'. Click 'Add Maven'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">Maven 3.3.9</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">3.3.9</td>
+</tr>
+</tbody>
+</table>
+<p>Look for the section 'E-mail Notification'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">SMT server</td>
+<td align="left">smtp.isd.org</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save'.</p>
+<h4 id="add-gitlab-user"><span class="header-section-number">5.5.10.4</span> Add Gitlab user</h4>
+<p>Go to the Jenkins user interface. Click 'Credentials', 'Global', 'Add credentials'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Kind</td>
+<td align="left">SSH username with private key</td>
+</tr>
+<tr class="even">
+<td align="left">Scope</td>
+<td align="left">Global</td>
+</tr>
+<tr class="odd">
+<td align="left">Username</td>
+<td align="left">jenkins</td>
+</tr>
+<tr class="even">
+<td align="left">Private key</td>
+<td align="left">Enter directly</td>
+</tr>
+<tr class="odd">
+<td align="left">Description</td>
+<td align="left">Gitlab user</td>
+</tr>
+</tbody>
+</table>
+<p>Enter the key:</p>
+<pre><code>-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAq0hUiGESY021qmLlOnBkNGjWnsDEP5tJN5vzAO5jW9ixBjW9
+AkAKCQ8MLj4n7X4/XD+lK05RaihkSri5QA+6q3/ZEDks4H8Aye5UmGPEKjD+FNQr
+i+SLjFf2cINJ6QPUpz6Q/CnK8TEICmethddsaEfr1yzEoDJ08Lu6JWVUKYXTHL7t
+h+boFeJATcskXykngw2rbGCp8FYq4SwUTLXRUy6qNsBXvHTDP9pmSIhpeSl4NIAl
+6Q9lRBYlQiDQERi7HYfZ859oMS6GoCG188VoxkaNLbuvRrktmKjY+xl+UCTKUz+F
+AFj78psdU4iaplgGrXo3X4WHiVqEywOnZ8WhVQIDAQABAoIBAHSw9W5oe+eNpMut
+TrBuq8YM+tLzT4BqIgqxw2+J+cU0Lv6lE9z5lhyv1MOYcwlZLn+BmNyVIeBqHlHN
+4d+kF7AJjO+BlHJp9DaemaGsrpN0B1ZXakeHcA8wSmRC/dKzWmiKtqolKu8BUZIN
+Kmn55xBwl1tkU500YvkzXFFn5FvYg7NzvdgajfrywgU6GIm6miGWzkb0F5MRnXtb
+hhx32sSu9H87Fu54DpMIWQzzpqJuPPLL8SxZKheuceYcV/tXT6IG5WnSl3KnNVYX
+cSLRN4miN6dVlX9GIdwsAxdrqexm/OLw/J5Mgf2SaIKslMNoGciojtaQaLt/ofde
+UWa0lWECgYEA3kg9Tv8/iIWIzIYvgC8D/ZyjyExlcX6jVSrbFCjZyYhDqxA2LPSa
+SQwcHesLk4c4GS1in47Mo/otxdPYnmu2o0Ob4hoICGLEJiWdiI7ljJ8CWtsjNGts
+GhCsv3guTT1WnfOpWbsaKDodinEa2YNekxAjh/9EQZR4x6Y9EQ61C8kCgYEAxUOm
+W8orY6M4YYeb1nA9izW1twjrK0jZ6u07n3ooAVJx5WNr69/ATZx/Lw4ou1RGZ3qb
+q4/iol5DwenxcaETV5h5q/170pvnhkLoRIWd+Rd+oEu+GtYwVrLd/ybJZswJMYc/
+KIRHrw3DpM0yVxrilENe3TQ8k2O3VJRsucmHly0CgYEA2Jq+m5dh2vB9MQhli1zF
+X8LfWxUPGXzVPu4HFGsGZzvQ7QZcNIybOCmD0Ke13So8QVSXsXJe+j+VkRxyD1ZZ
+YFlGsxq4zysnhyDKlULib5iXm9/FO5Sef/vVyrMbM4tdN4g0c8s+nwqatMio6GL6
+qwZkCWd3pQxAchUNluylAfkCgYArkDIH6VDFs0D7QOBobecZfCYCIuUUbQU6/WMC
+aA63pAZlGxy1PXeRbDMmKCFUpVra9Ve1fpQVOW4LP+fDKUhFOvX7xoH209lAbDwx
+DbUCUm7zZWa5NH3+V4fxFha6LesF1hFbmELgZNDE70/jrptFFM+5WBTck9PjyNdt
+/BSGjQKBgDS8bI/B6uMos882AG4eOcUBEVdaTaOIBqJEM0s5u8PPNBaXsx4kfH62
+9vnfrX3tf8fj3UgrIsqEg/N2Pze2ktj8ikqz4cIJqX0fHHvEYC+FvqDcdit14Cv9
+q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
+-----END RSA PRIVATE KEY-----</code></pre>
+<p>Click 'OK'.</p>
+<h4 id="add-ssh-user-to-connect-to-dind-slave"><span class="header-section-number">5.5.10.5</span> Add SSH user to connect to dind-slave</h4>
+<p>Go to the Jenkins user interface. Click 'Credentials', 'Global', 'Add credentials'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Kind</td>
+<td align="left">SSH username with password</td>
+</tr>
+<tr class="even">
+<td align="left">Scope</td>
+<td align="left">Global</td>
+</tr>
+<tr class="odd">
+<td align="left">Username</td>
+<td align="left">jenkins</td>
+</tr>
+<tr class="even">
+<td align="left">Password</td>
+<td align="left">jenkins</td>
+</tr>
+<tr class="odd">
+<td align="left">Description</td>
+<td align="left">SSH user to connect to dind-node</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'</p>
+<h4 id="add-dind-node"><span class="header-section-number">5.5.10.6</span> Add dind node</h4>
+<p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Manage Nodes', 'New Node'. Enter:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Node name</td>
+<td align="left">docker-in-docker</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Dumb Slave</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of executors</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">Remote root directory</td>
+<td align="left">/tmp</td>
+</tr>
+<tr class="odd">
+<td align="left">Labels</td>
+<td align="left">docker</td>
+</tr>
+<tr class="even">
+<td align="left">Usage</td>
+<td align="left">Only build jobs with label restrictions matching this node</td>
+</tr>
+<tr class="odd">
+<td align="left">Launch method</td>
+<td align="left">Launch slave agents on Unix machines via SSH</td>
+</tr>
+<tr class="even">
+<td align="left">Host</td>
+<td align="left">jnlp.jenkins.<your-project>.tld</td>
+</tr>
+<tr class="odd">
+<td align="left">Credentials</td>
+<td align="left">jenkins (SSH user to connect to dind-node)</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save'</p>
+<h4 id="create-jenkins-job-for-sonar"><span class="header-section-number">5.5.10.7</span> Create Jenkins job for Sonar</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">sonar-app</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Maven project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job sonar-app</strong></p>
+<p>Go to the Jenkins user interface. Click 'sonar-app', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Git</td>
+<td align="left">Repository URL</td>
+<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Credentials</td>
+<td align="left">jenkins (gitlab user)</td>
+</tr>
+<tr class="even">
+<td align="left">Build</td>
+<td align="left">Root POM</td>
+<td align="left">testapp/pom.xml</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Goals</td>
+<td align="left">clean install -DskipTests</td>
+</tr>
+<tr class="even">
+<td align="left">Post-build Actions</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">SonarQube analysis with Maven</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save'.</p>
+<h4 id="create-jenkins-job-for-owasp-dependency-checker"><span class="header-section-number">5.5.10.8</span> Create Jenkins job for OWASP dependency checker</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">dependency-check-app</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Maven project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job dependency-check-app</strong></p>
+<p>Go to the Jenkins user interface. Click 'dependency-check-app', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Git</td>
+<td align="left">Repository URL</td>
+<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Credentials</td>
+<td align="left">jenkins (gitlab user)</td>
+</tr>
+<tr class="even">
+<td align="left">Build</td>
+<td align="left">Root POM</td>
+<td align="left">testapp/pom.xml</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Goals</td>
+<td align="left">clean install -DskipTests</td>
+</tr>
+<tr class="even">
+<td align="left">Post Steps</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Run regardless of build resultaat</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Invoke OWASP Dependency-Check analysis</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><em>click</em></strong></td>
+<td align="left">Advanced</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Generate optional HTML reports</td>
+</tr>
+<tr class="even">
+<td align="left">Post-build Actions</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Publish OWASP Dependency-Check analysis results</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save'.</p>
+<h4 id="create-job-build-app"><span class="header-section-number">5.5.10.9</span> Create job build-app</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">build-app</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Maven project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job build-app</strong> Go to the Jenkins user interface. Click 'build-app', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Git</td>
+<td align="left">Repository URL</td>
+<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Credentials</td>
+<td align="left">jenkins (gitlab user)</td>
+</tr>
+<tr class="even">
+<td align="left">Additional Behaviours</td>
+<td align="left"></td>
+<td align="left">Check out to specific local branch</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Branch name</td>
+<td align="left">master</td>
+</tr>
+<tr class="even">
+<td align="left">Build Triggers</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Poll SCM</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Schedule</td>
+<td align="left">H/5 * * * *</td>
+</tr>
+<tr class="even">
+<td align="left">Build environment</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Installed maven version</td>
+</tr>
+<tr class="odd">
+<td align="left">Build</td>
+<td align="left">Root POM</td>
+<td align="left">testapp/pom.xml</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Goals</td>
+<td align="left">clean install</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save'.</p>
+<h4 id="create-job-build-image"><span class="header-section-number">5.5.10.10</span> Create job build-image</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">build-image</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Freestyle project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job build-image</strong> Go to the Jenkins user interface. Click 'build-image', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Restrict</td>
+<td align="left">Label Expression</td>
+<td align="left">docker</td>
+</tr>
+<tr class="odd">
+<td align="left">Git</td>
+<td align="left">Repository URL</td>
+<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Credentials</td>
+<td align="left">jenkins (gitlab user)</td>
+</tr>
+<tr class="odd">
+<td align="left">Build</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Execute shell</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Command</td>
+<td align="left">cd docker &amp;&amp; ./build.sh</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<h4 id="create-job-sonar-art"><span class="header-section-number">5.5.10.11</span> Create job sonar-art</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">sonar-art</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Maven project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job sonar-art</strong> Go to the Jenkins user interface. Click 'sonar-art', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Git</td>
+<td align="left">Repository URL</td>
+<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Credentials</td>
+<td align="left">jenkins (gitlab user)</td>
+</tr>
+<tr class="even">
+<td align="left">Build</td>
+<td align="left">Root POM</td>
+<td align="left">testART/pom.xml</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Goals</td>
+<td align="left">clean install -DskipTests</td>
+</tr>
+<tr class="even">
+<td align="left">Post-build Actions</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">SonarQube analysis with Maven</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save'.</p>
+<h4 id="create-job-build-art"><span class="header-section-number">5.5.10.12</span> Create job build-art</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">build-art</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Maven project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job build-art</strong> Go to the Jenkins user interface. Click 'build-art', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Git</td>
+<td align="left">Repository URL</td>
+<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Credentials</td>
+<td align="left">jenkins (gitlab user)</td>
+</tr>
+<tr class="even">
+<td align="left">Additional Behaviours</td>
+<td align="left"></td>
+<td align="left">Check out to specific local branch</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Branch name</td>
+<td align="left">master</td>
+</tr>
+<tr class="even">
+<td align="left">Build environment</td>
+<td align="left">Release Ggoals</td>
+<td align="left">-Dresume=false release:prepare release:perform -Darguments=&quot;-DskipTests&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">DryRun goals</td>
+<td align="left">-Dresume=false -DdryRun=true release:prepare -Darguments=&quot;-DskipTests&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Build</td>
+<td align="left">Root POM</td>
+<td align="left">testART/pom.xml</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Goals</td>
+<td align="left">clean install -DskipTests</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'Save'.</p>
+<h4 id="create-job-run-art"><span class="header-section-number">5.5.10.13</span> Create job run-art</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">run-art</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Maven project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job run-art</strong> Go to the Jenkins user interface. Click 'run-art', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Parameters</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">This build is parametrized</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Add String Parameter</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Name</td>
+<td align="left">browserType</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Default Value</td>
+<td align="left">FIREFOX</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Add String Parameter</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Name</td>
+<td align="left">seleniumServerUrl</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Default Value</td>
+<td align="left">http://server.selenium.<your-project>.tld:4444/wd/hub</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">Add String Parameter</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Name</td>
+<td align="left">applicationServerUrl</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Default Value</td>
+<td align="left">http://www.testapp.<your-project>.tld:8080</td>
+</tr>
+<tr class="even">
+<td align="left">Git</td>
+<td align="left">Repository URL</td>
+<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Credentials</td>
+<td align="left">jenkins (gitlab user)</td>
+</tr>
+<tr class="even">
+<td align="left">Build</td>
+<td align="left">Root POM</td>
+<td align="left">testART/pom.xml</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Goals</td>
+<td align="left">-DbrowserType=<span class="math inline"><em>b</em><em>r</em><em>o</em><em>w</em><em>s</em><em>e</em><em>r</em><em>T</em><em>y</em><em>p</em><em>e</em> − <em>D</em><em>s</em><em>e</em><em>l</em><em>e</em><em>n</em><em>i</em><em>u</em><em>m</em><em>S</em><em>e</em><em>r</em><em>v</em><em>e</em><em>r</em><em>U</em><em>r</em><em>l</em>=</span>seleniumServerUrl -DapplicationServerUrl=$applicationServerUrl clean test</td>
+</tr>
+</tbody>
+</table>
+<p>Add 'Execute shell' Post Step. Select 'Run only if build succeeds'. Enter command:</p>
 <pre><code>export \
-  URL=&quot;http://trr.reporting.&lt;your-project&gt;.ictu:4567/upload&quot; \
+  URL=&quot;http://trr.reporting.&lt;your-project&gt;.tld:4567/upload&quot; \
   APP_NAME=&quot;Testapp&quot; \
   APP_VERSION=&quot;SNAPSHOT&quot; \
   TEST_DESCRIPTION=&quot;ART Testapp&quot; \
@@ -768,19 +1706,59 @@ done | xargs -I{} --max-procs 0 bash -c &#39;
     -F &quot;test_target=${TEST_TARGET}&quot; \
     -F &quot;test_platform=${TEST_PLATFORM}&quot; \
     -F &quot;testrun=${TEST_RUN}&quot; \</code></pre>
-<h4 id="create-job-load-ltcs"><span class="header-section-number">5.5.8.19</span> Create job load-ltcs</h4>
-<p>Go to Jenkins &gt; New item</p>
-<p>Item name: load-ltcs Select Freestyle project</p>
-<p>Click OK</p>
-<h4 id="configure-job-load-ltcs"><span class="header-section-number">5.5.8.20</span> Configure job load-ltcs</h4>
-<p>Go to Jenkins &gt; load-ltcs &gt; Configure</p>
-<p>Select Discard old builds Max # of builds to keep: 5</p>
-<p>Build Triggers Select Build periodically Schedule: H 6-20 * * 1-5</p>
-<p>Build Click Add build-step, select Execute shell Command:</p>
+<h4 id="create-job-load-ltcs"><span class="header-section-number">5.5.10.14</span> Create job load-ltcs</h4>
+<p>Go to the Jenkins user interface. Click 'New item'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item name</td>
+<td align="left">load-ltcs</td>
+</tr>
+<tr class="even">
+<td align="left">Type</td>
+<td align="left">Freestyle project</td>
+</tr>
+</tbody>
+</table>
+<p>Click 'OK'.</p>
+<p><strong>Configure job load-ltcs</strong> Go to the Jenkins user interface. Click 'load-ltcs', 'Configure'.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Discard old builds</td>
+<td align="left">Max # of builds to keep</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">Bruild Trigers</td>
+<td align="left"><strong><em>select</em></strong></td>
+<td align="left">periodically</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Schedule</td>
+<td align="left">H 6-20 * * 1-5</td>
+</tr>
+</tbody>
+</table>
+<p>Add 'Execute shell' Build Step. Enter command:</p>
 <pre><code>#!/bin/bash -ex
 
 # JIRA importer aanroepen
-data=$(curl -s http://importer.reporting.&lt;your-project&gt;.ictu:4567/import)
+data=$(curl -s http://importer.reporting.&lt;your-project&gt;.tld:4567/import)
 
 if [ &quot;$data&quot; == &#39;Import completed&#39; ]
 then
@@ -788,17 +1766,16 @@ then
 else
   exit 1
 fi</code></pre>
-<h3 id="application"><span class="header-section-number">5.5.9</span> Application</h3>
-<h4 id="add-application-to-docker-dashboard"><span class="header-section-number">5.5.9.1</span> Add application to Docker dashboard</h4>
-<p>Go to Docker dashboard &gt; Apps &gt; New App Enter the following app definition:</p>
+<h3 id="application-under-development"><span class="header-section-number">5.5.11</span> Application under development</h3>
+<h4 id="add-application-to-docker-dashboard"><span class="header-section-number">5.5.11.1</span> Add application to Docker Dashboard</h4>
+<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: testapp
 version: latest
 
 www:
-  image: www.docker-registry.&lt;your-project&gt;.ictu:5000/testapp:latest
+  image: www.docker-registry.&lt;your-project&gt;.tld:5000/testapp:latest
   enable_ssh: true</code></pre>
-<p>Click Save changes</p>
-<p>Start app testapp</p>
+<p>Click 'Save changes' and start the application.</p>
 <!-- Wat is code
 hoe organiseren we het nu
 laat afhankelijkheden zien tussen applicaties
