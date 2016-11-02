@@ -9,11 +9,26 @@ common scenario's.
 
 ### Scenario 1: A new project
 When a new project is taken on by the development organization a technical
-infrastructure needs to be setup in order to accomodate the development process.
+infrastructure needs to be setup in order to accommodate the development process.
 It includes the setup of a ci/cd-pipeline, access-management and creation of
-serveral (virtual) deployment servers.
+several (virtual) deployment servers.
 
-### Scenario: Use a new version of Java
+### Scenario 2: Accommodate different sized projects
+The tooling in the CD-pipeline needs to be flexible enough to support projects
+of different sizes and architectures.
+One project can be just as simple as a website with a couple of form inputs. It
+can be deployed using a single web-server and requires a single database.
+On the other hand there exist projects that develop applications to administer
+larger parts of the governmental resident databases. These applications are
+usually deployed on clustered load-balanced environments and require a redundant
+database setup.
+One step further are the applications which are deployed as a set of independent
+services, requiring infrastructure integration like a message-bus, central authorization handling.
+
+In order for the tests to be as realistic as possible, each setup requires a
+production like environment.
+
+### Scenario: Migrate to a different version of Java
 ...
 
 ### Scenario: Upgrade the application server
