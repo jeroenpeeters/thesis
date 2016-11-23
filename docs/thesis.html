@@ -171,51 +171,61 @@
                 </ul></li>
                 <li><a href="#continuous-delivery"><span class="toc-section-number">4.2</span> Continuous Delivery</a></li>
                 </ul></li>
-                <li><a href="#continuous-delivery-at-the-development-organization"><span class="toc-section-number">5</span> Continuous Delivery at the Development Organization</a><ul>
-                <li><a href="#scenarios"><span class="toc-section-number">5.1</span> Scenario's</a><ul>
-                <li><a href="#scenario-1-a-new-project"><span class="toc-section-number">5.1.1</span> Scenario 1: A new project</a></li>
-                <li><a href="#scenario-use-a-new-version-of-java"><span class="toc-section-number">5.1.2</span> Scenario: Use a new version of Java</a></li>
-                <li><a href="#scenario-upgrade-the-application-server"><span class="toc-section-number">5.1.3</span> Scenario: Upgrade the application server</a></li>
-                <li><a href="#scenario-application-instance-per-tester"><span class="toc-section-number">5.1.4</span> Scenario: Application instance per tester</a></li>
-                <li><a href="#scenario-parallel-frontend-test-execution"><span class="toc-section-number">5.1.5</span> Scenario: Parallel frontend test execution</a></li>
-                <li><a href="#scenario-install-a-plugin-in-jenkins-ci"><span class="toc-section-number">5.1.6</span> Scenario: Install a plugin in Jenkins CI</a></li>
-                <li><a href="#scenario-upgrade-jenkins-ci"><span class="toc-section-number">5.1.7</span> Scenario: Upgrade Jenkins CI</a></li>
-                <li><a href="#scenario-switch-to-another-tool"><span class="toc-section-number">5.1.8</span> Scenario: Switch to another tool</a></li>
-                </ul></li>
-                <li><a href="#ci-in-a-shared-environment"><span class="toc-section-number">5.2</span> CI in a shared environment</a><ul>
-                <li><a href="#the-situation"><span class="toc-section-number">5.2.1</span> The situation</a></li>
-                <li><a href="#scenarios-detailed"><span class="toc-section-number">5.2.2</span> Scenario's detailed</a></li>
-                </ul></li>
-                <li><a href="#ci-in-a-distributed-environment"><span class="toc-section-number">5.3</span> CI in a distributed environment</a><ul>
-                <li><a href="#the-situation-1"><span class="toc-section-number">5.3.1</span> The situation</a></li>
-                <li><a href="#scenarios-detailed-1"><span class="toc-section-number">5.3.2</span> Scenario's detailed</a></li>
-                </ul></li>
-                <li><a href="#a-new-project"><span class="toc-section-number">5.4</span> A new project</a><ul>
-                <li><a href="#infrastructure-setup"><span class="toc-section-number">5.4.1</span> Infrastructure setup</a></li>
-                <li><a href="#project-setup"><span class="toc-section-number">5.4.2</span> Project setup</a></li>
-                <li><a href="#recurring-tasks"><span class="toc-section-number">5.4.3</span> Recurring tasks</a></li>
-                </ul></li>
-                <li><a href="#configuring-the-cd-pipeline"><span class="toc-section-number">5.5</span> Configuring the CD-pipeline</a><ul>
-                <li><a href="#docker-dashboard"><span class="toc-section-number">5.5.1</span> Docker Dashboard</a></li>
-                <li><a href="#configuration"><span class="toc-section-number">5.5.2</span> Configuration</a></li>
-                <li><a href="#nexus-1"><span class="toc-section-number">5.5.3</span> Nexus</a></li>
-                <li><a href="#gitlab-1"><span class="toc-section-number">5.5.4</span> Gitlab</a></li>
-                <li><a href="#docker-registry"><span class="toc-section-number">5.5.5</span> Docker Registry</a></li>
-                <li><a href="#sonar"><span class="toc-section-number">5.5.6</span> Sonar</a></li>
-                <li><a href="#reporting"><span class="toc-section-number">5.5.7</span> Reporting</a></li>
-                <li><a href="#selenium"><span class="toc-section-number">5.5.8</span> Selenium</a></li>
-                <li><a href="#quality-dashboard"><span class="toc-section-number">5.5.9</span> Quality-dashboard</a></li>
-                <li><a href="#jenkins"><span class="toc-section-number">5.5.10</span> Jenkins</a></li>
-                <li><a href="#application-under-development"><span class="toc-section-number">5.5.11</span> Application under development</a></li>
+                <li><a href="#plan"><span class="toc-section-number">5</span> Plan</a></li>
+                <li><a href="#software-development-at-the-development-organization"><span class="toc-section-number">6</span> Software Development at the Development Organization</a><ul>
+                <li><a href="#project-roles"><span class="toc-section-number">6.1</span> Project Roles</a></li>
+                <li><a href="#scenarios"><span class="toc-section-number">6.2</span> Scenario's</a><ul>
+                <li><a href="#scenario-1-on-boarding-a-new-project"><span class="toc-section-number">6.2.1</span> Scenario 1: On-boarding a new project</a></li>
+                <li><a href="#scenario-2-accommodate-different-sized-projects"><span class="toc-section-number">6.2.2</span> Scenario 2: Accommodate different sized projects</a></li>
+                <li><a href="#scenario-migrate-to-a-different-version-of-java"><span class="toc-section-number">6.2.3</span> Scenario: Migrate to a different version of Java</a></li>
+                <li><a href="#scenario-upgrade-the-application-server"><span class="toc-section-number">6.2.4</span> Scenario: Upgrade the application server</a></li>
+                <li><a href="#scenario-application-instance-per-tester"><span class="toc-section-number">6.2.5</span> Scenario: Application instance per tester</a></li>
+                <li><a href="#scenario-parallel-frontend-test-execution"><span class="toc-section-number">6.2.6</span> Scenario: Parallel frontend test execution</a></li>
+                <li><a href="#scenario-install-a-plugin-in-jenkins-ci"><span class="toc-section-number">6.2.7</span> Scenario: Install a plugin in Jenkins CI</a></li>
+                <li><a href="#scenario-upgrade-jenkins-ci"><span class="toc-section-number">6.2.8</span> Scenario: Upgrade Jenkins CI</a></li>
+                <li><a href="#scenario-switch-to-another-tool"><span class="toc-section-number">6.2.9</span> Scenario: Switch to another tool</a></li>
                 </ul></li>
                 </ul></li>
-                <li><a href="#stages-of-continuous-delivery"><span class="toc-section-number">6</span> Stages of Continuous Delivery</a><ul>
-                <li><a href="#stage-1-ci-in-a-shared-environment"><span class="toc-section-number">6.1</span> Stage 1: CI in a shared environment</a></li>
-                <li><a href="#stage-2-automated-cd-in-a-distributed-environment"><span class="toc-section-number">6.2</span> Stage 2: Automated CD in a distributed environment</a></li>
-                <li><a href="#stage-3-----next-evolution.."><span class="toc-section-number">6.3</span> Stage 3: --- next evolution..</a></li>
-                <li><a href="#initial-situation"><span class="toc-section-number">6.4</span> Initial situation</a></li>
+                <li><a href="#continuous-delivery-at-the-development-organization"><span class="toc-section-number">7</span> Continuous Delivery at the Development Organization</a><ul>
+                <li><a href="#ci-in-a-shared-environment"><span class="toc-section-number">7.1</span> CI in a shared environment</a><ul>
+                <li><a href="#the-situation"><span class="toc-section-number">7.1.1</span> The situation</a></li>
+                <li><a href="#scenarios-detailed"><span class="toc-section-number">7.1.2</span> Scenario's detailed</a></li>
                 </ul></li>
-                <li><a href="#references">References</a></li>
+                <li><a href="#ci-in-a-distributed-environment"><span class="toc-section-number">7.2</span> CI in a distributed environment</a><ul>
+                <li><a href="#the-situation-1"><span class="toc-section-number">7.2.1</span> The situation</a></li>
+                <li><a href="#scenarios-detailed-1"><span class="toc-section-number">7.2.2</span> Scenario's detailed</a></li>
+                </ul></li>
+                <li><a href="#a-new-project"><span class="toc-section-number">7.3</span> A new project</a><ul>
+                <li><a href="#infrastructure-setup"><span class="toc-section-number">7.3.1</span> Infrastructure setup</a></li>
+                <li><a href="#project-setup"><span class="toc-section-number">7.3.2</span> Project setup</a></li>
+                <li><a href="#recurring-tasks"><span class="toc-section-number">7.3.3</span> Recurring tasks</a></li>
+                </ul></li>
+                <li><a href="#configuring-the-cd-pipeline"><span class="toc-section-number">7.4</span> Configuring the CD-pipeline</a><ul>
+                <li><a href="#docker-dashboard"><span class="toc-section-number">7.4.1</span> Docker Dashboard</a></li>
+                <li><a href="#configuration"><span class="toc-section-number">7.4.2</span> Configuration</a></li>
+                <li><a href="#nexus-1"><span class="toc-section-number">7.4.3</span> Nexus</a></li>
+                <li><a href="#gitlab-1"><span class="toc-section-number">7.4.4</span> Gitlab</a></li>
+                <li><a href="#docker-registry"><span class="toc-section-number">7.4.5</span> Docker Registry</a></li>
+                <li><a href="#sonar"><span class="toc-section-number">7.4.6</span> Sonar</a></li>
+                <li><a href="#reporting"><span class="toc-section-number">7.4.7</span> Reporting</a></li>
+                <li><a href="#selenium"><span class="toc-section-number">7.4.8</span> Selenium</a></li>
+                <li><a href="#quality-dashboard"><span class="toc-section-number">7.4.9</span> Quality-dashboard</a></li>
+                <li><a href="#jenkins"><span class="toc-section-number">7.4.10</span> Jenkins</a></li>
+                <li><a href="#application-under-development"><span class="toc-section-number">7.4.11</span> Application under development</a></li>
+                </ul></li>
+                </ul></li>
+                <li><a href="#stages-of-continuous-delivery"><span class="toc-section-number">8</span> Stages of Continuous Delivery</a><ul>
+                <li><a href="#stage-1-ci-in-a-shared-environment"><span class="toc-section-number">8.1</span> Stage 1: CI in a shared environment</a></li>
+                <li><a href="#stage-2-automated-cd-in-a-distributed-environment"><span class="toc-section-number">8.2</span> Stage 2: Automated CD in a distributed environment</a></li>
+                <li><a href="#stage-3-----next-evolution.."><span class="toc-section-number">8.3</span> Stage 3: --- next evolution..</a></li>
+                <li><a href="#initial-situation"><span class="toc-section-number">8.4</span> Initial situation</a></li>
+                </ul></li>
+                <li><a href="#references"><span class="toc-section-number">9</span> References</a></li>
+                <li><a href="#appendix-1-team-interviews">Appendix 1: Team interviews</a><ul>
+                <li><a href="#team-1"><span class="toc-section-number">9.1</span> Team 1</a><ul>
+                <li><a href="#transliteration"><span class="toc-section-number">9.1.1</span> Transliteration</a></li>
+                </ul></li>
+                </ul></li>
                 </ul>
             </div>
                                 <!--
@@ -246,7 +256,7 @@ include a chapter that reviews the literature and
 introduces methodology used throughout the thesis.
 -->
 <h2 id="introduction-1"><span class="header-section-number">2.1</span> Introduction</h2>
-<p>tbd.</p>
+<p>In this chapter I will bring forward the current idea's, findings and discussions related to the field of Continuous Delivery in software engineering.</p>
 <h2 id="tools"><span class="header-section-number">2.2</span> Tools</h2>
 <h2 id="process"><span class="header-section-number">2.3</span> Process</h2>
 <h2 id="people"><span class="header-section-number">2.4</span> People</h2>
@@ -276,28 +286,89 @@ introduces methodology used throughout the thesis.
 <p>A CI-server, sometimes referred to as the build server, automatically performs the build process when a code branch is integrated into the main line. This ensures that the software in the main line can still be build according to predefined rules. Furthermore it ensures that the change doesn't depend on development specific environments, reducing the 'it builds on my machine'-problem. Preferably the CI-server also executes tests to ensure that previous functionality is still intact.</p>
 <h2 id="continuous-delivery"><span class="header-section-number">4.2</span> Continuous Delivery</h2>
 <p>Since Continuous Delivery (CD) builds on top of CI it reuses its systems.</p>
-<h1 id="continuous-delivery-at-the-development-organization"><span class="header-section-number">5</span> Continuous Delivery at the Development Organization</h1>
-<p>In this chapter I describe the technical setup and infrastructure of the CI/CD environment at the development organization. First I describe the previous situation and then the current situation. I do this by describing a set of common scenario's.</p>
-<h2 id="scenarios"><span class="header-section-number">5.1</span> Scenario's</h2>
-<h3 id="scenario-1-a-new-project"><span class="header-section-number">5.1.1</span> Scenario 1: A new project</h3>
-<p>When a new project is taken on by the development organization a technical infrastructure needs to be setup in order to accomodate the development process. It includes the setup of a ci/cd-pipeline, access-management and creation of serveral (virtual) deployment servers.</p>
-<h3 id="scenario-use-a-new-version-of-java"><span class="header-section-number">5.1.2</span> Scenario: Use a new version of Java</h3>
+<h1 id="plan"><span class="header-section-number">5</span> Plan</h1>
+<ol style="list-style-type: decimal">
+<li>Beschrijf software development aanpak van de ontwikkelorganisatie.</li>
+<li>Beschrijf een aantal scenario's in het ontwikkelproces.</li>
+<li>Beschrijf de oude en huidige situatie</li>
+<li>Beschrijf voor beide situaties (oud en nieuw) hoe de scenario's daarin passen</li>
+<li>Wat zijn de pijnpunten?</li>
+</ol>
+<p>zoek in jira voor problemen.</p>
+<p>kwalitatief -&gt; welke problemen bij teams? monitoren -&gt; kan ik die problemen vinden in jira, code, issues, wiki? hoeveel? impact?</p>
+<p>probleem opgelost? -&gt; standaardisatie?</p>
+<p>hypothese: er zijn probleme door vergrote vrijehdi van teams, standaardproblemen geen standaardoplossing. er is veel energie/effort nodig om te begrijpen hoe het werkt. verlies. tijd besparen door standaardoplossing?</p>
+<p>tegenhypo: door veel varieteit in oplossing maakt kennis binnen ictu rijker. veel over onnodig problemen nagedacht. bij echt probleem getraind in problemen oplossen. standardisatie vermijd problemen, maar je wordt een slechtere probleemoplosser. bij een echt probleem ben je dan een slechtere probleemoplosser.</p>
+<p>wanneer in balans? hoe weet je dat?</p>
+<p>wat is bedreiging: creatieve expert die mooie moeilijke oplossingen maakt of incompetente ontwikkelaars die niet begrijpen wat ze doen.</p>
+<p>andere mogelijkheid, scaffolding: voelen teams zich gefaciliteerd? Hoeveel werk? leercurve? welke problemen? leuk werk/vervelend? wat heb je geprobeerd wat niet kan?</p>
+<h1 id="software-development-at-the-development-organization"><span class="header-section-number">6</span> Software Development at the Development Organization</h1>
+<p>TBD</p>
+<h2 id="project-roles"><span class="header-section-number">6.1</span> Project Roles</h2>
+<p>Within the development organization we distinguish the following roles.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Role</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">System Administrator</td>
+<td align="left">Maintains the (virtual-) network and server infrastructure.</td>
+</tr>
+<tr class="even">
+<td align="left">Project Lead</td>
+<td align="left">Usually non-technical. Responsible for project outcome.</td>
+</tr>
+<tr class="odd">
+<td align="left">Software Developer</td>
+<td align="left">Develops the software (!).</td>
+</tr>
+<tr class="even">
+<td align="left">Functional Tester</td>
+<td align="left">Creates functional test specifications and executes them (manually).</td>
+</tr>
+<tr class="odd">
+<td align="left">Test Automation Developer</td>
+<td align="left">Creates automated repeatable tests.</td>
+</tr>
+<tr class="even">
+<td align="left">Quality Manager</td>
+<td align="left">Ensures that the delivered software and other by-products adhere to the chosen standards.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scenarios"><span class="header-section-number">6.2</span> Scenario's</h2>
+<p>This paragraph describes a set of common scenario's in the life cycle of a software development project. The scenario's are written with a particular stakeholder in mind and help us to understand the needs, wishes and problems in a structured way.</p>
+<h3 id="scenario-1-on-boarding-a-new-project"><span class="header-section-number">6.2.1</span> Scenario 1: On-boarding a new project</h3>
+<p><strong>Stakeholder:</strong> All.</p>
+<p>When a new project is taken on by the development organization a technical infrastructure needs to be setup in order to accommodate the development process. It includes the setup of a CI/CD-pipeline, access-management and creation of several (virtual) deployment servers.</p>
+<h3 id="scenario-2-accommodate-different-sized-projects"><span class="header-section-number">6.2.2</span> Scenario 2: Accommodate different sized projects</h3>
+<p>The tooling in the CD-pipeline needs to be flexible enough to support projects of different sizes and architectures. One project can be just as simple as a website with a couple of form inputs. It can be deployed using a single web-server and requires a single database. On the other hand there exist projects that develop applications to administer larger parts of the governmental resident databases. These applications are usually deployed on clustered load-balanced environments and require a redundant database setup. One step further are the applications which are deployed as a set of independent services, requiring infrastructure integration like a message-bus, central authorization handling.</p>
+<p>In order for the tests to be as realistic as possible, each setup requires a production like environment.</p>
+<h3 id="scenario-migrate-to-a-different-version-of-java"><span class="header-section-number">6.2.3</span> Scenario: Migrate to a different version of Java</h3>
+<p><strong>Stakeholder:</strong> Software Developer.</p>
+<p>When a new (bugfix)-version of Java is released developers need to update their development, continuous integration and deployment environments. Java needs to be updated on the developer's machine, CI-server and the different test environments.</p>
+<h3 id="scenario-upgrade-the-application-server"><span class="header-section-number">6.2.4</span> Scenario: Upgrade the application server</h3>
 <p>...</p>
-<h3 id="scenario-upgrade-the-application-server"><span class="header-section-number">5.1.3</span> Scenario: Upgrade the application server</h3>
+<h3 id="scenario-application-instance-per-tester"><span class="header-section-number">6.2.5</span> Scenario: Application instance per tester</h3>
+<p><strong>Stakeholder:</strong> Functional Tester, Test Automation Engineer.</p>
+<p>When a Tester needs to ascertain functionality or check for (absence of) regressions it is very useful if an instance can be started with ease by the Tester. This ensures that observed behavior is not impacted by actions of other's which is crucial to come to a proper judgment or test script definition. The Tester should be able to start an application instance with a specific test data set at will and by the push of a button.</p>
+<h3 id="scenario-parallel-frontend-test-execution"><span class="header-section-number">6.2.6</span> Scenario: Parallel frontend test execution</h3>
+<p><strong>Stakeholder:</strong> Test Automation Engineer.</p>
+<h3 id="scenario-install-a-plugin-in-jenkins-ci"><span class="header-section-number">6.2.7</span> Scenario: Install a plugin in Jenkins CI</h3>
+<p><strong>Stakeholder:</strong> Software Developer.</p>
+<h3 id="scenario-upgrade-jenkins-ci"><span class="header-section-number">6.2.8</span> Scenario: Upgrade Jenkins CI</h3>
 <p>...</p>
-<h3 id="scenario-application-instance-per-tester"><span class="header-section-number">5.1.4</span> Scenario: Application instance per tester</h3>
+<h3 id="scenario-switch-to-another-tool"><span class="header-section-number">6.2.9</span> Scenario: Switch to another tool</h3>
 <p>...</p>
-<h3 id="scenario-parallel-frontend-test-execution"><span class="header-section-number">5.1.5</span> Scenario: Parallel frontend test execution</h3>
-<p>...</p>
-<h3 id="scenario-install-a-plugin-in-jenkins-ci"><span class="header-section-number">5.1.6</span> Scenario: Install a plugin in Jenkins CI</h3>
-<p>...</p>
-<h3 id="scenario-upgrade-jenkins-ci"><span class="header-section-number">5.1.7</span> Scenario: Upgrade Jenkins CI</h3>
-<p>...</p>
-<h3 id="scenario-switch-to-another-tool"><span class="header-section-number">5.1.8</span> Scenario: Switch to another tool</h3>
-<p>...</p>
-<h2 id="ci-in-a-shared-environment"><span class="header-section-number">5.2</span> CI in a shared environment</h2>
+<h1 id="continuous-delivery-at-the-development-organization"><span class="header-section-number">7</span> Continuous Delivery at the Development Organization</h1>
+<p>In this chapter we will discuss the previous and current Continuous Delivery environment at the project organization. I use the scenario's described in the previous chapter to exemplify the possibilities and problems of both environments.</p>
+<h2 id="ci-in-a-shared-environment"><span class="header-section-number">7.1</span> CI in a shared environment</h2>
 <p>This paragraph describes the previous CI/CD landscape at the development organization.</p>
-<h3 id="the-situation"><span class="header-section-number">5.2.1</span> The situation</h3>
+<h3 id="the-situation"><span class="header-section-number">7.1.1</span> The situation</h3>
 <p>The systems needed for CI/CD are managed by an Ops team. All projects use a set of shared services. Figure  depicts the relationship between the Ops team and the development teams. The shared services are:</p>
 <ul>
 <li>Subversion</li>
@@ -313,19 +384,19 @@ introduces methodology used throughout the thesis.
 </div>
 <p>Besides the shared services each project would be assigned one or more deployment servers. The deployment servers are managed by the Ops team.</p>
 <p>The next chapter describes common scenario's that occur in a CI/CD environment on request of the development team. These scenario's describe the impact on the development team.</p>
-<h3 id="scenarios-detailed"><span class="header-section-number">5.2.2</span> Scenario's detailed</h3>
+<h3 id="scenarios-detailed"><span class="header-section-number">7.1.2</span> Scenario's detailed</h3>
 <p><strong>TODO</strong> In this paragraph I will detail the aforementioned scenario's for this type of environment. Which scenario's can be implemented in this environment? Are more troublesome? Cannot be implemented? Require a lot of manual intervention/work/configuration?</p>
-<h2 id="ci-in-a-distributed-environment"><span class="header-section-number">5.3</span> CI in a distributed environment</h2>
+<h2 id="ci-in-a-distributed-environment"><span class="header-section-number">7.2</span> CI in a distributed environment</h2>
 <p>This paragraph describes the current CI/CD landscape at the development organization.</p>
-<h3 id="the-situation-1"><span class="header-section-number">5.3.1</span> The situation</h3>
+<h3 id="the-situation-1"><span class="header-section-number">7.2.1</span> The situation</h3>
 <p>Instead of managing the systems needed for CI/CD the Ops team manages a distributed environment in which teams are able to deploy applications at will and on demand.</p>
 <div class="figure">
 <img src="figures/teams-in-distributed-environment.png" alt="Relationship between Ops and Development teams in a distributed environment " />
 <p class="caption">Relationship between Ops and Development teams in a distributed environment </p>
 </div>
-<h3 id="scenarios-detailed-1"><span class="header-section-number">5.3.2</span> Scenario's detailed</h3>
+<h3 id="scenarios-detailed-1"><span class="header-section-number">7.2.2</span> Scenario's detailed</h3>
 <p><strong>TODO</strong> In this paragraph I will detail the aforementioned scenario's for this type of environment. Which scenario's can be implemented in this environment? Are more troublesome? Cannot be implemented? Require a lot of manual intervention/work/configuration?</p>
-<h2 id="a-new-project"><span class="header-section-number">5.4</span> A new project</h2>
+<h2 id="a-new-project"><span class="header-section-number">7.3</span> A new project</h2>
 <p>This paragraph conceptually describes what happens when a new project is embedded within the development organization. Besides organizational arrangements a technical infrastructure is setup to accommodate the development of the software application.</p>
 <p>The following systems are employed:</p>
 <ul>
@@ -342,16 +413,16 @@ introduces methodology used throughout the thesis.
 <li>Test reporting</li>
 </ul>
 <p>The next paragraphs talk about the tasks that happen initially and tasks that recur more frequently.</p>
-<h3 id="infrastructure-setup"><span class="header-section-number">5.4.1</span> Infrastructure setup</h3>
+<h3 id="infrastructure-setup"><span class="header-section-number">7.3.1</span> Infrastructure setup</h3>
 <p>Initially every system used needs to be installed onto a target server. Depending on how you choose to do the installation, this might take some time.</p>
-<h4 id="gitlab"><span class="header-section-number">5.4.1.1</span> Gitlab</h4>
+<h4 id="gitlab"><span class="header-section-number">7.3.1.1</span> Gitlab</h4>
 <p>Gitlab is used as a revision control server.</p>
 <ol style="list-style-type: decimal">
 <li>Install Gitlab</li>
 <li>Configure authentication mechanism (LDAP)</li>
 <li>Set roles and permissions for users</li>
 </ol>
-<h4 id="jenkins-and-build-servers"><span class="header-section-number">5.4.1.2</span> Jenkins and build servers</h4>
+<h4 id="jenkins-and-build-servers"><span class="header-section-number">7.3.1.2</span> Jenkins and build servers</h4>
 <p>Depending on the project one or more build servers are needed. A build server has specific tooling on-board to be able to build the application. The following list details the installation steps.</p>
 <ol style="list-style-type: decimal">
 <li>Install Jenkins CI</li>
@@ -360,29 +431,29 @@ introduces methodology used throughout the thesis.
 <li>Configure the build server in the main Jenkins server</li>
 <li>Configure authentication mechanism (LDAP)</li>
 </ol>
-<h4 id="sonarqube"><span class="header-section-number">5.4.1.3</span> SonarQube</h4>
+<h4 id="sonarqube"><span class="header-section-number">7.3.1.3</span> SonarQube</h4>
 <p>SonarQube is used to continuously monitor the quality of the source code.</p>
 <ol style="list-style-type: decimal">
 <li>Install SonarQube</li>
 <li>Configure authentication mechanism (LDAP)</li>
 </ol>
-<h4 id="nexus"><span class="header-section-number">5.4.1.4</span> Nexus</h4>
+<h4 id="nexus"><span class="header-section-number">7.3.1.4</span> Nexus</h4>
 <p>Nexus is used to archive and distribute software artifacts.</p>
 <ol style="list-style-type: decimal">
 <li>Install Nexus</li>
 <li>Configure authentication mechanism (LDAP)</li>
 </ol>
-<h4 id="mediawiki"><span class="header-section-number">5.4.1.5</span> Mediawiki</h4>
+<h4 id="mediawiki"><span class="header-section-number">7.3.1.5</span> Mediawiki</h4>
 <p>Mediawiki is used as a team collaboration tool.</p>
 <ol style="list-style-type: decimal">
 <li>Install Mediawiki</li>
 <li>Configure authentication mechanism (LDAP)</li>
 </ol>
-<h4 id="deployment-servers"><span class="header-section-number">5.4.1.6</span> Deployment servers</h4>
+<h4 id="deployment-servers"><span class="header-section-number">7.3.1.6</span> Deployment servers</h4>
 <p>For the purpose of deploying the application in a production like environment a deployment landscape has to be setup. Depending on the application this can be as simple as a single server, or as complex as a clustered setup of a Java application server with a corresponding complex database setup.</p>
-<h4 id="jira"><span class="header-section-number">5.4.1.7</span> Jira</h4>
+<h4 id="jira"><span class="header-section-number">7.3.1.7</span> Jira</h4>
 <p>Jira is readily available within the organization and doesn't need to be setup. However, it needs to be configured to accommodate the new project.</p>
-<h3 id="project-setup"><span class="header-section-number">5.4.2</span> Project setup</h3>
+<h3 id="project-setup"><span class="header-section-number">7.3.2</span> Project setup</h3>
 <p>After the infrastructure is setup the project team adds configuration to the tools to be able to build and deploy their application.</p>
 <ol style="list-style-type: decimal">
 <li>A user for Jenkins needs to be created in Gitlab and configured in Jenkins so that Jenkins can checkout copies of the source code.</li>
@@ -392,16 +463,16 @@ introduces methodology used throughout the thesis.
 <li>Configure the location of the SonarQube API in Jenkins</li>
 <li></li>
 </ol>
-<h3 id="recurring-tasks"><span class="header-section-number">5.4.3</span> Recurring tasks</h3>
-<h2 id="configuring-the-cd-pipeline"><span class="header-section-number">5.5</span> Configuring the CD-pipeline</h2>
-<h3 id="docker-dashboard"><span class="header-section-number">5.5.1</span> Docker Dashboard</h3>
+<h3 id="recurring-tasks"><span class="header-section-number">7.3.3</span> Recurring tasks</h3>
+<h2 id="configuring-the-cd-pipeline"><span class="header-section-number">7.4</span> Configuring the CD-pipeline</h2>
+<h3 id="docker-dashboard"><span class="header-section-number">7.4.1</span> Docker Dashboard</h3>
 <p>Every project team is equipped with a Docker Dashboard. The dashboard is a web application through which the team can manage running applications on the Docker infrastructure. The dashboard exposes a user interface and a programmable interface for automation purposes. Through the dashboard the team manages:</p>
 <ol style="list-style-type: decimal">
 <li>Deployment of CD-pipeline support services</li>
 <li>Deployment of the application under development</li>
 </ol>
 <p>Upon project start a vanilla dashboard is deployed. The team has the freedom to start any combination of Docker containers.</p>
-<h3 id="configuration"><span class="header-section-number">5.5.2</span> Configuration</h3>
+<h3 id="configuration"><span class="header-section-number">7.4.2</span> Configuration</h3>
 <table>
 <thead>
 <tr class="header">
@@ -423,8 +494,8 @@ introduces methodology used throughout the thesis.
 </tr>
 </tbody>
 </table>
-<h3 id="nexus-1"><span class="header-section-number">5.5.3</span> Nexus</h3>
-<h4 id="add-nexus-to-docker-dashboard."><span class="header-section-number">5.5.3.1</span> Add nexus to Docker dashboard.</h4>
+<h3 id="nexus-1"><span class="header-section-number">7.4.3</span> Nexus</h3>
+<h4 id="add-nexus-to-docker-dashboard."><span class="header-section-number">7.4.3.1</span> Add nexus to Docker dashboard.</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: nexus
 version: 2.13.0-01
@@ -440,7 +511,7 @@ www:
  volumes:
  - /sonatype-work</code></pre>
 <p>Click 'Save changes' and start the application.</p>
-<h4 id="configure-security"><span class="header-section-number">5.5.3.2</span> Configure security</h4>
+<h4 id="configure-security"><span class="header-section-number">7.4.3.2</span> Configure security</h4>
 <p>Go to the Nexus user interface and log in with</p>
 <table>
 <thead>
@@ -459,8 +530,8 @@ www:
 </tbody>
 </table>
 <p>Go to 'Security', 'Users'. Select user <strong><em>anonymous</em></strong>. Give the user full control over all repositories. Click Add, select Repo: 'All Repositories (Full Control)'. Click 'OK' and 'Save'.</p>
-<h3 id="gitlab-1"><span class="header-section-number">5.5.4</span> Gitlab</h3>
-<h4 id="add-gitlab-to-docker-dashboard"><span class="header-section-number">5.5.4.1</span> Add Gitlab to Docker dashboard</h4>
+<h3 id="gitlab-1"><span class="header-section-number">7.4.4</span> Gitlab</h3>
+<h4 id="add-gitlab-to-docker-dashboard"><span class="header-section-number">7.4.4.1</span> Add Gitlab to Docker dashboard</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: gitlab
 version: 8.6.1
@@ -474,9 +545,9 @@ www:
     - /var/log/gitlab
     - /var/opt/gitlab</code></pre>
 <p>Click 'Save changes' and start the application.</p>
-<h4 id="create-root-account"><span class="header-section-number">5.5.4.2</span> Create root account</h4>
+<h4 id="create-root-account"><span class="header-section-number">7.4.4.2</span> Create root account</h4>
 <p>Go to the Gitlab user interface. You will be asked to enter a new password for the root user. Enter the password twice and click 'Change your password'.</p>
-<h4 id="create-usergroup-and-users"><span class="header-section-number">5.5.4.3</span> Create usergroup and user(s)</h4>
+<h4 id="create-usergroup-and-users"><span class="header-section-number">7.4.4.3</span> Create usergroup and user(s)</h4>
 <p>Go to the Gitlab user interface. Log in with:</p>
 <table>
 <thead>
@@ -546,7 +617,7 @@ www:
 <p>Click 'Save Changes'.</p>
 <p>Go to 'Admin Area' &gt; 'Groups' &gt; 'test-group' Add user <username> to group with role 'Developer'.</p>
 <p>Repeat for each user in the development team.</p>
-<h4 id="create-jenkins-user"><span class="header-section-number">5.5.4.4</span> Create Jenkins user</h4>
+<h4 id="create-jenkins-user"><span class="header-section-number">7.4.4.4</span> Create Jenkins user</h4>
 <p>Jenkins should be able to login to Gitlab in order to be able to checkout copies of the source code. Therefore a dedicated user should be created.</p>
 <p>Go to the Gitlab user interface. Log in with:</p>
 <table>
@@ -600,7 +671,7 @@ www:
 </table>
 <p>Click 'Save Changes'.</p>
 <p>Go to 'Admin Area' &gt; 'Groups' &gt; 'test-group' Add user jenkins to group with role 'Master'.</p>
-<h4 id="import-jenkins-ssh-public-key"><span class="header-section-number">5.5.4.5</span> Import Jenkins SSH public key</h4>
+<h4 id="import-jenkins-ssh-public-key"><span class="header-section-number">7.4.4.5</span> Import Jenkins SSH public key</h4>
 <p>Go to the Gitlab user interface. Log in with:</p>
 <table>
 <thead>
@@ -626,7 +697,7 @@ LMSgMnTwu7olZVQphdMcvu2H5ugV4kBNyyRfKSeDDatsYKnwVirhLBRMtdFTLqo2
 wFe8dMM/2mZIiGl5KXg0gCXpD2VEFiVCINARGLsdh9nzn2gxLoagIbXzxWjGRo0t
 u69GuS2YqNj7GX5QJMpTP4UAWPvymx1TiJqmWAatejdfhYeJWoTLA6dnxaFV</code></pre>
 <p>Click 'Add key'.</p>
-<h4 id="create-project-repository"><span class="header-section-number">5.5.4.6</span> Create project repository</h4>
+<h4 id="create-project-repository"><span class="header-section-number">7.4.4.6</span> Create project repository</h4>
 <p>Go to the Gitlab user interface. Log in with:</p>
 <table>
 <thead>
@@ -661,8 +732,8 @@ u69GuS2YqNj7GX5QJMpTP4UAWPvymx1TiJqmWAatejdfhYeJWoTLA6dnxaFV</code></pre>
 </table>
 <p>Click 'Create project'.</p>
 <p>Go to 'Admin Area' &gt; 'Projects' &gt; 'test-group/test-project' &gt; 'Edit' &gt; 'Protected Branches' In table: 'Already Protected', Select Developers can push for branch master.</p>
-<h3 id="docker-registry"><span class="header-section-number">5.5.5</span> Docker Registry</h3>
-<h4 id="add-docker-registry-to-docker-dashboard"><span class="header-section-number">5.5.5.1</span> Add docker-registry to Docker dashboard</h4>
+<h3 id="docker-registry"><span class="header-section-number">7.4.5</span> Docker Registry</h3>
+<h4 id="add-docker-registry-to-docker-dashboard"><span class="header-section-number">7.4.5.1</span> Add docker-registry to Docker dashboard</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: docker-registry
 version: 2.1.1
@@ -686,8 +757,8 @@ www:
  volumes:
   - /docker-registry</code></pre>
 <p>Click 'Save changes' and start the application.</p>
-<h3 id="sonar"><span class="header-section-number">5.5.6</span> Sonar</h3>
-<h4 id="add-sonar-to-docker-dashboard"><span class="header-section-number">5.5.6.1</span> Add sonar to Docker dashboard</h4>
+<h3 id="sonar"><span class="header-section-number">7.4.6</span> Sonar</h3>
+<h4 id="add-sonar-to-docker-dashboard"><span class="header-section-number">7.4.6.1</span> Add sonar to Docker dashboard</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: sonar
 version: 4.5.7
@@ -719,7 +790,7 @@ db:
   volumes:
     - /var/lib/mysql</code></pre>
 <p>Click 'Save changes' and start the application.</p>
-<h4 id="install-plugins"><span class="header-section-number">5.5.6.2</span> Install plugins</h4>
+<h4 id="install-plugins"><span class="header-section-number">7.4.6.2</span> Install plugins</h4>
 <p>From a local shell execute:</p>
 <pre><code>cd /path/to/dir/with/sonar/plugins
 scp sonar-checkstyle-plugin-2.4.jar \
@@ -734,7 +805,7 @@ cd /opt/sonarqube/extensions/plugins
 rm * &amp;&amp; cp ~/* .
 exit</code></pre>
 <p>Go to the Docker Dashboard user interface and restart the Sonar application.</p>
-<h4 id="add-quality-profiles"><span class="header-section-number">5.5.6.3</span> Add quality profiles</h4>
+<h4 id="add-quality-profiles"><span class="header-section-number">7.4.6.3</span> Add quality profiles</h4>
 <p>Go to the Sonar user interface. Login with:</p>
 <table>
 <thead>
@@ -753,8 +824,8 @@ exit</code></pre>
 </tbody>
 </table>
 <p>Go to 'Quality Profiles', Click 'Restore Profile'. Select 'Development Organization Java profile' to import and click 'Restore'. Click 'Restore Profile'. Select 'Development Organization Web profile' to import and click 'Restore'.</p>
-<h3 id="reporting"><span class="header-section-number">5.5.7</span> Reporting</h3>
-<h4 id="create-jira-filter"><span class="header-section-number">5.5.7.1</span> Create Jira filter</h4>
+<h3 id="reporting"><span class="header-section-number">7.4.7</span> Reporting</h3>
+<h4 id="create-jira-filter"><span class="header-section-number">7.4.7.1</span> Create Jira filter</h4>
 <p>Go to the Jira user interface. Login with:</p>
 <table>
 <thead>
@@ -775,7 +846,7 @@ exit</code></pre>
 <p>Go to 'Issues', 'Search for issues'. If the basic search is shown instead of the advanced search, click Advanced. Enter the following query:</p>
 <pre><code>project = &lt;Jira project name&gt; AND type in (Story, &quot;Logical Test Case&quot;, Systeemfunctie) ORDER BY type</code></pre>
 <p>Click 'Save as'. Filter name: <name>. Click 'Submit'. Write down the filter-id of the filter (it’s displayed in the URL, https://jira.development-organization.nl/jira/issues/?filter=<filter-id>).</p>
-<h4 id="add-reporting-application-to-docker-dashboard"><span class="header-section-number">5.5.7.2</span> Add reporting application to Docker Dashboard</h4>
+<h4 id="add-reporting-application-to-docker-dashboard"><span class="header-section-number">7.4.7.2</span> Add reporting application to Docker Dashboard</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: reporting
 version: 2.2.2
@@ -833,8 +904,8 @@ rm:
   links:
     - db</code></pre>
 <p>Click 'Save changes' and start the application.</p>
-<h3 id="selenium"><span class="header-section-number">5.5.8</span> Selenium</h3>
-<h4 id="add-selenium-to-docker-dashboard"><span class="header-section-number">5.5.8.1</span> Add Selenium to Docker dashboard</h4>
+<h3 id="selenium"><span class="header-section-number">7.4.8</span> Selenium</h3>
+<h4 id="add-selenium-to-docker-dashboard"><span class="header-section-number">7.4.8.1</span> Add Selenium to Docker dashboard</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: selenium
 version: official
@@ -844,10 +915,10 @@ version: official
 server:
   image: selenium/standalone-firefox</code></pre>
 <p>Click 'Save changes' and start the application.</p>
-<h3 id="quality-dashboard"><span class="header-section-number">5.5.9</span> Quality-dashboard</h3>
+<h3 id="quality-dashboard"><span class="header-section-number">7.4.9</span> Quality-dashboard</h3>
 <p><strong>TODO! detail how to setup the quality tracking and monitoring system</strong> See http://wiki.isd.org/index.php/HandleidingKwaliteitssysteem &gt; Opzet van een kwaliteitsdashboard</p>
-<h3 id="jenkins"><span class="header-section-number">5.5.10</span> Jenkins</h3>
-<h4 id="add-jenkins-to-docker-dashboard"><span class="header-section-number">5.5.10.1</span> Add Jenkins to Docker dashboard</h4>
+<h3 id="jenkins"><span class="header-section-number">7.4.10</span> Jenkins</h3>
+<h4 id="add-jenkins-to-docker-dashboard"><span class="header-section-number">7.4.10.1</span> Add Jenkins to Docker dashboard</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: jenkins
 version: 1.651.2
@@ -874,7 +945,7 @@ jnlp:
   privileged: true
   enable_ssh: true</code></pre>
 <p>Click 'Save changes' and start the application.</p>
-<h4 id="install-plugins-1"><span class="header-section-number">5.5.10.2</span> Install plugins</h4>
+<h4 id="install-plugins-1"><span class="header-section-number">7.4.10.2</span> Install plugins</h4>
 <p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Manage Plugins', 'Available'. Tick the box next to the following plugins:</p>
 <ul>
 <li>Maven Release Plug-in Plug-in (0.14.0)</li>
@@ -889,7 +960,7 @@ jnlp:
 <li>Workspace Cleanup Plugin</li>
 <li>Build Pipeline Plugin</li>
 </ul>
-<h4 id="configure-system"><span class="header-section-number">5.5.10.3</span> Configure system</h4>
+<h4 id="configure-system"><span class="header-section-number">7.4.10.3</span> Configure system</h4>
 <p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Configure System'. Look for the section 'SonarQube servers'. Click 'Click Add SonarQube'. Enter:</p>
 <table>
 <thead>
@@ -983,7 +1054,7 @@ jnlp:
 </tbody>
 </table>
 <p>Click 'Save'.</p>
-<h4 id="add-gitlab-user"><span class="header-section-number">5.5.10.4</span> Add Gitlab user</h4>
+<h4 id="add-gitlab-user"><span class="header-section-number">7.4.10.4</span> Add Gitlab user</h4>
 <p>Go to the Jenkins user interface. Click 'Credentials', 'Global', 'Add credentials'. Enter:</p>
 <table>
 <thead>
@@ -1044,7 +1115,7 @@ DbUCUm7zZWa5NH3+V4fxFha6LesF1hFbmELgZNDE70/jrptFFM+5WBTck9PjyNdt
 q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 -----END RSA PRIVATE KEY-----</code></pre>
 <p>Click 'OK'.</p>
-<h4 id="add-ssh-user-to-connect-to-dind-slave"><span class="header-section-number">5.5.10.5</span> Add SSH user to connect to dind-slave</h4>
+<h4 id="add-ssh-user-to-connect-to-dind-slave"><span class="header-section-number">7.4.10.5</span> Add SSH user to connect to dind-slave</h4>
 <p>Go to the Jenkins user interface. Click 'Credentials', 'Global', 'Add credentials'. Enter:</p>
 <table>
 <thead>
@@ -1077,7 +1148,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'OK'</p>
-<h4 id="add-dind-node"><span class="header-section-number">5.5.10.6</span> Add dind node</h4>
+<h4 id="add-dind-node"><span class="header-section-number">7.4.10.6</span> Add dind node</h4>
 <p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Manage Nodes', 'New Node'. Enter:</p>
 <table>
 <thead>
@@ -1126,7 +1197,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'Save'</p>
-<h4 id="create-jenkins-job-for-sonar"><span class="header-section-number">5.5.10.7</span> Create Jenkins job for Sonar</h4>
+<h4 id="create-jenkins-job-for-sonar"><span class="header-section-number">7.4.10.7</span> Create Jenkins job for Sonar</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1191,7 +1262,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'Save'.</p>
-<h4 id="create-jenkins-job-for-owasp-dependency-checker"><span class="header-section-number">5.5.10.8</span> Create Jenkins job for OWASP dependency checker</h4>
+<h4 id="create-jenkins-job-for-owasp-dependency-checker"><span class="header-section-number">7.4.10.8</span> Create Jenkins job for OWASP dependency checker</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1276,7 +1347,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'Save'.</p>
-<h4 id="create-job-build-app"><span class="header-section-number">5.5.10.9</span> Create job build-app</h4>
+<h4 id="create-job-build-app"><span class="header-section-number">7.4.10.9</span> Create job build-app</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1360,7 +1431,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'Save'.</p>
-<h4 id="create-job-build-image"><span class="header-section-number">5.5.10.10</span> Create job build-image</h4>
+<h4 id="create-job-build-image"><span class="header-section-number">7.4.10.10</span> Create job build-image</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1424,7 +1495,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'OK'.</p>
-<h4 id="create-job-sonar-art"><span class="header-section-number">5.5.10.11</span> Create job sonar-art</h4>
+<h4 id="create-job-sonar-art"><span class="header-section-number">7.4.10.11</span> Create job sonar-art</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1488,7 +1559,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'Save'.</p>
-<h4 id="create-job-build-art"><span class="header-section-number">5.5.10.12</span> Create job build-art</h4>
+<h4 id="create-job-build-art"><span class="header-section-number">7.4.10.12</span> Create job build-art</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1567,7 +1638,7 @@ q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
 </tbody>
 </table>
 <p>Click 'Save'.</p>
-<h4 id="create-job-run-art"><span class="header-section-number">5.5.10.13</span> Create job run-art</h4>
+<h4 id="create-job-run-art"><span class="header-section-number">7.4.10.13</span> Create job run-art</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1706,7 +1777,7 @@ done | xargs -I{} --max-procs 0 bash -c &#39;
     -F &quot;test_target=${TEST_TARGET}&quot; \
     -F &quot;test_platform=${TEST_PLATFORM}&quot; \
     -F &quot;testrun=${TEST_RUN}&quot; \</code></pre>
-<h4 id="create-job-load-ltcs"><span class="header-section-number">5.5.10.14</span> Create job load-ltcs</h4>
+<h4 id="create-job-load-ltcs"><span class="header-section-number">7.4.10.14</span> Create job load-ltcs</h4>
 <p>Go to the Jenkins user interface. Click 'New item'.</p>
 <table>
 <thead>
@@ -1766,8 +1837,8 @@ then
 else
   exit 1
 fi</code></pre>
-<h3 id="application-under-development"><span class="header-section-number">5.5.11</span> Application under development</h3>
-<h4 id="add-application-to-docker-dashboard"><span class="header-section-number">5.5.11.1</span> Add application to Docker Dashboard</h4>
+<h3 id="application-under-development"><span class="header-section-number">7.4.11</span> Application under development</h3>
+<h4 id="add-application-to-docker-dashboard"><span class="header-section-number">7.4.11.1</span> Add application to Docker Dashboard</h4>
 <p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
 <pre><code>name: testapp
 version: latest
@@ -1786,7 +1857,7 @@ basic ci setup -> laat zien waar problemen zitten.
 
 specificatie template meta. wat moeten we vastleggen.
 van elk van de items een voorbeeld uitwerken. -->
-<h1 id="stages-of-continuous-delivery"><span class="header-section-number">6</span> Stages of Continuous Delivery</h1>
+<h1 id="stages-of-continuous-delivery"><span class="header-section-number">8</span> Stages of Continuous Delivery</h1>
 <p>In this chapter I describe the different stages of continuous delivery that the development organization went through.</p>
 <table>
 <caption>Demonstration of simple table syntax.</caption>
@@ -1819,7 +1890,7 @@ van elk van de items een voorbeeld uitwerken. -->
 </tr>
 </tbody>
 </table>
-<h2 id="stage-1-ci-in-a-shared-environment"><span class="header-section-number">6.1</span> Stage 1: CI in a shared environment</h2>
+<h2 id="stage-1-ci-in-a-shared-environment"><span class="header-section-number">8.1</span> Stage 1: CI in a shared environment</h2>
 <div class="figure">
 <img src="figures/mermaid/basic-ci-schematic.mermaid.png" alt="CI/CD Schematic Overview " />
 <p class="caption">CI/CD Schematic Overview </p>
@@ -2053,7 +2124,7 @@ van elk van de items een voorbeeld uitwerken. -->
  - Request can be denied
 - Changes to deployment server are not repeatable
 - Difficult to go back N versions of the application and server configuration -->
-<h2 id="stage-2-automated-cd-in-a-distributed-environment"><span class="header-section-number">6.2</span> Stage 2: Automated CD in a distributed environment</h2>
+<h2 id="stage-2-automated-cd-in-a-distributed-environment"><span class="header-section-number">8.2</span> Stage 2: Automated CD in a distributed environment</h2>
 <p><strong>Characteristics</strong></p>
 <table>
 <thead>
@@ -2112,9 +2183,9 @@ van elk van de items een voorbeeld uitwerken. -->
 <ul>
 <li>p1</li>
 </ul>
-<h2 id="stage-3-----next-evolution.."><span class="header-section-number">6.3</span> Stage 3: --- next evolution..</h2>
+<h2 id="stage-3-----next-evolution.."><span class="header-section-number">8.3</span> Stage 3: --- next evolution..</h2>
 <p>tbd..</p>
-<h2 id="initial-situation"><span class="header-section-number">6.4</span> Initial situation</h2>
+<h2 id="initial-situation"><span class="header-section-number">8.4</span> Initial situation</h2>
 <p><strong>! This needs to be placed elsewhere and rewritten !</strong></p>
 <p>Figure  shows the steps and interactions a developer has with build systems in order to deploy a change in the software to a target server.</p>
 <div class="figure">
@@ -2134,7 +2205,111 @@ References are automatically generated from the BibTex file (References.bib)
 
 ...which you should create using your reference manager.
 -->
-<h1 id="references" class="unnumbered">References</h1>
+<h1 id="references"><span class="header-section-number">9</span> References</h1>
+<h1 id="appendix-1-team-interviews" class="unnumbered">Appendix 1: Team interviews</h1>
+<h2 id="team-1"><span class="header-section-number">9.1</span> Team 1</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">When</td>
+<td align="left">22-11-2016 10:00</td>
+</tr>
+<tr class="even">
+<td align="left">Duration</td>
+<td align="left">20 minutes</td>
+</tr>
+<tr class="odd">
+<td align="left">Team members</td>
+<td align="left">Two developers</td>
+</tr>
+<tr class="even">
+<td align="left">Team size</td>
+<td align="left">Small</td>
+</tr>
+<tr class="odd">
+<td align="left">Project size</td>
+<td align="left">Large</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transliteration"><span class="header-section-number">9.1.1</span> Transliteration</h3>
+<p><strong><em>I:</em></strong> interviewer <strong><em>R</em></strong>: developer 1</p>
+<p><strong><em>I:</em></strong> waar wij als IQ-team geintereseerd in zijn is hoe de oplossing in de ontwikkelstraat wordt ervaren. Eventueel de problemen die daar mee zijn maar ook of jullie daar voldoende ondersteuning bij hebben. Of je door de organisatie gesteund voelt. Eigenlijk alles wat daarmee te maken heeft. en wat je er van vindt. Eventuele problemen. Jullie gedachtes.</p>
+<p><strong><em>R:</em></strong> Het meeste wat wij graag willen is dat het (ontwikkelomgevingen) gewoon beschikbaar zijn. En dat is het hier wel. En het is makkelijk. Alles kun je gewoon via Docker starten, dus dat maakt het wel heel erg simpel. Zo van, we hebben Git nodig. Toen we begin dit jaar met Bulk begonnen was het van hop, en daar stond Git. Dan moet je het nog wel een beetje inrichten, je moet nog certificaten maken en dat soort dingen. Dat was nog soms wel een beetje vogelen van hoe krijgen we dat nou vanuit jenkins dat certificaat er in en werkend, dat wilde in het begin nog niet want toen zat er nog een ander certificaat dwars. Dus daar zit soms wel wat uitzoekwerk. Toen ben ik bij jou zelfs langsgekomen en dan wordt er gewoon even naar gekeken, even inloggen op die server, dan kom je er meestal wel weer uit. Dus ja, eigenlijk ben ik wel tevreden daarmee. Er zijn altijd wel dingetjes natuurlijk.</p>
+<p><strong><em>I:</em></strong> Wat is nu jullie manier om een nieuwe release te testen, wat doen jullie? Wat is jullie manier?</p>
+<p><strong><em>R:</em></strong> In het begin hebben we in Jenkins een job gemaakt die dan een Docker image maakte die we vervolgens weer konden gaan starten. En dat konden we via Jenkins weer starten. Dat bleek te onhandig omdat je vaak lokaal eerst wilt testen om te kijken of het goed is voordat je daadwerkelijk een build doet. Uiteindelijk zijn we terug gegaan naar scripts om Docker images te bouwen en om te kijken of het allemaal goed is en dan pushen we uiteindelijk.</p>
+<p><strong><em>I:</em></strong> Dus je runt eerst lokaal je applicatie?</p>
+<p><strong><em>R:</em></strong> Ja, omdat dat toch makkelijker is. Je kunt makkelijker testen en nog eventjes een nieuwe deployment erin doen. Dat gaat lokaal makkelijker. Daarna pushen we en dan starten we hem nog een keertje opnieuw op de Docker host zodat anderen er ook naar kunnen kijken. Bijvoorbeeld om te reviewen en de hele reutemeut.</p>
+<p><strong><em>I:</em></strong> Je pusht hem gewoon vanaf je lokale machine dan? Dus je bouwt hem niet via Jenkins?</p>
+<p><strong><em>R:</em></strong> Nee, dat hebben we dus wel gedaan. We hebben nu ook zoiets van; dat moeten we nu ook wel weer gaan doen. R heeft wel meer moeite om het lokaal te draaien omdat z'n laptop dat gewoon niet zo goed trekt. Misschien moeten we toch wel weer gaan kijken om van die jobjes te maken. Maarja, de drempel om die jobjes te maken is dan wel weer hoog. Het zijn er namelijk best veel.</p>
+<p><strong><em>I:</em></strong> Dat is best goed om te weten dat je daar tegenaan loopt.</p>
+<p><strong><em>R:</em></strong> Het is natuurlijk ook gewoon veel. Voor elke aansluitvoorziening hebben we ook een container. We zijn er eigenlijk een beetje laat mee om dat te gaan doen. Als je dat nu zou willen doen moeten we eigenlijk 40 van die dingen gaan maken. En jobjes. Dus tja.</p>
+<p><strong><em>I:</em></strong> Dit is wel specifiek voor jullie project. Je hebt echt zo ontzettend veel deelapplicaties.</p>
+<p><strong><em>R:</em></strong> Ja het zijn er veel, waardoor het ook niet meer leuk is om dat achteraf te doen. Opzich zoou het wel handig zijn om dat wel te doen. Omdat als er iemand nieuw bijkomt die denkt van, WTF. Hoe krijg ik hier nou een container gebouwd, dat is best wel even zoeken. Als je gewoon een jobje hebt waarbij staat 'bouw deze', dan is het van 'klik'. Dus in die zin is het wel nuttig om het wel te doen.</p>
+<p><strong><em>I:</em></strong> Je hebt nu wel scripts maar je moet wel weten waar ze staan?</p>
+<p><strong><em>R:</em></strong> Ja, en je moet weten welke je moet runnen.</p>
+<p><strong><em>I:</em></strong> En je moet dus een pc hebben die krachtig genoeg is om het lokaal te bouwen.</p>
+<p><strong><em>R:</em></strong> Ja inderdaad.</p>
+<p><strong><em>I:</em></strong> Maar verder weinig problemen eigenlijk?</p>
+<p><strong><em>R:</em></strong> Ja, eigenlijk niet zo heel veel problemen. Met Docker wel af en toe dat een host vol was en dat 'ie dan onderuit gaat. Maar dat gebeurd niet zo vaak meer. We hebben de load iets beter verdeelt over de hosts die we hebben. Dat gaat nu redelijk. We hebben nu drie hosts. Dus dan past het meestal wel. Misschien als het nog verder gaat met dit project dan hebben we misschien nog meer hosts nodig.</p>
+<p><strong><em>I:</em></strong> Was jij al bij het project betrokken toen het project nog niets met Docker deed?</p>
+<p><strong><em>R:</em></strong> Ja op het moment dat ik binnenkwam was er net een eerste twee Docker containers. En de rest stond toen nog op de virtual machines.</p>
+<p><strong><em>I:</em></strong> Dat is nu nog steeds zo toch?</p>
+<p><strong><em>R:</em></strong> Nee we hebben onderhand alles al wel omgezet. Behalve A-select, SIAM, dat is nog een fysieke server. Niet echt fysiek natuurlijk. De rest is allemaal in Docker. Dus opzich, moet ik zeggen, bevalt het allemaal wel goed. Je hoeft ook niet meer ergens in een wiki bij te houden van 'waar stond die server ook alweer', 'welke was het ook alweer'. Nu ga je gewoon naar het dashboard en start je de juiste applicatie. Copy-paste van ssh en je kunt er even in.</p>
+<p><strong><em>I:</em></strong> Dus wat dat betreft is dit ech een verbetering?</p>
+<p><strong><em>R:</em></strong> Ja.</p>
+<p><strong><em>I:</em></strong> Ik heb begrepen dat eerder het aantal virtuele machines beperkt was dat er als er bepaalde klanten kwamen om te testen dat het dan een heel gedoe was om de juiste data in te laden. Hoe is dat nu?</p>
+<p><strong><em>R:</em></strong> Nouja, we hebben nu een cache database ingericht. We hebben daarvan een backup gemaakt. Als je nu een applicatie start kan je die data weer inladen. Je weet gelijk als je hem start en Bulk gaat repliceren dan weet je precies wat er in zit. We laden een standaard dataset, dus je hebt altijd een goede set. In die zin, als het vernageld is of als er getest is dan herstart je het gewoon weer en dan staat de standaard testset gewoon weer klaar. In die zin hoeven we niet zovaak meer naar de dataset te kijken of anders configureren en testsets laden. Dat scheelt wel.</p>
+<p><strong><em>I:</em></strong> Hoe kijk je aan tegen het gedeelte van de kwaliteitsrapportage?</p>
+<p><strong><em>R:</em></strong> Opzich is het handig. Kwaliteit en testrapportages komen er netjes uitrollen.</p>
+<p><strong><em>I:</em></strong> Leveren jullie die rapportages op aan de klant?</p>
+<p><strong><em>R:</em></strong> Kwelaiteitsrapportage niet, testrapportage wel. De testrapportage willen ze ook graag hebben om te kunnen zien of er getest is en wat er getest is. In het mastertestplan staat ook de verantwoording, dit doet de ontwikkelorganisatie en dit doet de klant. De klant wil graag zien wat er gebeurd is en van 'kijk er is echt daadwerkelijk gestest'. Het is in elk geval een verhaal van wat er gebeurd is. Maar daar zijn wel wat vervelende dingen. Omdat we heel veel projecten hebben, als we dan een story hebben in Applicatie1. Daar hangen logical test cases onder. Maar die story raakt ook Applicatie2. Of over de hele linie moet er een aanpassen worden gedaan. Dan komt er uit de testrapportage dat een story niet gevonden kon worden. Want dan testen we Applicatie2. Een Applicatie1 test case kan dan niet worden gevonden, want die staat in een ander project. Dan moeten we een nep-story maken waar dan dezelfde logical test case onder hangt om het te laten kloppen. Dat is een beetje irritant.</p>
+<p><strong><em>I:</em></strong> Overbodige administratie dus?</p>
+<p><strong><em>R:</em></strong> Ja, eigenlijk overbodige administratie. Maargoed. We zijn bezig om Jira wat te consolideren. We zijn uberhaupt bezig om alle applicaties aan te pakken en meer samen te voegen. We zijn ook bezig met 1 Jira project om daar alles onder te hangen. Dus dan zullen we hier niet zoveel last meer van hebben. De testrapportage opzich werkt uitstekend.</p>
+<p><strong><em>I:</em></strong> Waarom leveren jullie de kwaliteitsrapportage niet op?</p>
+<p><strong><em>R:</em></strong> Ja, daar staan ook heel veel dingen in van 'is niet goed', of 'doet het nog niet'. Dat komt omdat we uberhaupt veel componenten hebben waar een jaar of twee jaar niet aangewerkt is en waar ik zelf nog nooit aan gewerkt heb. Daar staan dan issues op omdat we dan een nieuw kwaliteitsprofiel hebben. Dus tja, das is leuk maar hallo. Daar gaan we nu echt niet naar kijken, maar het staat allemaal wel in die rapportage. Dus als je dat dan oplevert wat zegt dat dan? Er staan veel rode dingen. De klant is er ook niet echt in geintereseerd. Hij wil weten dat er getest is. En ja, wat de kwaliteit voor de rest is. Hij gaat er vanuit dat het niet al te best is. Dus tja, en dat is misschien ook wel zo. Maar het wordt beter. We gaan nu een begin maken om er doorheen te lopen en dingen vernieuw. Dan gaan we wel weer voldoen aan de kwaliteitseisen.</p>
+<p><strong><em>I:</em></strong> Jullie kijken zelf wel naar de Sonar rapportages?</p>
+<p><strong><em>R:</em></strong> Dat is natuurlijk een onderdeel van de kwaliteitsrapportage. Dat deel is over het algemeen slecht. We doen er wel wat mee. Als er echt majors bijkomen. Op een bepaald moment hadden we een nieuw profiel. We zagen door de bomen het bos niet meer. Welke issues zijn er nou bijgekomen en welke waren er al? We kunnen dat allemaal niet fixen. Toen is er op een bepaald moment besloten om toch maar weer een ouder profiel te laden. Zo hadden we weer zicht op wat er bijgemaakt was aan fouten. Dat lossen we dan op, zorgen dat er geen majors bijkomen. Dat is het dan wel. Dus ja, dat werkt opzich wel. Maar voor ons om het bij te houden is het een beetje te veel.</p>
+<p><strong><em>I:</em></strong> Er zijn nu veel mogelijkheden om zelf applicaties en ondersteunende services te starten. Maak je daar gebruik van? Heb je zoiets van, ik wil een bepaalde tool gebruiken of op een bepaalde manier inzetten? Er is nu mogelijkheid om naar eigen inzicht tooling te starten. Het is mogelijk om af te wijken van de standaardtooling als Jenkins, Gitlab e.d.</p>
+<p><strong><em>R:</em></strong> Nee, ik vind het een goede toolkeuze. Jenkins is gewoon een goede tool. Gitlab is ook gewoon een goede tool. Dus ik heb in die zin niet de behoefte om iets anders te starten. De standaard toolset is gewoon een goede keuze. Als je iets nodig zou hebben daar rondom, dan kun je dat natuurlijk starten. Ik heb nog niet zoiets gehad van ik heb echt dit nodig.</p>
+<p><strong><em>I:</em></strong> Je kunt nu natuurlijk ook Gitlab gebruiken als CI-server, dus je zou alles kunnen overzetten vanuit Jenkins.</p>
+<p><strong><em>R:</em></strong> Dat is niet iets wat we leuk vinden om te gaan doen. en sowieso, als je alles over moet gaan zetten is dat geen pretje. Het is heel veel werk. Dus als het eenmaal draait in Jenkins dan is het goed zo. Maarja, er zijn wel dingen die we meer willen automatiseren met Docker containers. Stel je hebt een release gedaan van een component dan willen we ook automatisch de Docker container updaten. Dat is heel leuk, dat willen we. Waarschijnlijk zullen we dat alleen doen voor de nieuwe componenten die we gaan maken. Dat houdt het ook overzichtelijk. Het is wel iets dat we graag willen. Je hebt dan niet zoveel stappen aan het eind van een story om alles helemaala ronnd te krijgen. We moeten dan componenten releasen. In de meeste gevallen hebben we zo'n drie componenten per story. En dan moet het nog in Docker gezet worden, de containers moeten gemaakt worden, pushen. Het zou wel makkelijk zijn dat als je een release maakt dat de containers dan automatisch geupdated worden. Maar dat zit er nog niet in. Het komt allemaal een beetje op hetzelfde neer. Het is veel te veel! Het kost veel tijd, waardoor we het dan toch laten zitten.</p>
+<p><strong><em>I:</em></strong> Hoe zou je de basiskennis van al die tooling beschrijven? Zijn jullie experts? Hadden jullie al kennis van de tooling toen je aan het project begon, of heb je die tijdens het project opgedaan?</p>
+<p><strong><em>R:</em></strong> Nee geen experts. Voor dit project had ik ook al Jenkins gebruikt. Daarvan weet ik wel wat het ongeveer kan en welke plugins je nodig hebt. In die zin, als gebruiker hebben we de kennis wel. Echt geavanceerde dingen dan moeten we ook echt even gaan zoeken. In het vorige project maakte ik ook gebruik van Docker, dus ik kende Docker wel. Maar het is hier wel lekker opgezet met het dashboard enzo. Dat maakt het allemaal wel makkelijker om het te gebruiken. Je hoeft niet eens zo heel veel van Docker te weten om het te gebruiken. Dus ja, basis dingen weten we wel en iets geavanceerder ook wel. Maar we moeten ook wel even zoeken.</p>
+<p><strong><em>I:</em></strong> Mis je dat je niet direct op de host kunt kijken? Waar die containers draaien?</p>
+<p><strong><em>R:</em></strong> Nee, op de Docker host hoef ik eigenlijk zelf niet echt te kijken. Het enige is dat als er wat omvalt dat je dan nog wel eens zou willen kijken.</p>
+<p><strong><em>I:</em></strong> Is dat ook de reden dat jullie op de ontwikkelomgevingen de containers eerst bouwen en daar testen? Want als je het dus deployed via het dashboard en het werkt niet, dan weet je eigenlijk niet zo goed hoe of wat.</p>
+<p><strong><em>R:</em></strong> Ja, we bouwen natuurlijk lokaal. Als er iets mis gaat dan zoeken we dat lokaal uit. We hoeven dan dus niet op de host. Als je het gepushed hebt en je start via het dasboard een docker container, als er inderdaad iets mis zou gaan, maar er gaat eigenlijk nooit wat mis. We hebben wel eens gehad dat je pushed en dat de image toch niet aankwam. Als je hem dan start dan zie je bijvoorbeeld dat de wijzigingen er niet in zitten. Er was dan vaak een probleem met resources op de host waardoor de nieuwe image niet goed doorkwam. Maar voor de rest heb ik nooit de behoefte gehad om zelf op die host te kijken.</p>
+<p><strong><em>I:</em></strong> En de Docker registry? Waar veel teams problemen mee hebben is dat de disk vol loopt. Er moeten dan oudere images verwijderd worden. Hebben jullie daar last van?</p>
+<p><strong><em>R:</em></strong> Nee. Dat is eigenlijk wel gek.</p>
+<p><strong><em>I:</em></strong> Hoevaak en hoeveel images pushes jullie?</p>
+<p><strong><em>R:</em></strong> In een sprint, stel dat we iets van vier a vijf stories hebben met wijzigingen. Dan hebben we verschillende dingetjes die we zullen pushen. En dat doen we ook wel een paar keer denk ik. Dus ja. Het zijn er niet meerdere per dag. Je draait natuurlijk alles lokaal. Daar testen we eerst en daarna pushen we pas. Per sprint pushen we misschien zes a zeven keer een image. Zoiets zal het zijn. Ik weet niet hoeveel je moet pushen om je registry vol te krijgen?</p>
+<p><strong><em>I:</em></strong> Nouja. als je Continuous delivery doet met meerdere pushes per dag dan is het snel vol.</p>
+<p><strong><em>R:</em></strong> Ja precies, elke keer als je een wijziging hebt dan wordt het gelijk daarheen gepushed. Ja, wat wij ook nog wel eens doen is nog niet pushen als we nog bezig zijn met een story. Soms willen we dan wel dat Jenkins er al tegenaan gaat testen. En dan deployen we gewoon in de Docker container een nieuwe war of ear.</p>
+<p><strong><em>I:</em></strong> Jullie gebruiken wel een regressietestset? Naast de unittests? Waarin is die gemaakt?</p>
+<p><strong><em>R:</em></strong> Ja, die is gemaakt in Java Selenium. Die draait inderdaad in Jenkins. Dus die test in principe op de testomgeving op Docker. Soms draaien we de testen lokaal. Dat werkt ook en gaat vaak sneller. En ook wel eens op Jenkins. Sommige testen duren drie kwartier, dus daar wil je lokaal niet op wachten. Maar we doen dan geen push, omdat we nog bezig zijn. We doen dan alleen een deployment van een nieuwe war of ear. Dan test Jenkins daar tegenaan.</p>
+<p><strong><em>I:</em></strong> Op de container?</p>
+<p><strong><em>R:</em></strong> Ja op de container.</p>
+<p><strong><em>I:</em></strong> Aah, op die manier. Sneaky.</p>
+<p><strong><em>R:</em></strong> Ja sneaky heh. Hahaha.</p>
+<p><strong><em>I:</em></strong> Jullie gebruiken het in dat geval eigenlijk als een soort virtuele machine.</p>
+<p><strong><em>R:</em></strong> Ja. Gewoon even de war of ear er op. De tests draaien en als dat allemaal goed is en de story is uiteindelijk klaar bouwen we wel netjes een image.</p>
+<p><strong><em>I:</em></strong> Maar is dat uiteindelijk minder moeite dan elke keer een image bouwen?</p>
+<p><strong><em>R:</em></strong> Ja dat duurt veel langer. Dit gaat sneller.</p>
+<p><strong><em>I:</em></strong> Hoe vind je de ondersteuning vanuit de organisatie? Door de ondersteundende teams?</p>
+<p><strong><em>R:</em></strong> Goed, als je langsloopt word je geholpen.</p>
+<p><strong><em>I:</em></strong> Je zei eerder dat je al eerder ervaring met Docker had opgedaan. Er was voor jou niet een enorme leercurve op dit te gaan gebruiken?</p>
+<p><strong><em>R:</em></strong> Nee. Sommige scripts waren wel even wat anders dan ik gewend was.</p>
+<p><strong><em>I:</em></strong> Wat bedoel je met de scripts?</p>
+<p><strong><em>R:</em></strong> De dashboard applicatie definitie. Maar het spreekt redelijk voorzich, dus als je een beetje weet hoe het in elkaar zit en werkt dan is het heel simpel op te pakken. Niet zo ingewikkeld. In die zin had ik niet zoiets van 'help, wat moet ik nu'. Maar ook dan, als we vragen hadden dan konden we gewoon langslopen en kregen we vaak direct het antwoord. Dat is uitstekend. Positieve ervaringen.</p>
+<p><strong><em>I:</em></strong> Dat was het voor nu, als we nog meer vragen hebben dan komen we gewoon later terug.</p>
+<p><strong><em>R:</em></strong> Dat mag.</p>
 <div id="refs" class="references">
 
 </div>
