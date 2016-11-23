@@ -1,16 +1,68 @@
-# Continuous Delivery at the Development Organization
+# Plan
 
-In this chapter I describe the technical setup and infrastructure of the CI/CD
-environment at the development organization. First I describe the previous
-situation and then the current situation. I do this by describing a set of
-common scenario's.
+1. Beschrijf software development aanpak van de ontwikkelorganisatie.
+2. Beschrijf een aantal scenario's in het ontwikkelproces.
+3. Beschrijf de oude en huidige situatie
+4. Beschrijf voor beide situaties (oud en nieuw) hoe de scenario's daarin passen
+   1. Wat zijn de pijnpunten?
+
+zoek in jira voor problemen.
+
+kwalitatief -> welke problemen bij teams?
+monitoren -> kan ik die problemen vinden in jira, code, issues, wiki? hoeveel? impact?
+
+probleem opgelost? -> standaardisatie?
+
+hypothese: er zijn probleme door vergrote vrijehdi van teams, standaardproblemen
+geen standaardoplossing. er is veel energie/effort nodig om te begrijpen hoe het werkt.
+verlies. tijd besparen door standaardoplossing?
+
+tegenhypo: door veel varieteit in oplossing maakt kennis binnen ictu rijker.
+veel over onnodig problemen nagedacht. bij echt probleem getraind in problemen oplossen.
+standardisatie vermijd problemen, maar je wordt een slechtere probleemoplosser. bij een
+echt probleem ben je dan een slechtere probleemoplosser.
+
+wanneer in balans? hoe weet je dat?
+
+wat is bedreiging: creatieve expert die mooie moeilijke oplossingen maakt of
+incompetente ontwikkelaars die niet begrijpen wat ze doen.
+
+andere mogelijkheid, scaffolding: voelen teams zich gefaciliteerd?
+Hoeveel werk? leercurve? welke problemen? leuk werk/vervelend?
+wat heb je geprobeerd wat niet kan?
+
+
+
+# Software Development at the Development Organization
+
+TBD
+
+## Project Roles
+
+Within the development organization we distinguish the following roles.
+
+Role                      Description
+-------                   ------------
+System Administrator      Maintains the (virtual-) network and server infrastructure.
+Project Lead              Usually non-technical. Responsible for project outcome.
+Software Developer        Develops the software (!).
+Functional Tester         Creates functional test specifications and executes them (manually).
+Test Automation Developer Creates automated repeatable tests.
+Quality Manager           Ensures that the delivered software and other by-products adhere to the chosen standards.
 
 ## Scenario's
+This paragraph describes a set of common scenario's in the life cycle of a
+software development project. The scenario's are written with a particular
+stakeholder in mind and help us to understand the needs, wishes and problems in
+a structured way.
 
-### Scenario 1: A new project
+### Scenario 1: On-boarding a new project
+
+**Stakeholder:** All.
+
 When a new project is taken on by the development organization a technical
 infrastructure needs to be setup in order to accommodate the development process.
-It includes the setup of a ci/cd-pipeline, access-management and creation of
+It includes the setup of a CI/CD-pipeline, access-management and creation of
 several (virtual) deployment servers.
 
 ### Scenario 2: Accommodate different sized projects
@@ -29,25 +81,55 @@ In order for the tests to be as realistic as possible, each setup requires a
 production like environment.
 
 ### Scenario: Migrate to a different version of Java
-...
+
+**Stakeholder:** Software Developer.
+
+When a new (bugfix)-version of Java is released developers need to update their
+development, continuous integration and deployment environments.
+Java needs to be updated on the developer's machine, CI-server and the different
+test environments.
+
 
 ### Scenario: Upgrade the application server
 ...
 
 ### Scenario: Application instance per tester
-...
+
+**Stakeholder:** Functional Tester, Test Automation Engineer.
+
+When a Tester needs to ascertain functionality or check for (absence of) regressions
+it is very useful if an instance can be started with ease by the Tester.
+This ensures that observed behavior is not impacted by actions of other's which is
+crucial to come to a proper judgment or test script definition.
+The Tester should be able to start an application instance with a specific test
+data set at will and by the push of a button.
+
 
 ### Scenario: Parallel frontend test execution
-...
+
+**Stakeholder:** Test Automation Engineer.
+
+
 
 ### Scenario: Install a plugin in Jenkins CI
-...
+
+**Stakeholder:** Software Developer.
+
+
 
 ### Scenario: Upgrade Jenkins CI
 ...
 
 ### Scenario: Switch to another tool
 ...
+
+
+# Continuous Delivery at the Development Organization
+
+In this chapter we will discuss the previous and current Continuous Delivery
+environment at the project organization. I use the scenario's described in the
+previous chapter to exemplify the possibilities and problems of both environments.
+
 
 ## CI in a shared environment
 This paragraph describes the previous CI/CD landscape at the development organization.
