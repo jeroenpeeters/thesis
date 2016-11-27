@@ -9,7 +9,7 @@ Looking for the latest version?
 
 # How to write a thesis?
 
-***"How to write a thesis" - Umberto Eco***
+***"How to write a thesis" - Umberto Eco*** (Come si fa una tesi di laurea: le materie umanistische)
 
 - "You must write a thesis that you are able to write"
 - The topic must match your experience, previous studies and courses.
