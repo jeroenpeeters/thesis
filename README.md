@@ -16,6 +16,11 @@ Looking for the latest version?
 - Required resources should be accessible.
 - Narrow the the scope as much as possible. You will be an expert in a subject in which the committee is not. "The more you narrow the field, the better and more safely you will work."
 - Six-month thesis: Topic should be clearly defined, contemporary. Sources are locally available and accessible.
+- What is a scientific thesis?
+  - "The research deals with a specific object, defined so others can identify it."
+  - "The research says something that hasn't been said about this object, or revises the things that have already been said from a different perspective."
+  - The research is useful to others. It advances our general knowledge.
+  - "The research provides the elements required to verify or disprove the hypothesis is presents, and therefore it provides the foundation for future research."
 
 # Todo
 
