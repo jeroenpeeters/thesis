@@ -7,6 +7,15 @@ Looking for the latest version?
 - [HTML](http://jeroenpeeters.nl/thesis/thesis.html)
 - [PDF](http://jeroenpeeters.nl/thesis/thesis.pdf)
 
+# How to write a thesis?
+
+***"How to write a thesis" - Umberto Eco***
+
+- "You must write a thesis that you are able to write"
+- The topic must match your experience, previous studies and courses.
+- Required resources should be accessible.
+- Narrow the the scope as much as possible. You will be an expert in a subject in which the committee is not. "The more you narrow the field, the better and more safely you will work."
+- Six-month thesis: Topic should be clearly defined, contemporary. Sources are locally available and accessible.
 
 # Todo
 
