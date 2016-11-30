@@ -41,7 +41,37 @@ Looking for the latest version?
  - [ ] Report on the performance of the improved situation
 
 # Notes
- - Tooling (maven, etc.) needs to be installed in Jenkins on initial setupp
+
+1. Beschrijf software development aanpak van de ontwikkelorganisatie.
+2. Beschrijf een aantal scenario's in het ontwikkelproces.
+3. Beschrijf de oude en huidige situatie
+4. Beschrijf voor beide situaties (oud en nieuw) hoe de scenario's daarin passen
+   1. Wat zijn de pijnpunten?
+
+zoek in jira voor problemen.
+
+kwalitatief -> welke problemen bij teams?
+monitoren -> kan ik die problemen vinden in jira, code, issues, wiki? hoeveel? impact?
+
+probleem opgelost? -> standaardisatie?
+
+hypothese: er zijn probleme door vergrote vrijehdi van teams, standaardproblemen
+geen standaardoplossing. er is veel energie/effort nodig om te begrijpen hoe het werkt.
+verlies. tijd besparen door standaardoplossing?
+
+tegenhypo: door veel varieteit in oplossing maakt kennis binnen de ontwikkelorganisatie rijker.
+veel over onnodig problemen nagedacht. bij echt probleem getraind in problemen oplossen.
+standardisatie vermijd problemen, maar je wordt een slechtere probleemoplosser. bij een
+echt probleem ben je dan een slechtere probleemoplosser.
+
+wanneer in balans? hoe weet je dat?
+
+wat is bedreiging: creatieve expert die mooie moeilijke oplossingen maakt of
+incompetente ontwikkelaars die niet begrijpen wat ze doen.
+
+andere mogelijkheid, scaffolding: voelen teams zich gefaciliteerd?
+Hoeveel werk? leercurve? welke problemen? leuk werk/vervelend?
+wat heb je geprobeerd wat niet kan?
 
 # Popularity
 
