@@ -17,7 +17,7 @@ hypothese: er zijn probleme door vergrote vrijehdi van teams, standaardproblemen
 geen standaardoplossing. er is veel energie/effort nodig om te begrijpen hoe het werkt.
 verlies. tijd besparen door standaardoplossing?
 
-tegenhypo: door veel varieteit in oplossing maakt kennis binnen ictu rijker.
+tegenhypo: door veel varieteit in oplossing maakt kennis binnen de ontwikkelorganisatie rijker.
 veel over onnodig problemen nagedacht. bij echt probleem getraind in problemen oplossen.
 standardisatie vermijd problemen, maar je wordt een slechtere probleemoplosser. bij een
 echt probleem ben je dan een slechtere probleemoplosser.
