@@ -22,6 +22,32 @@ Looking for the latest version?
   - The research is useful to others. It advances our general knowledge.
   - "The research provides the elements required to verify or disprove the hypothesis is presents, and therefore it provides the foundation for future research."
 
+# Interview
+
+## Questions
+
+- Can you explain what your project looks like?
+  - Number of applications?
+  - Number of images?
+  - Number of daily deployments?
+  - How many teams? Developers?
+- What problems do you encounter in your daily work?
+- How do you test?
+- When new people join the project, how do you get them up to speed?
+- Availability of environment?
+- Do you use separate virtual machines?
+- Do you use the quality reporting to improve quality?
+- Do you deliver quality and test reports to the client?
+- What do you think about the test case administration?
+- What do you think about the default tool selection?
+- Do you use the ability to start arbitrary services to aid development?
+- Are you experts on the tooling you're using?
+- Do you need access to the Docker hosts?
+- How do you deal with a full Docker registry?
+- How do you view the support from within the organization?
+- Before you started on this project, did you have CD experience and experience on the tooling in use?
+- What do you think about putting the responsibility of the CD environment with the team?
+
 # Todo
 
  - [ ] Add picture of current pipeline architecture
