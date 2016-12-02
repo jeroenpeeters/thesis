@@ -48,6 +48,22 @@ Looking for the latest version?
 - Before you started on this project, did you have CD experience and experience on the tooling in use?
 - What do you think about putting the responsibility of the CD environment with the team?
 
+## Protocol
+
+- Start by asking questions from the list
+- When the team reports a problem related to CD that temporarily takes their focus of the actual project work I want to know:
+  - Why is it a problem?
+  - How often do you encounter this problem?
+  - Have you solved the problem?
+  - How much time does it take to counter this problem?
+  - Did you encounter the problem before?
+  - Have you reported on this problem?
+  - Do you think this is a problem that you should be solving?
+- When the team responds to a question that their happy with the current situation, I want to know:
+  - Whether the current situation is an improvement on the previous one
+  - How much time normally is spend on the activity, when applicable
+
+
 # Todo
 
  - [ ] Add picture of current pipeline architecture
