@@ -12,8 +12,6 @@ Team members    20
 Team size       Large
 Project size    Large         
 
-
-
 ### Transcript {.unnumbered}
 
 This paragraph contains the annotated transcript of the interview. Three developers took part. Since the interview was in Dutch the transcript is also in Dutch. Annotations are in English.
@@ -91,3 +89,56 @@ R: Ja ik denk het wel. kijk als er centraal op een gegeven moment iets klant en 
 I: Jenkins hangt natuurlijk aan al die andere systemen. Je gaat nog steeds naar de centrale Docker repository pushen. Als die vol zit, dan kune je ook niet zoveel meer met je lokale Jenkins.
 
 B: Ja, je zou wel verder kunnen. Lokaal heb je je eigen registry. En je hebt natuurlijk alle caches lokaal; Docker, Maven, NPM.
+
+I: Een beetje achtegrondinformatie, alle services die nu draaien in de ontwikkelstraat draaien op 1 resource pool. Dus als er iets met die pool aan de hand is dan vallen al vrij snel meerdere diensten om en heeft iedereen daar last van. Misschien zou je meerdere resource-pools willen hanteren waardoor je de essentiele services kunt scheiden van de volatile deployments?
+
+B: Maar die hebben we al gesplitst. We hebben twee pools.
+
+I: Uuhm. Ja in jullie situatie is dat inderdaad zo.
+
+B: Die stap is al gezet.
+
+I: Ja oke. En waar het nu fout gaat is op de plek waar al je applicatie instanties draaien.
+
+B: Blijkbaar beinvloeden ze nog steeds elkaar.
+
+I: De IP-pool wel ja.
+
+B: Maar storage ook. Die 300G is voor beide hosts. Als die vol is werken applicaties uit beide compute-pools niet meer.
+
+I: Ja, jullie zijn nu gemigreerd naar shared data storage, dus dat klopt. Wat er nog niet geimplementeerd is zijn quotas die je kunt opgeven per applicatie. Dus op het moment dat je een service start dan kan die alle resources gebruiken die beschikbaar zijn.
+
+J: Dat is misschien iets waar naar gekeken moet worden. Het punt is een beetje; niet te groot team op een host. Of maximaal aantal gebruikers waardoor je power blijft houden.
+
+I: Wat we dus missen is het limiteren van het aantal applicatie instanties die kunt starten en het limiteren van resources die elke instantie krijgt. Het voorkomt dat een enkele applicatie een host kan laten omvallen.
+
+J: Ja, of als een host omvalt, automatisch herstarten zodat alle applicaties weer terugkomen.
+
+I: Hoe gaan jullie nu om met het probleem dat de schrijfruimte volloopt?
+
+B: Gewoon schreeuwen, vragen voor meer ruimte of hulp bij het opruimen en dan wachten...
+
+I: Goed, over beschikbaarheid hebben we het dan al gehad. Even kijken...
+
+B: We hebben wel een groot team, andere projecten zijn een stuk kleiner. Ons team is ook anders. Wij zijn volledig ge-Dockerized. Andere teams doen dat nog niet.
+
+I: Jullie gebruiken dan ook geen andere virtuele machines?
+
+B: Nee, nee. Al onze modules zijn allemaal in Docker. Daarom leveren wij dus per subsysteem een stuk of vijf of iets dergelijks. We hebben een paar van die subsystemen. Het aantal images, containers, is vrij groot als je het vergelijkt met andere projecten.
+
+I: Dat is inderdaad wel interessant, daar gaan een aantal vragen over. Even over de grootte van het project. Om te kunnen vergelijken willen we weten hoe groot projecten zijn, hoeveel releases ze doen. Want je zegt 'wij zijn een vrij groot project', wat bedoel je dan?
+
+B: We hebben twee teams, elke van 8 a 9 man. Plus overhead, zoals projectmanagement, performance tester en kwaliteitsmanager.
+
+J: Stuk of tien developers totaal. Rest is tester.
+
+I: aan hoeveel applicaties werken jullie? Of deelsystemen.
+
+B: Stuk of zes. Plus alle tooltjes die er bij horen. De infra tool, graylog, activeMq, databases die erbij horen.
+
+J: Wel wat meer denk ik zelfs.
+
+I: Maar die bestaan allemaal uit 1 image, of meerdere?
+
+B: Meerdere. Je hebt sowieso een applicatie en een database. En er zijn dingen die we delen, zoals de centrale logging. en ook de centrale queue.
+Alleen, voor de ART starten we dus een eigen queue op. Want die mogen niet in de weg lopen met andere ARTs.
