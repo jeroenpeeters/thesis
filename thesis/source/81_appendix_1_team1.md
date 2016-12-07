@@ -1,4 +1,4 @@
-## Team 1
+## Team 1 {.unnumbered}
 
 Property        Value
 ------------    ---------
@@ -10,7 +10,7 @@ Team members    Two developers
 Team size       Small
 Project size    Large         
 
-### Transcript
+### Transcript {.unnumbered}
 
 This paragraph contains the annotated transcript of the interview. One developer took part. Since the interview was in Dutch the transcript is also in Dutch. Annotations are in English.
 
