@@ -174,6 +174,8 @@ Even if you can work out the process and everyone is willing to contribute it mi
 
 # Papers / Articles
 
+![Articles references](docs/figures/mermaid/article-refs.mermaid.png)
+
 ## [Stack Overflow: CI vs CD ](http://stackoverflow.com/questions/28608015/continuous-integration-vs-continuous-delivery-vs-continuous-deployment)
  -
 
@@ -182,10 +184,10 @@ Even if you can work out the process and everyone is willing to contribute it mi
  -
 
 
-## On the journey to continuous deployment: Technical and social challenges along the way
+## On the journey to continuous deployment: Technical and social challenges along the way (claps2015journey)
 Literature review and case study at Atlassian. Contains summary of challenges faced and mitigation strategies.
 
- - organisations need to be well prepared to handle technical and social adoption challenges
+ - organizations need to be well prepared to handle technical and social adoption challenges
  - requires proper hardware and software to handle the CD process
  - software developers may feel an increased amount of pressure to have code ready to be deployed immediately
  - lack of understanding / lack of motivation
@@ -197,7 +199,7 @@ Literature review and case study at Atlassian. Contains summary of challenges fa
 ## Read List
 
  * [T. Fitz, Continuous Deployment at IMVU: Doing the Impossible Fifty Times a
-Day.](http://timothyfitz.com/2009/02/10/continuous-deployment-at-imvu-doing-the-impossible-fifty-times-a-day/) **(coined term CD)**
+Day.](http://timothyfitz.com/2009/02/10/continuous-deployment-at-imvu-doing-the-impossible-fifty-times-a-day/) **(coined term CD)** (fitz2009continuous)
 
  -  [H.H. Olsson, H. Alahyari, J. Bosch, Climbing the ‘‘Stairway to Heaven’’](http://ieeexplore.ieee.org/document/6328180/)
  - [J. Humble, D. Farley, Continuous Delivery: Reliable Software Releases through
