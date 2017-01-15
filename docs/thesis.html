@@ -2444,6 +2444,73 @@ References are automatically generated from the BibTex file (References.bib)
 <p>I: Maar die bestaan allemaal uit 1 image, of meerdere?</p>
 <p>B: Meerdere. Je hebt sowieso een applicatie en een database. En er zijn dingen die we delen, zoals de centrale logging. en ook de centrale queue. Alleen, voor de ART starten we dus een eigen queue op. Want die mogen niet in de weg lopen met andere ARTs.</p>
 <p>14:20</p>
+<p>B dus per ART heb je sowieso minimaal drie.</p>
+<p>I: Wat bedoel je met minimaal drie</p>
+<p>B Nou de applicatie, ART en de queue. Ja. Volegns mij is het volgens mij.</p>
+<p>R we maken branches.</p>
+<p>B Ja dat is ook iets anders. We werken met feature branches. dat wil zeggen dat elk z'n eigen branche waar die aan werkt en dat tikt ook aan.</p>
+<p>I maar hebben we het dan ook over zelfde aantal image releases en pushes.</p>
+<p>B Ja</p>
+<p>I Ook op een dag, of doe je meerdere keren pushen naar de registry?</p>
+<p>B Continu. Eeh zodra je dingen wilt gaan testen. Het is wel zo dat als die images niet gewijzigd zijn dan hebben ze hetzelfde ID, maar dan hebben ze een andere tag.</p>
+<p>J Ja dat helpt nu best wel veel. Plus dat we kleinere images hebben gecreeerd.</p>
+<p>B Dus daar hebben we het een en ander ook geoptimaliseerd.</p>
+<p>I: Ja. Je noemde al de ART. Kun je beschrijven hoe het test process bij jullie d'r uitziet. Hoe start je dingen op, hoe is dat geautomatiseerd?</p>
+<p>J: In principe bouwen we.. We draaien hem eerst lokaal, gewoon protractor met ART scripts tegen een instantie van het dashboard. Dus meestal starten we dan eerst gewoon zelf instanties van de applicatie. Dan bouwen ze hun ding, checken ze in en pushen ze. Dan leveren wij de art container mee. Daarin zitten alle ART's maar ook alle files op het te draaien. Dan doen we docker run en dat is dan de ART die tegen een instnatie draait. Zodat ze hem ook gewoon bij de klant kunnen draaien. Dan hoeven ze niet ons systeem te hebben. Dat ding wordt dan door jenkins gedraait via het dashboard. De pipeline start de instnatie op, op het moment dat ie er is draait de art. De results worden gepushed naar een of andere instantie op het dashboard. Iets met reporting, uuh ja. En dan stop het weer als het goed is.</p>
+<p>I: en dat is dan per deelsysteem?</p>
+<p>J: Ja, per deelsysteem.</p>
+<p>I: en dat hele proces loopt ook meerdere keren per dag?</p>
+<p>J: Ja, dat loopt best wel vaak.</p>
+<p>I: Hoe lang duurt het hele proces?</p>
+<p>J: Kleine tien minuten om te bouwen, vijf a zes minuten voor een ART.</p>
+<p>I: En dat is ongeveer voor alle deelsystemen gelijk?</p>
+<p>B: Het is nog wel erg klein heh. Ik bedoel, wij zijn nog steeds aan het begin van het project. Al onze testen en ART's zijn nog in de beginfase. Het is nog niet het volledige product.</p>
+<p>R: Het is ook niet echt stabiel.</p>
+<p>I: Wat is precies niet stabiel?</p>
+<p>R: Vooral de ART. Soms dan draai je hem een keer en dan gaat het goed, en de tweede keer gaat het fout.</p>
+<p>I: Gaat het dan fout omdat er functionele issues zijn? Dingen die mis zijn in de applicatie, of technische problemen als in de applicatie komt niet online?</p>
+<p>R: Heel vaak heefft het met timing dingen te maken. De ene container moet voorde andere worden opgestart. Vooral bij databases en dat soort afhankelijkheden. Dan duurt de ene weer iets langer dan de ander. Dan start een applicatie nog een keer op en heb je ineens twee berichten in je queue staan. Dat soort dingen.</p>
+<p>I: Op die manier.</p>
+<p>R: Dat heeft ook heel veel te maken met het feit dat het niet op elk moment even druk is. De resources die beschikbaar zijn flucturen en daardoor verschillen de testen. Dan krijg je timeouts vooral bij asynchrone processen.</p>
+<p>J: Het vervelende is dat ie eerst een instnatie op het dashboard start, maar als dat te lang duurt dan timed 'ie out. Maar je gaat niet een kwartier naar het scherm xzitten staren, dus dan ga je iets anders doen. Half uurtje later &lt;<oh wacht even>&gt;, hij is gefaald, waarom? Dan ga je zoeken. Oh timeout, ok. Build now, opnieuw. En dan weer een kwartier later. En als ie dan weer een keertje faalt moet je eerst wat dingen gaan afsluiten op het dashboard die dan blijven hangen. Dus ja, dan ben je zo al een uur verder voordat je eindelijk weet of 'ie het doet of niet. En dat bij elkaar telt best wel op aan tijd en context switches. Je kunt niet doorwerken, je moet constant controleren of alles goed gaat. Dat vind ik heel lastig.</p>
+<p>I: Ja, maar dat heeft er niet toe geleid dat je alles eerst lokaal draait om zeker te weten of het werkt?</p>
+<p>R: Nou dat is het punt, zegmaar de &lt;<eeh>&gt; &lt;<uuh>&gt;.</p>
+<p>B: Handmatig lukt het wel gewoon allemaal. Dat is het probleem niet. Het gaat om het geautomatiseerd testen, dat lukt dus niet. Dat was met vorig project toendertijd ook zo. Handmatig geen enkel probleem. Draai je zegmaar de testen op de achtegrond, &lt;<bam-bam-bam>&gt;. Fout.</p>
+<p>J: De build service is toch altijd weer wat anders. We runnen die ART, hij doet het gewoon allemaal prima. Maar op de build server kan 'ie Chrome niet starten, sorry Firefox. Permission issues of zoiets dergelijks omdat ie een andere user meekrijgt. Ik weet niet precies meer wat het was, maar. En voordat je daar dan achter bent ben je zo een dag verder terwijl je daar eigenlijk niets hebt gedaan. Eigenlijk wacht op een build. Maarja hij moet eerst bouwen.</p>
+<p>I: Dit is toch iets wat je dan maar 1 keer tegenkomt toch?</p>
+<p>J: Ja maar je komt heel vaak zulk soort issues tegen. En dan ben je zo een week weg zonder dat echt iets gedaan hebt.</p>
+<p>R: Vandaar dat ik ook zeg van, centraal zou het ook helemaal hetzelfde moeten lopen als lokaal. Maar omdat je lokaal niet kunt bouwen zegmaar, tenminse het kan wel en dat ga ik ook wel een keer proberen met een jenkins lokaal te draaien. Maar dat is gewoon een overgang. Altijd als je van omgevin veranderd en de omgevingen niet precies helemaal hetzelfe zijn dan krijg je weer een probleem.</p>
+<p>I: Ondanks dat je zeg je, ook al draai je het via het dashboard en met Docker dan hangt het ook nog een keer van de load af van de machine. Het ligt dus niet zozeer aan de configuratie van de omgeving maar van de load?</p>
+<p>J: Ja</p>
+<p>R: Ja, onder andere de beschikbaarheid van resources, Ja ja ja.</p>
+<p>I: Er is nu al een splitsing in de resource pool voor ontwikkelstraat en applicatie deployment. Misschien zou het beter zijn om ook een resource pool te maken voor ART's?</p>
+<p>R: Ja, zoiets ja. Dat je in iedergeval....</p>
+<p>J: Of zorg dat er <eeh> snellere disk io is ofzo. Ik zie dat dat eigenlijk heel traag is waardoor je ook heel ander gedrag krijgt dan op je lokale machine. Een build duurt op Jenkins acht minuten, bij mij lokaal 1 minuut.</p>
+<p>I: Ja dat is wel een fysiek limiet omdat dat ligt aan de onderliggende hardware. Dus daar is weinig aan te doen op de korte termijn.</p>
+<p>B: Een goed voorbeeld is namelijk de Oracle database. We starten Oracle op en we vullen dat ding met referentie data. Op mijn PC duurt het laden ongeveer 30--35 seconden. Ik heb meegemaakt dat als ik dat op het dashboard draai dat het dan vijf minuten duurt. Kijk twee keer zoveel, &lt;<mwah>&gt;. Maar het verschil tussen 30 seconden en vijf minuten dat is wel echt een heel groot verschil. En het kan zijn omdat op dat ogenblik weinig resources aanwezig zijn. Kan zijn dat het traag is. Misschien gaat het over het netwerk.</p>
+<p>J: Dat is dus lastig, want je weet dus niet waarom het traag is.</p>
+<p>I: Die Oracle database hadden we getest op een host die rustig was. En dan had je hetzelde effect. Dus dat zijn echt gewoon hardwarematige limieten die je raakt. We draaien bijvoorbeeld niet op SSD's. We gebruiken wel enterprise level hard disks, maar die zijn niet zo snel.</p>
+<p>B: Enterprise SSD's zijn ook veel te duur.</p>
+<p>J: Maar dit is ontwikkelstraat gebeuren, we hebben geen enterpise grade disks nodig. Wat mij betreft ga je naar de mediamarkt en gebruik je een laptop als host.</p>
+<p>I: Oke, <uuhm> de kwaliteitsrapportage, gebruiken jullie die om de kwaliteit te monitoren en te verbteren voor het projecT?</p>
+<p>B: Ja, en sommige mensen zijn behoorlijk fanatiek.</p>
+<p>&lt;<gelach>&gt;</p>
+<p>B: Dus het wordt zeker gebruikt.</p>
+<p>I: En hoe gaat dat? Hoe kijk je daar tegenaan? Tegen het gebruik van dat soort rapportages om de kwaliteit te monitoren?</p>
+<p>B: Ik denk niet dat je dit aan een van ons drieen wilt vragen.</p>
+<p>&lt;<luid gelach>&gt;</p>
+<p>I: Maar gaat het dan om de kwaliteitsmanagers?</p>
+<p>R: Ja, de kwaliteitsmanagers maar ook inderdaad het B en I bij ons in het team. Die zijn echt &lt;<eeh>&gt;, <ja>..</p>
+<p>I: En waarom zijn die zo fan daarvan, zijn dat ontwikkelaars?</p>
+<p><jaja></p>
+<p>B: Die willen echt 100% hebben. Terwijl voor de meeste van ons voldoende hebben aan 80%.</p>
+<p>R: 80% is heel mooi.</p>
+<p>I: Ja.</p>
+<p>B: dus het komt echt van binnenuit.</p>
+<p>J: zij zien het echt als een sport om het goed te krijgen. En om 100% te halen, dat is dan gwoon een dingetje.</p>
+<p>I: Maar vind je dan dat het bijdraagt aan de kwaliteit? Als je dingen ziet om de kwaliteitsrapportage, denk je dan van daar moet ik echt iets mee of eerder van daar kunnen we niets aan doen? Of dat zijn regels die we onzin vinden.</p>
+<p>J: Wat mij betreft mag er nog wel een beetje een filtering overheen nog.</p>
+<p>25:40</p>
 <h2 id="team-3" class="unnumbered">Team 3</h2>
 <table>
 <thead>
@@ -2455,15 +2522,15 @@ References are automatically generated from the BibTex file (References.bib)
 <tbody>
 <tr class="odd">
 <td align="left">Date</td>
-<td align="left">02-12-2016 14:00</td>
+<td align="left">09-12-2016 15:00</td>
 </tr>
 <tr class="even">
 <td align="left">Duration</td>
-<td align="left">57 minutes</td>
+<td align="left">44 minutes</td>
 </tr>
 <tr class="odd">
 <td align="left">Present</td>
-<td align="left">******I:****** interviewer</td>
+<td align="left"><strong><em>I:</em></strong>* interviewer</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -2471,15 +2538,15 @@ References are automatically generated from the BibTex file (References.bib)
 </tr>
 <tr class="odd">
 <td align="left">Team members</td>
-<td align="left">?</td>
+<td align="left">3</td>
 </tr>
 <tr class="even">
 <td align="left">Team size</td>
-<td align="left">?</td>
+<td align="left">Small</td>
 </tr>
 <tr class="odd">
 <td align="left">Project size</td>
-<td align="left">?</td>
+<td align="left">Small</td>
 </tr>
 </tbody>
 </table>
