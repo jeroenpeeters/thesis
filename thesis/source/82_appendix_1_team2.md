@@ -144,3 +144,137 @@ B: Meerdere. Je hebt sowieso een applicatie en een database. En er zijn dingen d
 Alleen, voor de ART starten we dus een eigen queue op. Want die mogen niet in de weg lopen met andere ARTs.
 
 14:20
+
+B dus per ART heb je sowieso minimaal drie.
+
+I: Wat bedoel je met minimaal drie
+
+B Nou de applicatie, ART en de queue. Ja. Volegns mij is het volgens mij.
+
+R we maken branches.
+
+B Ja dat is ook iets anders. We werken met feature branches. dat wil zeggen dat elk z'n eigen branche waar die aan werkt en dat tikt ook aan.
+
+I maar hebben we het dan ook over zelfde aantal image releases en pushes.
+
+B Ja
+
+I Ook op een dag, of doe je meerdere keren pushen naar de registry?
+
+B Continu. Eeh zodra je dingen wilt gaan testen. Het is wel zo dat als die images niet gewijzigd zijn dan hebben ze hetzelfde ID, maar dan hebben ze een andere tag.
+
+J Ja dat helpt nu best wel veel. Plus dat we kleinere images hebben gecreeerd.
+
+B Dus daar hebben we het een en ander ook geoptimaliseerd.
+
+I: Ja. Je noemde al de ART. Kun je beschrijven hoe het test process bij jullie d'r uitziet. Hoe start je dingen op, hoe is dat geautomatiseerd?
+
+J: In principe bouwen we.. We draaien hem eerst lokaal, gewoon protractor met ART scripts tegen een instantie van het dashboard. Dus meestal starten we dan eerst gewoon zelf instanties van de applicatie. Dan bouwen ze hun ding, checken ze in en pushen ze. Dan leveren wij de art container mee. Daarin zitten alle ART's maar ook alle files op het te draaien. Dan doen we docker run en dat is dan de ART die tegen een instnatie draait. Zodat ze hem ook gewoon bij de klant kunnen draaien. Dan hoeven ze niet ons systeem te hebben. Dat ding wordt dan door jenkins gedraait via het dashboard. De pipeline start de instnatie op, op het moment dat ie er is draait de art. De results worden gepushed naar een of andere instantie op het dashboard. Iets met reporting, uuh ja. En dan stop het weer als het goed is.
+
+I: en dat is dan per deelsysteem?
+
+J: Ja, per deelsysteem.
+
+I: en dat hele proces loopt ook meerdere keren per dag?
+
+J: Ja, dat loopt best wel vaak.
+
+I: Hoe lang duurt het hele proces?
+
+J: Kleine tien minuten om te bouwen, vijf a zes minuten voor een ART.
+
+I: En dat is ongeveer voor alle deelsystemen gelijk?
+
+B: Het is nog wel erg klein heh. Ik bedoel, wij zijn nog steeds aan het begin van het project. Al onze testen en ART's zijn nog in de beginfase. Het is nog niet het volledige product.
+
+R: Het is ook niet echt stabiel.
+
+I: Wat is precies niet stabiel?
+
+R: Vooral de ART. Soms dan draai je hem een keer en dan gaat het goed, en de tweede keer gaat het fout.
+
+I: Gaat het dan fout omdat er functionele issues zijn? Dingen die mis zijn in de applicatie, of technische problemen als in de applicatie komt niet online?
+
+R: Heel vaak heefft het met timing dingen te maken. De ene container moet voorde andere worden opgestart. Vooral bij databases en dat soort afhankelijkheden. Dan duurt de ene weer iets langer dan de ander. Dan start een applicatie nog een keer op en heb je ineens twee berichten in je queue staan. Dat soort dingen.
+
+I: Op die manier.
+
+R: Dat heeft ook heel veel te maken met het feit dat het niet op elk moment even druk is. De resources die beschikbaar zijn flucturen en daardoor verschillen de testen. Dan krijg je timeouts vooral bij asynchrone processen.
+
+J: Het vervelende is dat ie eerst een instnatie op het dashboard start, maar als dat te lang duurt dan timed 'ie out. Maar je gaat niet een kwartier naar het scherm xzitten staren, dus dan ga je iets anders doen.  Half uurtje later <<oh wacht even>>, hij is gefaald, waarom? Dan ga je zoeken. Oh timeout, ok. Build now, opnieuw. En dan weer een kwartier later. En als ie dan weer een keertje faalt moet je eerst wat dingen gaan afsluiten op het dashboard die dan blijven hangen. Dus ja, dan ben je zo al een uur  verder voordat je eindelijk weet of 'ie het doet of niet. En dat bij elkaar telt best wel op aan tijd en context switches. Je kunt niet doorwerken, je moet constant controleren of alles goed gaat. Dat vind ik heel lastig.
+
+I: Ja, maar dat heeft er niet toe geleid dat je alles eerst lokaal draait om zeker te weten of het werkt?
+
+R: Nou dat is het punt, zegmaar de <<eeh>> <<uuh>>.
+
+B: Handmatig lukt het wel gewoon allemaal. Dat is het probleem niet. Het gaat om het geautomatiseerd testen, dat lukt dus niet. Dat was met vorig project toendertijd ook zo. Handmatig geen enkel probleem. Draai je zegmaar de testen op de achtegrond, <<bam-bam-bam>>. Fout.
+
+J: De build service is toch altijd weer wat anders. We runnen die ART, hij doet het gewoon allemaal prima. Maar op de build server kan 'ie Chrome niet starten, sorry Firefox. Permission issues of zoiets dergelijks omdat ie een andere user meekrijgt. Ik weet niet precies meer wat het was, maar. En voordat je daar dan achter bent ben je zo een dag verder terwijl je daar eigenlijk niets hebt gedaan. Eigenlijk wacht op een build. Maarja hij moet eerst bouwen.
+
+I: Dit is toch iets wat je dan maar 1 keer tegenkomt toch?
+
+J: Ja maar je komt heel vaak zulk soort issues tegen. En dan ben je zo een week weg zonder dat echt iets gedaan hebt.
+
+R: Vandaar dat ik ook zeg van, centraal zou het ook helemaal hetzelfde moeten lopen als lokaal. Maar omdat je lokaal niet kunt bouwen zegmaar, tenminse het kan wel en dat ga ik ook wel een keer proberen met een jenkins lokaal te draaien. Maar dat is gewoon een overgang. Altijd als je van omgevin veranderd en de omgevingen niet precies helemaal hetzelfe zijn dan krijg je weer een probleem.
+
+I: Ondanks dat je zeg je, ook al draai je het via het dashboard en met Docker dan hangt het ook  nog een keer van de load af van de machine. Het ligt dus niet zozeer aan de configuratie van de omgeving maar van de load?
+
+J: Ja
+
+R: Ja, onder andere de beschikbaarheid van resources, Ja ja ja.
+
+I: Er is nu al een splitsing in de resource pool voor ontwikkelstraat en applicatie deployment. Misschien zou het beter zijn om ook een resource pool te maken voor ART's?
+
+R: Ja, zoiets ja. Dat je in iedergeval....
+
+J: Of zorg dat er <eeh> snellere disk io is ofzo. Ik zie dat dat eigenlijk heel traag is waardoor je ook heel ander gedrag krijgt dan op je lokale machine. Een build duurt op Jenkins acht minuten, bij mij lokaal 1 minuut.
+
+I: Ja dat is wel een fysiek limiet omdat dat ligt aan de onderliggende hardware. Dus daar is weinig aan te doen op de korte termijn.
+
+B: Een goed voorbeeld is namelijk de Oracle database. We starten Oracle op en we vullen dat ding met referentie data. Op mijn PC duurt het laden ongeveer 30--35 seconden. Ik heb meegemaakt dat als ik dat op het dashboard draai dat het dan vijf minuten duurt. Kijk twee keer zoveel, <<mwah>>. Maar het verschil tussen 30 seconden en vijf minuten dat is wel echt een heel groot verschil. En het kan zijn omdat op dat ogenblik weinig resources aanwezig zijn. Kan zijn dat het traag is. Misschien gaat het over het netwerk.
+
+J: Dat is dus lastig, want je weet dus niet waarom het traag is.
+
+I: Die Oracle database hadden we getest op een host die rustig was. En dan had je hetzelde effect. Dus dat zijn echt gewoon hardwarematige limieten die je raakt. We draaien bijvoorbeeld niet op SSD's. We gebruiken wel enterprise level hard disks, maar die zijn niet zo snel.
+
+B: Enterprise SSD's zijn ook veel te duur.
+
+J: Maar dit is ontwikkelstraat gebeuren, we hebben geen enterpise grade disks nodig. Wat mij betreft ga je naar de mediamarkt en gebruik je een laptop als host.
+
+I: Oke, <uuhm> de kwaliteitsrapportage, gebruiken jullie die om de kwaliteit te monitoren en te verbteren voor het projecT?
+
+B: Ja, en sommige mensen zijn behoorlijk fanatiek.
+
+<<gelach>>
+
+B: Dus het wordt zeker gebruikt.
+
+I: En hoe gaat dat? Hoe kijk je daar tegenaan? Tegen het gebruik van dat soort rapportages om de kwaliteit te monitoren?
+
+B: Ik denk niet dat je dit aan een van ons drieen wilt vragen.
+
+<<luid gelach>>
+
+I: Maar gaat het dan om de kwaliteitsmanagers?
+
+R: Ja, de kwaliteitsmanagers maar ook inderdaad het B en I bij ons in het team. Die zijn echt <<eeh>>, <ja>..
+
+I: En waarom zijn die zo fan daarvan, zijn dat ontwikkelaars?
+
+<jaja>
+
+B: Die willen echt 100% hebben. Terwijl voor de meeste van ons voldoende hebben aan 80%.
+
+R: 80% is heel mooi.
+
+I: Ja.
+
+B: dus het komt echt van binnenuit.
+
+J: zij zien het echt als een sport om het goed te krijgen. En om 100% te halen, dat is dan gwoon een dingetje.
+
+I: Maar vind je dan dat het bijdraagt aan de kwaliteit? Als je dingen ziet om de kwaliteitsrapportage, denk je dan van daar moet ik echt iets mee of eerder van daar kunnen we niets aan doen? Of dat zijn regels die we onzin vinden.
+
+J: Wat mij betreft mag er nog wel een beetje een filtering overheen nog.
+
+25:40
