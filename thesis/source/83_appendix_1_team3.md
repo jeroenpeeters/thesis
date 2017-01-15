@@ -6,9 +6,9 @@ Date            09-12-2016 15:00
 Duration        44 minutes
 Present         ***I:**** interviewer
                 ***R***: developer 1
-Team members    ?
-Team size       ?
-Project size    ?         
+Team members    3
+Team size       Small
+Project size    Small
 
 ### Transcript {.unnumbered}
 
