@@ -275,6 +275,260 @@ J: zij zien het echt als een sport om het goed te krijgen. En om 100% te halen, 
 
 I: Maar vind je dan dat het bijdraagt aan de kwaliteit? Als je dingen ziet om de kwaliteitsrapportage, denk je dan van daar moet ik echt iets mee of eerder van daar kunnen we niets aan doen? Of dat zijn regels die we onzin vinden.
 
-J: Wat mij betreft mag er nog wel een beetje een filtering overheen nog.
+J: Wat mij betreft mag er nog wel een beetje een filtering overheen nog. Soms is het rood omdat een regressietest faalt, opzich goed hoor. Maarja dat is logisch als je net toevallig die... of iets heeft een paar dagen niet gedraaid, ja als je nix gepushed hebt naar master ofzo dan is 'ie rood. <<tja>>. Dat is niet technisch maar dan moet je wel allemaal weer uit gaan zoeken. Enne, bijvoorbeeld van die dependency checks en dergelijke moet je elke keer weer checken of daar iets is gewijzigd. Van mij mag het wat pragmatischer. Vind het goed voor de lange termijn maar je wordt wel wat door daar elke dag naar te kijken, ja er is niets gewijzigd. Ja er is niets gewijzigd. Ja het is nog steeds rood. Maja..
 
-25:40
+R: Ja goed, het punt  op een gegeven moment is natuurlijk er is een heel groot verschil <<eh>> gat tussen kwaliteit die daar gemonitord word en echte kwaliteit, zegmaar. En dat is <eeh> dat gat is enorm. En ja goed. Vaak wordt dan wel. Ja het is kwaliteit op het laagste niveau. Het is gewoon hoe netjes een muur gemetseld is maar het is niet of het gebouw is <eh> dat nog enigzins functioneert. Zegmaar. Maargoed dat heb je met alle rapportages. Zeker als het percentaegs zijn, Iedere manager gaat daar helemaal op nat zegmaar. <eeeeh> <gelach>. Zovan, dat moet 100% zijn. Weetjewel. Maargoed daar doe je verder niets aan. Dat zegt niets over de of die rapportage tool niet of wel nuttig is. Ja die is nuttig. Het probleem is alleen op een gegeven moment van hoeveel tijd ga je er in steken om dat allemaal overeind te houden. Ten kosten van sommige structurele zaken die je zou kunnen oplossen. Zegmaar in die tijd. Hoe is de structuur van je applicatie op hoger niveau. Daar zou wat meer focus op moeten zijn in plaats van dat lage niveau.
+
+J: Het is nuttig maar erg bureaucratisch.
+
+R: <ja>
+
+J: Maargoed, die tool op zich doet het wel goed volgens mij, die kwaliteitsrapportage tool.
+
+I: En Sonar is daar natuurlijk een onderdeel van, daar kijken jullie ook zelf naar? De issues die daar uit komen?
+
+J: Ja, ja.
+
+I: En dat is dan ook een driver om dat te verbeteren over het algemeen.
+
+B: Ja.
+
+R: Jawel.
+
+I: Hebben julie daar ook afspraken met jullie product owner over gemaakt. Zovan we willen elke sprint, weet ik veel, iets doen om kwaliteit te verbeteren of om achterstallige kwaliteits issues op te ruimen, dat soort dingen.
+
+R: Ja soms dan beginnen we wat lager. Aan het begin van het project begonnen we op vijf procent. We hebben gezegd elke sprint gaan we hem omhoog zetten die grens. Dat hebben we wel gedaan.
+
+I: En dat hebben jullie ook afgesproken met de product owner of is dat iets dat jullie zelf tussen de bedrijven door hebben geprobeerd?
+
+B: Het komt wel meer van ons intern, vanuit Ontwikkelorganisatie.
+
+I: Ja, dat snap ik maar je moet natuurlijk die tijd die je er aan besteed ergens verantwoorden. Want dat gaat ten koste van andere dingen.
+
+B: <<ja, ja>>
+
+R: Wat ik wel heel interessant is en wat ik geopperd heb. Jongens ga nou eens monitoren hoeveel procent <eh> van je tijd je bezig bent met het onderhouden van van van geautomatiseerde testen. Versus tijd die je aan productiecode spendeerd. Maar.. maargoed.. Mijns inziens is die verhouden een beetje zoek. Dat zou je nou eens een keer moeten monitoren. Dat is interessant.
+
+J: Ja het is echt een verschikkelijk kostbaar iets.
+
+R: <ja>
+
+J: Plus in combinatie met de hele kwaliteits, dat je de <eeh>. Alles bij elkaar.
+
+R: Want ja je unit test moet 100%. Je heh, integratietesten dat is bijna hetzelfde inderdaad. ART 50%.
+
+I: Ik heb wel eens gelezen dat dat ongeveer 50/50 moet zijn. Zou je zeggen van dat gaat echt ver er overheen? of?
+
+<gemompel>
+
+J: Heel ver er overheen.
+
+R: Ik denk de ART inderdaad wel,<ja ja ja>
+
+I: En komt dat dan doordat, weet ik veel. De tools die jullie gebruiken of dat de ART tool heel ingewikkeld is. Of is dat omdat je superveel dubbele testen aan het schrijven bent?
+
+R: <zucht> Ja ik denk vooral op een gegeven moment dat 'ie gewoon onstabiel is die ART.
+
+I: Het is gewoon het uitzoeken van...
+
+R: Ja meestal wel. Dan <eh> shit nu is 'ie rood en net was 'ie nog groen. Hoe zou dat nou toch komen. Ja dat is best wel moeilijk om achter te komen vaak. Vooral als het een timing issue is. dus <eeh> Het geautomatiseerd testen vooral de ART. De unit testen <eeh> ok. Die kosten misschien best wel veel tijd om te schrijven maar die zijn daarna altijd stabiel. Zolang je maar binnen de <ehm> <ehm> applicatie proces blijft met je geautomatiseerde test. En niet asychroon gaat werken, zegmaar. Dan <eh> is het wel redelijk stabiel. Dan is het gewoon toegevoegde waarde. Maar inderdaad zo'n ART test met een externe database en timing gebeuren.
+
+I: Zie je dat het instabieler wordt naarmate de omvang van code en testen groeit? Of is dat vanaf het begin eigenlijk al zo geweest?
+
+R: Ja dat is vanaf het begin af aan zo geweest volgens mij toch?
+
+I: Zou je zeggen dat als de ART faalt, dat dat vaker het geval is door die synchroniciteits issues of performance issues dan dat er daadwerkelijk een functioneel probleem is?
+
+R: <ja!> Ik denk dat ongeveer 95% omgevingsproblemen zijn ja.
+
+I: Dat is erg interessant want dit wil je natuurlijk niet.
+
+J: Het is ook als je iets wijzigd aan het landschap. Als je iest verranderd dan vallen de ART's weer om en dan moet het bijgewerkt worden. Voordat het allemaal weer goed is dan is er wel weer iets veranderd.
+
+I: Ja
+
+J: ze zouden eigenlijk wat later meoten beginnen met de ART's.
+
+B: Even iets anders.... Weet je zeker dat de opname loopt.
+
+I: Ja ja ja ja.
+
+<gelach>
+
+I: Heel goed dat je er aan denkt. Ja hij loopt nog. Nee hij loopt nog. Dank je wel.
+
+B: Ik heb al een keer meegemaakt dat je er na een half uurtje achterkomt; hij heeft toch niet opgenomen.
+
+I: Nee het werkt nog, als het scherm uitgaat dan doet 'ie het nog.
+
+I: <uuhm>. Ja over test cases en het administreren daarvan. Logical testcases enzo. Jullie gebruiken daar ook Jira voor? Hoe verloopt dat?
+
+R: Oeh, dan moet je denk ik even een afspraak maken met Niels. Dat zijn echt de testers die daar over gaan. Daar doen wij niets aan heh?
+
+B: Het meeste wat wij doen is draaien en als er iets fout gaat dat proberen te fixen.
+
+I: Ja precies.
+
+B: De hele administratie daaromheen, sowieso ook de BIRT rapportage en Jira dat doen wij niet.
+
+I: Oke, dan gaan we die vragen skippen. dan zal ik contact met hun opnemen.
+
+B: Volgens mij is dat ook hetzelfde als met andere projecten.
+
+I: Nou, nee. niet altijd hoor. Maar jullie hebben echt dedicated testers in jullie team?
+
+B: Maar die administratie is hetzelde.
+
+I: Bij andere teams zijn er ook ontwikkelaars die testen en dus ook de test administratie bijhouden. Dat is dus niet perse overal hetzeldfe. En ook hoe dat is ingegericht kan ook wel verschillen. En de problemen die daar eventueel uit voortkomen.
+
+B: ok
+
+I: <eehm> Oja, ik had ook nog een vraag eerder. Als er nou een nieuw teamlid joint. Een ontwikkelaar. Hoe krijg je ze dan eigenlijk. Want het is denk ik best wel complex misschien de hele ontwikkelomgeving en hoe dat allemaal samenwerkt. Hoe krijg je ze dan up to speed? Hoe laat je ze kennismaken met de hele omgeving?
+
+B: Hier heb je Docker.
+
+R: Docker compose up
+
+<gelach>
+
+I: Maar zou je zeggen dat dat helpt? Gegeven eerdere ervaringen met andere projecten. Helpt de opzet zoals we die hier hebben om sneller met een proejct up to speed te komen of maakt het totaal niet uit? Of werkt het zelfs averechts?
+
+R: Ja, Heb je het dan vooral over de inrichting van je omgeving.
+
+I: Bijvoorbeeld.
+
+R: Niet de kennis opbouw. Daar hebben jullie volgens mij niet direct...
+
+I: Nouja, kijk als je bijvoorbeeld geen Docker hebt dan. Nu gebruiken we docker. Dus Docker kennis is wel handig. Terwijl als je dat niet hebt dan hoef je die kennis niet te hebben.
+
+B: We hebben allemaal een eigen IDE, de is vrijblijvend. Dus iedereen heeft z'n eigen keus. Directory structuur is vrij. Operating system is vrij. <eehm>
+
+I: Maar heb je de server ook gewoon geinstalleerd en zelf de configuratie gemaakt of gebruik je Docker images?
+
+B: Ja docker images. Wat we doen is namelijk <eh> ja. Je kunt lokaal nog steeds buiten Docker je applicatie draaien. <eehm> Maar dat is echt vaak gewoon alleen om kleine dingetjes te testen.
+
+J: Ja
+
+B: Met maven builden we al images. Dus met extra parameter heb je allemaal images. en dan run je je Docker instantie, je hele set.
+
+I: En is dat een fijne manier om te werken? Want ik kan me voorstellen dat je soms ergens mee bezig bent en dan wil je heel snel achter elkaar testen of het al werkt.
+
+B: Shortcuts maken. Dus eh. Een andere manier bedenken om te versnellen.
+
+R: Ik had wel het idee inderdaad dat de eerste paar keer dat ik echt gewoon <eh> nadat ik unit en integratietesten had geschreven en ik wil het gewoon even proberen dan draai ik het wel gewoon in een applicatiecontainer. Meerdere keren een container opstarten en debuggen dat schiet niet op.
+
+J: Dat is juist eigenlijk ook het grootste vervelende aan hoe we dat met Docker containers doen. Want als je aan 1 deelsysteem bezig bent moet je gelijk drie andere starten. Drie andere containers. Vaak moet je dan ook even een versietje updaten of even pullen. Of wat dan ook. En dan moet je die even bouwen. Of. Voordat je hem uiteindelijk draaiend hebt en echt kunt testen wat je doet ben je zo een kwart... zo een tijd verder.
+
+B: Wat ik doe is, ik kopieer een war file naar een docker container. Hot deploy. In een draaiende container. Maar dan nog steeds. Je moet een hele war bouwen, je kunt niet rechtstreeks code daar wijzigen.
+
+J: Dat doe ik dus wel door in IntelliJ gewoon explode war en dan een hot reload.
+
+I: Eigenlijk heeft iedereen daar ook z'n eigen oplossing voor. Hoe dat lokaal het beste werkt.
+
+R: Ja
+
+B: Ja
+
+R: Wat ik zelf nog ontzettend fijn vind is dat ik met een lokale DNS werk. Dat werkt ontzettend goed. Met Docker DNS.
+
+J: Bij mij doet 'ie het niet meer.
+
+I: Zou daar hulp bij nodig zijn, het lokaal de omgeving inrichten, of? Misschien kijken hoe iedereen het doet en daar een tiplijst van maken?
+
+B: Maar dat doen wij dus ook. Je kijkt bij iemand anders. Oh, je hebt het op die manier. Nou ik vind die van mij handiger.
+
+J: Maar dat ligt er helemaal aan aan welke deelsystemen je werkt of wat de hoofdmoot van je werk is. als je puur <eh> REST API werk doet dan is veel interessanter om even een war in je eigen service container te draaien. Ben je vooral met de frontend bezig dan ben je vooral geintereseerd in NPM. Dan zou je Docker niet eens draaien.
+
+B: Precies, GP doet dat ook niet. Die heeft gewoon z'n eigen appicatie draaien, daar test hij alles op.
+
+R: Wat ontzettend zou helpen is als je <eeh> iedereen gaat dadelijk z'n eigen laptop mee moeten brengen (notitie: Ontwikkelorganisatie gaat over naar BYOD). Enne, Docker werkt gewoon nog steeds veel en veel beter odner Linux. En, het probleem is zegmaar vanwege security richtlijnen moet je een encrypted distributie hebben. En ik heb nog niet kunnen vinden hoe nou een dual boot kunt maken waarbij je de nieuwe linnux distro die je er langs zet encryp.t als jedaar een standaard oplossing voor bedenkt dat je een enorme boost geeft aan de productiviteit. Nu zit de ene op Mac ander op windows en de ander zit op Linux. zegmaar. Ik zie dat met Mac ontwikkelen zitten ze met de DNS te kloten. Daar kun je volgens mij geen lokale DNS op draaien. Ja andere mensen werken op Windows, dat is ook neitecht fantastisch samen met Docker. Dus als je mensen zou willen helpen, dan zou je daar een oplossing moeten bedenken.
+
+I: Oke, genoteerd.
+
+R: Dat is misschien meer iets voor systeembeheer, maar ik benoem het hier.
+
+I: Of misschien een dekstop-as-a-service? Een remote desktop achtig iets.
+
+J: <uuuhm>
+
+<gelach>
+
+I: Goed. Nu dat je dat dashboard hebt, daar kun je mooi je eigen applicatie starten in  de ontwikkelomgeving. Jullie weten wel hoe het er eerst aan toe ging, dat de ontwikkelomgeving meer gestandaardiseerd was eigenlijk. Je kreeg gewoon een standaard Jenkins op een bepaalde manier geconfigureerd en daar kon je zelf vrij weinig aan doen. Nu heb je veel meer vrijheid. Eigenlijk alle vrijheid om diensten te starten die je nodig acht tijdens het ontwikkelrpoces. Maken jullie daar ook gebruik van? Of is de standaardtoolset, Jenkins, Gitlab, Sonar, Nexus met Docker registry dan erbij, is dat voldoende?
+
+J: Eigenlijk wordt er eigenlijk geen gebruik van gemaakt. Die instanties draaien en er zit nooit meer iemand aan. Keer proberen een nieuwe versie te draaien, maar maakt het wat uit. Je zit zo snel in het vaarwater van de rest van het team.
+
+I: Maar ook bijvoorbeeld Jenkins plugins. Jullie hebben nu alle vrijheid om plugins te installeren.
+
+J: Ja dat durven we ook niet want dan zijn we bang dat er <eeh> de pipeline omvalt.
+
+R: Nouja..
+
+I: Jullie maken gebuik van Jenkins 2 en Jenkinsfile toch?
+
+J: Ja.
+
+I: Maar dat is ook iets, dat is door iemand anders bedacht zegmaar?
+
+B: Ja. Door R. Door R opgezet.
+
+I: Daar doen jullie nu dan niets aan? Dat draait?
+
+B: Onderhouden. Want er zijn uiteraard. Er komen nieuwe subsystemen bij. Er zijn wijzigignen die wij willen hebben, dat het zich net iets anders gedraagd. Dat soort dingen.
+
+I: Ja.
+
+B: Dus we onderhouden het wel, maar het is wel opgezet door R.
+
+I: Hoe zouden jullie je kennisniveau van Jenkins inschatten? zijn jullie experts?
+
+B: Jenkins as is, nee. Wat we onderhouden is inderdaad die Jenkinsfile en hoe de pipeline zich gedraagd. De rest van Jenkins laten we staan. Maven plugins, welke versies. Ik weet waar ze staan. Voor het laatst heb ik drie maanden geleden gekeken.
+
+J: Ja er zijn een hele boel die moeten geupdate worden. Tenmisnte die kunnen geupdate worden. Maar dan ben ik bang dat het omvalt.
+
+B: Wat dat betreft is onze productieomgeving veel belangrjiker dan tweaken dat het up to date blijft of wat dan ook. Voor ons is het gewoon productie. en productie is belangrijker dan features. Zo zie ik dat.
+
+I: Maar wat vind je van het feit dat de verantwordelijkheid voor het onderhouden van de hele ontwikkel en bouwstraat bij het ontwikkelteam ook neer te leggen in plaats van bij een beheerteam die dat onderhoud.
+
+J: Echt superfijn, maar dan voor een klein project. Voor een groot project wordt het te groot waardoor je niet... Of dat moet je 1 iemand hebben die dat doet. Dan heb je in principe je beheerclubje binnen je grote team.
+
+R: Ja bij ons is de discussie nu een beetje van. eerst waren er mensen extern voor. Zegmaar. die zijn eigenlijk weg gegaan zegmaar. Fijner zou zijn geweest dat ze niet weg zouden zijn gegaan. Maar gewoon in het team verder zijn getrokken. Veel mensen hebben nu het gevoel van ik kom niet meer aan programmeren toe. Ik ben eigenlijk 80/90% van m'n tijd bezig met het onderhouden en beheren van de buildstraat.
+
+B: Beheren, echt systeembeheer.
+
+R: Ja dus.
+
+I: Wat voor systeembeheer taken zijn er dan zoal?
+
+B: Onderhoud van die pipelines. Onderhouden van de omgevingen. Ontwikkelen nieuwe feautres. Als je iets wil, vroeger konden we dat uitbesteden aan R. Opzetten van nieuwe omgevingen of tooling. We zijn aan het experimenteren met Nexus drie. En nu op dit ogenblijk, alsjeblieft niet er aanzitten. Want dan valt het om.
+
+I: Het idee is natuurlijk, als ontwikkelaar, weet je het beste hoe je je build pipeline ingericht wilt hebben en hoe je dat kunt streamlinen. Dus je hebt nu ook de vrijheid om te zeggen van, Jenkins, ik wil dat niet gebruiken. Ik wil een andere tool gebruiken. Of ik wil alles in Gitlab gaan doen. Die vrijheid is er.
+
+J: Maar dan moet je eerst als team wat op kunnen bouwen. Het ging van nul naar honderd in het begin en daardoor is het boven ons hoofd gegroeid en nu. We zijn ook heel veel bezig met fixen fixen fixen! Brandjes blussen In plaats van als team dat je er langzaam naar toe groeid waardoor het beter past. Dat is een beetje.
+
+I: Dus in het begin is er teveel van buitenaf gepushed in een bepaalde richting?
+
+J: Zeker, dat idee heb ik tenminste.
+
+R: Ja ik heb daar zelf niet zo heel veel moeite mee. Ik ben zelf ook iemand die, ik voel me meer een generalist. Maakt me niet zoveel uit of ik nou aan het programmeren ben of met Dockerfile aan het werken ben. Of aan de build pipeline. Zegmaar. Maargoed, andere mensen vinden het veel fijner om gespecialiseerd ergens mee bezig te zijn.
+
+I: Ja
+
+R: Ik denk wel dat het goed is dat een team z'n eigen toolset kan kiezen. Want dat testx zegmaar dat <eh> is erg opgedrongen van buiten. Tenminse, zo heb ik dat ervaren. Vooral het werk met Excel sheets heeft echt tot problemen geleid. Het argument want ik daar voor aanvoerde zegmaar werd van tafel geveegd. Tot op het moment dat het niet meer werkte. Als je een teampje van vier hebt, en je hebt 1 tester. die alleen maar die testen beheerd. prima. Maar als je een groot project hebt en je gaat met branches werken, dan is het hel op aarde op een gegeven moment.
+
+J: Als we geen ART zouden hebben met TestX, maar gewoon dat de developers gewoon met protractor end-to-end tests zouden schrijven dan waren we een fractie van de tijd kwijt geweest denk ik.
+
+R: Ja, ja. Nu hebben we YAML als formaat. Dat werkt volgens mij ook wel aardig.
+
+J: Als ik zie hoe eenvoudig in principe een protractor script is, is het veel makkelijker dan zo'n hele testX met functions, dingetjes, excelletjes. Dan zit de configuratie een gedeelte in testx en gedeelte reporter, gedeelte protractor, webdriver, selenium. Allemaal bij elkaar, en kijken wat is nu wat en hoe speelt het samen. En welke versies. Vind ik best wel ingewikkeld.
+
+I: Jullie hebben dedicated testers in het team, wat volgens mij geen technische mensen zijn? Het hele TestX is natuurlijk verzonnen zodat dat niet technische mensen testautomatisering kunnen doen. Vind je dat dan dat je dedicated testers hebt eigenlijk niet fijn? Had je liever het testwerk gewoon onder de developers. En dat je dan bijvoorbeeld twee extra developers had gehad?
+
+J: Ja dat is lastig. Mijn persoonlijke mening is als je dus dedicated testers moet hebben. Dan zou een developer ook helemaal niks te maken moeten hebben met die ART. Want daar heb je dus die functionele mensen voor.
+
+I: Ja inderdaad, maar in de praktijk is dat dus niet het geval?
+
+J: Nee.
+
+I: Want wat moeten jullie dan doen voor hun? Moeten jullie TestX uitbreiden? Of wat is jullie werk?
+
+J: Uiteindeljik moeten we de ART's werkend houden. Docker infrastructuur onderhouden
