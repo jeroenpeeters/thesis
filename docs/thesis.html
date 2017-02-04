@@ -2637,7 +2637,30 @@ References are automatically generated from the BibTex file (References.bib)
 <p>I: Ja inderdaad, maar in de praktijk is dat dus niet het geval?</p>
 <p>J: Nee.</p>
 <p>I: Want wat moeten jullie dan doen voor hun? Moeten jullie TestX uitbreiden? Of wat is jullie werk?</p>
-<p>J: Uiteindeljik moeten we de ART's werkend houden. Docker infrastructuur onderhouden</p>
+<p>J: Uiteindeljik moeten we de ART's werkend houden. Docker infrastructuur onderhouden, de compose files voor ze onderhouden, af en toe een ART fixen.</p>
+<p>R: Vooral de compose files <heh>. En wat ook nog wel veel tijd neemt voor die ART is dat we inderdaad lokaal heb ik een Docker Compose configuratie gemaakt. nu onderhouden we een tweede applicatie definitie speciaal voor het Dashboard. Ja goed omdat je best wel veel componenten hebt is die dubbele configuratie onderhoud dat vreet gewoon tijd op. Zegmaar. Dus daar zou een stukje Docker Compose ondersteuning wel helpen.</p>
+<p>B: En we hebben ook nog een testomgeving, ketentest. Dat is anders. Dat is look-alike net als bij <R-Klant>. En dus dat is heel anders. Dat is niet een dashboard. Het zijn wel Docker Images en containers maar die registeren zichzelf. Die port forwarding en dat soort dingetjes. Die draaien volledig buiten alles om.</p>
+<p>I: Draaien die bij <R-Klant>? Of die draaien wel bij de Ontwikkelorganisatie?</p>
+<p>B: We hebben een kopie van de omgeving hier. Een versimpelde versie van de klant, zegmaar.</p>
+<p>J: Het betekend dus dat je per deelsysteem zes compose files hebt. Docker Compose plus een override, Art, Art-override, ketentest en ketentest override. Die moet je allemaal bijhouden dat is als er wat veranderd.</p>
+<p>I: En de applicatie definities voor het Dashboard?</p>
+<p>J: Ja die worden automatisch geconverteerd en geupload. Dus daar moet je af en toe wel eens iets aan doen maar niet zoveel. Alleen als je iets custom wilt draaien. Een hele boekhouding best wel.</p>
+<p>I: Laatste vraag is dan, hoe kijk je aan tegen de ondersteuning vanuit de Ontwikkelorganisatie voor het werk dat je doet? Bijvoorbeeld ondersteuning bij de ontwikkelstraat, testwerkzaamheden. Wat vind je van de kwaliteit van de hulp. Ik heb jullie horen zeggen dat jullie in het begin van het project misschien een bepaalde richting zijn opgeduwd. Bepaalde tooling, een bepaalde manier van werken. Er zijn hulptroepen weggenomen, wat vind je van de verdere support? Is dat te weinig?</p>
+<p>R: Ik vind dat het wel prima is. Kijk &lt;<eh>&gt; als je nou een voorbeeld neemt. We hebben zegmaar lange tijd een tekort aan resources gehad. Dat had misschien wat eerder opgepikt moeten worden. Maar dat is een kwestie van naar jullie toe gaan en een afspraak maken. Dat moet denk ik van twee kanten komen. Ik heb me daar verder ook niet zoveel mee bemoeid. J wat vind jij er van?</p>
+<p>J: Resources had gewoon twee maanden geleden al opgelost moeten zijn. Dat heeft teveel tijd gekost. Hoeveel uren we daar als team zijnde mee kwijt zijn geweest. Dat is echt gigantisch.</p>
+<p>R: Maar hoe kwam het dat het nou zo lang heeft geduurd?</p>
+<p>J: Ja, volgens mij omdat we op toestemming moesten wachten. Heeft met kosten, organisatorisch of met veiligheidsredenen te maken.</p>
+<p>I: Volgens mij zijn er ook gelijdelijk in stappen extra resources vergeven. Maar het klopt dat het eerst goedgekeurd moet worden. Daarnaast, hoeveel ruimte je ook geeft, als ongebruikte resources niet meer worden vrijgegeven dan zul je altijd een punt bereiken waarop er tekort is.</p>
+<p>J: Op een gegeven moment bereikte we een punt waarop we een paar keer per week moesten opruimen.</p>
+<p>R: Ja een paar keer per week inderdaad.</p>
+<p>I: Volgens mij is er nu ook een proces ingericht zodat jullie dat makkelijker zelf kunnen doen.</p>
+<p>B: Vroeger was het zo dat we aan het eind van de sprint alles moesten opruimen maar dan houden we dus een stuk of 300, nee 200 over van de 800 images. We moesten jullie vragen om dit te doen.</p>
+<p>I: Dat betekende ook dat jullie altijd afhankelijk waren van ons. Dat is nu dus niet meer zo.</p>
+<p>J: Het is heel stom geweest om niet eerder naar jullie toe te komen over die Jenkins workspace. Die is ook een paar sprints lang onvoldoende groot geweest, waardoor we drie keer per dag moesten opschonen. Nu die ruimte 50Gb is, is het zo veel beter.</p>
+<p>R: Maar misschien ook beter en naar de juiste personen escaleren en niet zelf lang aanmodderen. Jullie hebben toestemming nodig, maar we kunnen ook zorgen dat er vanuit ons meer druk op gelegd wordt.</p>
+<p>J: We denken ook te snel, dit is wat we hebben en daar moeten we het mee doen in plaats van kunnen we niet meer krijgen. Kunnen we niet meer krijgen?</p>
+<p>&lt;<hahaha>&gt;</p>
+<p>I: Goed. Dank voor het gesprek.</p>
 <h2 id="team-3" class="unnumbered">Team 3</h2>
 <table>
 <thead>
