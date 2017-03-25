@@ -63,25 +63,6 @@ Looking for the latest version?
   - Whether the current situation is an improvement on the previous one
   - How much time normally is spend on the activity, when applicable
 
-
-# Todo
-
- - [ ] Add picture of current pipeline architecture
- - [ ] Add overview of manual steps in CD process
-    - How much time does it take
-    - How often does it happen (once, daily, every sprint, ...)
-    - What kind of faults occur, what frequency?
-    - Why isn't/couldn't this step be automated
- - [ ] Indicate maintenance effort
-    - What maintenance jobs are there?
-    - What frequency, how much work, what goes wrong?
-
- - [ ] Create a structured problem description
- - [ ] Identify CI solutions and performance in practice
- - [ ] Identify improvements with thorough problem analysis
- - [ ] Realize the improvements
- - [ ] Report on the performance of the improved situation
-
 # Notes
 
 1. Beschrijf software development aanpak van de ontwikkelorganisatie.
