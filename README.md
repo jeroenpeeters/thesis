@@ -1,7 +1,7 @@
 # Thesis
 This repo contains the source text of my Master's thesis in Software Engineering. It is a work in progress.
 
-Check [HISTORY.md](HISTORY.md) to see what changed. See the [todo list](TODO.md) for things that need to be worked on.
+Check [HISTORY.md](HISTORY.md) to see what changed. [This Trello](https://trello.com/b/dGGCpNGZ/thesis) board documents the backlog and work items done.
 
 Looking for the latest version?
 - [HTML](http://jeroenpeeters.nl/thesis/thesis.html)
