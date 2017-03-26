@@ -363,3 +363,193 @@ s: Ja.
 J: Ja is dat nog ITB officieel? Volgens mij is dat door het weggaan van L ook meer bij het team komen te liggen.
 
 20:31
+
+S: Ja, de infra. Dus de servers, dat ligt bij ITB. Alleen de software die daar op staat in principe, buiten een kale windows. Dat is wordt ook door ons onderhouden.
+
+J: Het was L die dat stukje eerst deed.
+
+S: Bij zijn vertrek is dat binnen het team komen te liggen.
+
+I: En hoe ervaren jullie dat? Hoe gaat dat?
+
+S: Mja, omdat het draait hebben we er meestal niet zoveel problemen mee. Maar. Mocht er iets bijkomen. Een Exchange server ofzo.
+
+J:  <hehe>.
+
+S: Dan, <eh>. Waar wij geen ervaring mee hebben. We willen gewoon iemand binnen de ontwikkelorganisatie hebben die dat voor ons doet. Dat is gewoon niet onze expertise. Die expertise is op dit moment ook niet binnen de ontwikkelorganisatie. Het loopt nog niet zo snel, loopt niet zo soepel.
+
+J: Nee maar volgens mij was het punt ook een beetje dat er te weinig Windows omgevingen in beheer zijn om er echt dedicated iemand op te zetten. Voor L was gewoon te weinig werk om... En ja, dat snap ik wel. Je kunt ook niet voor vier uur in de week iemand neerzetten. Misschien nog wel minder. Dus het loont waarschijnlijk niet om daar iemand op te zetten.
+
+I: Nee
+
+J: Maar als er dan eens wat moet gebeuren dan is dat wel een uitdaging.
+
+S: Natuurlijk kunnen we het wel oplossen binnen het team hoor. De kennis is er wel, maar..
+
+J: Ten koste van de velocity.
+
+S: Ja ten koste van de velocity van de ontwikkeling in de sprint.
+
+I: En dat is ook handmatig werk ook? Het onderhouden van die omgevingen?
+
+S: Ja.
+
+J: Ja het zijn gewoon statische omgevingen heh.
+
+I: Over hoeveel virtuele machines hebben we het dan?
+
+S: <eeh> volgens mij hebben we er vier denk ik, per omgeving. Vier hebben we er nodig om het hele landschap te hosten.
+
+I: Ja
+
+S: En daar hebben we vijf varianten van. En die vijf setjes zegmaar. Vijf keer vier servers. <eehm>. Op die vijf setjes kunnen we twee instanties draaien. Gewoon op dezelfde server maar er naast. Die zijn wel allemaal statisch.
+
+I: Oke
+
+S: We hebben zegmaar een dev omgeving. Die telt vier servers. Daar ontwikkelen we tegen. Daar kunnen we twee verschillende versies op zetten. En dat hebben we dan vijf keer. Eentje voor de ART zegmaar.
+
+J: Eentje voor test.
+
+S: Eentje om productiebugs te testen.
+
+I: Dus als je deployed zeg maar, met je deploy knop, dan moet je ook kiezen waar?
+
+S: Ja. Maar eentje is nu dedicated in gebruik door performancetesten.
+
+J: Ja.
+
+S: En eentje voor de art-omgeving.
+
+I: Moet je daar wel eens over afstemmen binnen het team? Van, ik ga nu dit deployen daar.
+
+S: Is opzich wel handig. Want als je aan het testen bent en iemand drukt op die knop dan kun je weer overnieuw beginnen.
+
+J: <haha>
+
+I: Gebeurt dat ook?
+
+J: Ja, af en toe.
+
+S: Af en toe doen we dat expres.
+
+J: <haha>
+
+S: Om J even scherp te houden. <haha>
+
+I: Maar het geeft geen grote problemen bij jullie?
+
+J: Nee, ja weet je we zitten allemaal bij elkaar op de kamer. Dus meestal is het van 'joh ik ga even naar test deployen, is dat een probleem?' Nou en als er dan niemand geageerd dan druk ik op de knop.
+
+I: <ehm> ok, ja dan heb je natuurlijk ook nog VM's voor je buildomgeving, voor TFS?
+
+S: Die, ja. Die hebben wij ook. Maar dat ligt niet bij het team. Dat ligt wel bij ITB ook. Ik kan er niet bij ook. Die andere VM's daar ben ik gewoon administrator op. Maar die TFS server daar kunnen wij niet bij. Als ik daar iets op wil dan schiet ik tickets in. Die komen meestal bij E terecht denk ik. Een nieuwe gebruiker toevoegen ofzo.
+
+I: Kun je daar nog veel aan configureren? Of is dat gewoon wat het is?
+
+S: TFS?
+
+I: Ja, of kun je daar met plugins werken of, ja?
+
+S: Neuh, gebruiken we allemaal niet.
+
+I: Het is gewoon een standaard installatie?
+
+S: Wij gebruiken TFS heel weinig eigenlijk. Alle mogelijkheden.
+
+I: Je gebruikt het alleen als code repository? Dus git?
+
+S: Ja er hangt Git ander inderdaad als repository. En we gebruiken hem als buildserver ja.
+
+I: En voor de rest alle custom automation dat zijn powershell scripts?
+
+S: Ja, TFS kun je ook helemaal inrichten dat dat net als Jira al je tickets bevat en zo.
+
+J: Ja en zou je TFS niet in principe ook als je continuous integration oplossing kunnen gebruiken? Dat het als een soort scheduler voor verschillende jobs kan werken?
+
+S: Jaja, dat sowieso ja.
+
+I: Jullie gebruiken het toch ook als continuous integration oplossing? Voor het bouwen zegmaar?
+
+S: Ja elke check-in die gaat 'ie bouwen zegmaar. En SonarQube.
+
+I: Dat gebruiken jullie ook?
+
+S: Ja SonarQube wel.
+
+J: Daar zouden we in theorie ook nog stapjes kunnen maken. Dat je zegt iedere keer als je incheckt dan doet 'ie ook SonarQube.
+
+S: Ja dat doet 'ie ook.
+
+J: Oh dat doet 'ie ook? Ik dacht dat jullie elke keer apart die build moesten starten.
+
+S: Nee, alleen voor App1 v6. Dat is zo ingericht, ik weet niet waarom. Ik denk omdat die build heel lang duurt ofzo.
+
+J: Maar voor andere applicaties als jullie een build doen gaat ook automatisch Sonarqube af?
+
+S: Ja.
+
+J: Dat is wel netjes.
+
+I: Doen jullie ook iets met die informatie die sonar geeft? Of komt het voornamelijk terug in de kwaliteitsrapportage en zie je het op die manier?
+
+S: Nou, <eh>, we doen er wel iets mee hoor. Maar voor die nieuwe applicatie proberen we hem goed te houden zegmaar. die oude applicaties dat is gedoe. Er zijn gewoon zoveel violations. We proberen het wel een beetje aan pakken. Het is  moeilijk onderhouden.
+
+J: Het kwaliteitsdashboard staat min of meer zo afgesteld dat de baseline zoals we de applicatie binnen hebben gekregen dat is de geaccepteerde technische schuld. En als we aan die applicatie sleutelen dan mag het niet slechter worden.
+
+S: Ja.
+
+J: En als wij het kunnen uitleggen aan onze kwaliteitsmanager waarom het toch verslechterd is, of als er bijzondere omstandigheden zijn dan wordt er zo mee omgegaan van het is legacy, we weten het.
+
+S: Maar die rules die in Sonar zitten, dat profiel, dat wordt ook regelmatig uitgebreid. En ja, dan komen er weer een paar duizend violations bij bij ons. En ja, dan moeten we de norm weer ijken en dan gaan we weer verder. Maar eigenlijk precies de kwaliteit meten, historisch en trends dat kun je eigenlijk niet meer zien.
+
+I: Nee, snap ik. Maar kunnen jullie dan inzichtelijk krijgen wanneer je een wijziging doet of dat extra violations tot gevolg heeft.
+
+S: Ja, dat wel. Maar ook beperkt hoor moet ik zeggen.
+
+I: Ja, als het eenmaal zo'n grote hoop is, dan komt er een klein beetje er bovenop bij.
+
+S: Ja, maar dat zie je wel. Dat kun je wel zien.
+
+I: Het heeft voor jullie niet perse prioriteit?
+
+S: Nee, eigenlijk niet.
+
+J: Maar echt verslechteren doen we het ook niet.
+
+S: Nee, dat niet. Maar als je kijkt naar die hele hoop, je zou dat eigenlijk gewoon terug willen brengen naar nul.
+
+J: Ja we zouden eigenlijk gewoon stories op de backlog moeten hebben met betrekking tot technical dept. Maar dat doen we niet.
+
+S: Ja, we hebben wel per story een taak. Kijk even naar de kwaliteit. De dingen die je geraakt hebt, kun je daar nog iets aan verbeteren? Maar het is allemaal minimaal wat mij betreft.
+
+J: We hebben geen overkoepelend plan inderdaad om over een half jaar of een jaar op de nul te komen.
+
+S: Ook een beetje met het idee in het achterhoofd dat we alle applicaties willen herschrijven. De huidige software is of gaat richting end of life eigenlijk. Dus de vraag is of je daar nog moet investeren. Wij hebben gekozen om het opnieuw te doen.
+
+J: Waar we waarschijnlijk met dit tempo over een jaar of acht mee klaar zijn. Maar.
+
+S: Sneller dan Sonarqube op nul krijgen denk ik. <haha>
+
+J: Ja, zou het?
+
+S: Ik denk het wel.
+
+<haha>
+
+I: Goed, oja. Leveren jullie de kwaliteitsrapportage ook op aan de klant? of kijkt die daar helemaal niet naar?
+
+S: Ze kijken er niet naar.
+
+I: Maar hij wordt wel opgeleverd?
+
+S: Nee, hij wordt niet opgeleverd maar ze kunnen er gewoon bij.
+
+I: Maar, waarom?
+
+S: Nou ik heb het wel eens gevraagd volgens mij maar.
+
+J: We zouden dat wel onderdeel van de review kunnen maken. Even twee minuten met elkaar naar de kwaliteitsrapportage kijken ofzo. Ik weet niet of dat iets toevoegd aan het proces maar.
+
+S: Ik weet niet of het iets toevoegd.
+
+30:26
