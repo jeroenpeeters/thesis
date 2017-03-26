@@ -2,18 +2,18 @@
 
 Property        Value
 ------------    ---------
-Date            x
-Duration        x
+Date            19-12-2016 14:00
+Duration        1:10
 Present         ***I:**** interviewer
                 ***S***: developer 1
                 ***J***: tester 1
-Team members    3
+Team members    4
 Team size       Small
 Project size    Small
 
 ### Transcript {.unnumbered}
 
-This paragraph contains the annotated transcript of the interview. Three developers took part. Since the interview was in Dutch the transcript is also in Dutch. Annotations are in English.
+This paragraph contains the annotated transcript of the interview. One developer and one tester took part. Since the interview was in Dutch the transcript is also in Dutch. Annotations are in English.
 
 S: developer
 J: tester
@@ -134,3 +134,232 @@ I: En wat voor configuratiewijzigingen zijn dat dan?
 S: <eeh> Nieuwe server endpoint ofzo, database endpoints. Dingen die er bij komen, koppelingen met andere databases. Dat soort dingen. Of instellingen voor nieuwe rechten.
 
 08:15
+
+
+I: Ja ik heb verder geen idee hoe je een dot net applicatie deployed. In dit geval zijn het gewoon executables die je
+
+S: Ja in principe alles staat al ingericht natuurlijk, dus voor de bestaande applicaties kun je gewoon de binaries vervangen. Voor de website moet je voor IIS de webserver wel even aangeven van ik wil een website hebben op dit adres en hier staan de binaries zegmaar. En deze authenticatiemethode zijn nodig. In principe is dat eenmalig nodig. En dan kun je daana gewoon die bestanden vervangen als je dat wil.
+
+I: Want als je een nieuwe lege windows server zou krijgen, wat moet er dan nog geinstalleerd worden? Want je zij ik kan hier ook intern met een druk op de knop deployen, maar zou dat ook kunnen naar een verse windows server installatie?
+
+s: Onze scripts wel, nouja vers. Als er maar IIS op staat.
+
+I: Oke, dat is de enige afhankelijkheid? en de scripts doen de rest?
+
+S: Ja, de scripts doen  de rest die configureren ook IIS bij ons.
+
+I: En wat voor scripts zijn dat dan? gewoon bash?
+
+S: Nee powershell.
+
+I: Powershell, ja natuurlijk. Allright <ehm>, ja met hoeveel ontwikkelaars zijn jullie in het team?
+
+s: Drie.
+
+I: Een tester of twee testers?
+
+J: Een tester, drie (ontwikkelaars) en een tester. Ja
+
+S: en in principe informatieanalyse (fluisterend: voor zover we dat doen). Dat ligt bij de klant.
+
+I: Oke, <ehm> ja de vragen zijn wel erg toegespitst die van onze infrastructuur gebruikmaken. Want ja, we weten dat daar wel problemen mee zijn. dus een van de vragen is welke problemen kom je tegen in eht dagelijhks werk. maar ik weet niet of dat bij jullie aan de hand is. Is de tooling eigenlijk goed op elkaar afgestemd?
+
+S: Van het iq-team bedoel je?
+
+I: Nee, wat jullie gebruiken aan tooling zegmaar. Om de ontwikkelstraat in te richten, dagelijks je builds te kunnen doen, automatische builds te kunnen doen.
+
+S: Ja dat werkt opzich wel.
+
+I: Wat gebruiken jullie daarvoor?
+
+S: <ehm> TFS.
+
+I: Gewoon TFS?
+
+S: En maatwerk.
+
+J: Dus TFS en dan zegmaar al die powershells die daadwerkelijk de deployment doen. Die zijn door de voorganger ontwikkelaar in elkaar gezet. <ehm> Dus ja dat werkt goed.
+
+S: Ja TFS die roept een paar van die powershells aan na zo'n build. En we hebben ook een eigen websiteje gemaakt waar J, en wij ook, die deploys mee doen.
+
+J: Die roept ook powershells aan.
+
+S: Ja die roept uiteindelijk ook weer powershells aan. Scant gewoon mappen naar bepaalde versies die daar staan. En dan kun je die gewoon kiezen en deployen.
+
+I: Over hoeveel powershell code hebben we het dan? Paar honderd regels of een paar duizend?
+
+s: Ik weet het niet precies. Vijfhonderd ofzo, ik gok maar wat hoor. Zoiets. Misschien iets  meer. Maja, zoiets zegmaar. Tot duizend.
+
+I: En het testen, de automatische testen. Waar zijn die in geschreven?
+
+J: <eh>, ik maak gebruik van TestX protractor en TestX.
+
+I: Nou dat is toch nog een dingetje dan <gelach>
+
+S: Nou..
+
+J: gedeeltelijk.
+
+S: Als je het echt wilt weten.
+
+I: Ja ik wil het echt weten.
+
+S: Het was niet onze keus.
+
+I: Ok.
+
+S: Maar het is echt gepushed.
+
+I: Vanuit? Door de ontwikkelorganisatie?
+
+S: Ja.
+
+J: Ja. Toen wij begonnen, of toen ik begon in iedergeval was echt nog het standpunt  van de organisatie van het moet TestX zijn want dat is nou eenmaal onze standaard.
+
+I: Ok.
+
+J: Inmiddels staan ze meer op het standpunt van laten we per project kijken wat werkt. Maar wij hebben best wel veel maatwerk, eigen specifieke keywords moeten ontwikkelen in Testx protractor om al onze testjes te kunnen uitvoeren. En dat heeft voor een deel gewoon te maken met dat die applicaties verouderd zijn. En nooit ontwikkeld zijn om geautomatiseerd te kunnen testen.
+
+S: Ja het werkt met rare popups en iframes en allemaal dat soort dingetjes. Het werkt gewooon niet lekker.
+
+
+J: Nee. en anderzijds denk ik ook dater nooit een goedo nderzoekje gedaan is naar is dit nou de tool om deze applicatie mee te testen. We zijn nu bezig met een stukje nieuwbouw. Dat is eigenlijk om de bestaande applicaties als Angular webapplicatie na te bouwen. Gebruiken we ook weer TestX en dan zie je dat dat veel beter aansluit. Vooral omdat protractor specifiek bedoeld is om Angular webapplicatiss mee te testen. En dan zie je dat zo'n tool wel geschikt is. Terwijl dat voor die ouwe meuk van ons gewoon niet geschikt is. En dat dat eigenlijk ook heel veel capaciteit bij onze developers gekost heeft om die keywords zo te maken dat ze met de quirks van onze applicaties kunnen omgaan.
+
+I: Kan jij zelf keywords maken? Of dat niet?
+
+J: Nee. Nee. nee.
+
+I: Ok. En gebruik je dan de Excel integratie?
+
+J: Ja, ik weet wel dat, hoe het het ook alweer. Yaml. Dat er een andere methode was.
+
+I: Ja.
+
+J: En toen dachten wij van nou met de hele berg aan excellen die we al hebben liggen zijn we waarschijnlijk twee jaar bezig om dat om te bouwen en om te zetten. En in gedeeltelijke oude applicaties die waarschijnlijk ooit wel uitgefaseerd gaan worden. Dat App1 hopen we niet heel veel testen meer voor te hoeven schrijven.
+
+S: Ja, App1 is weer een andere tak van sport. Is winforms. Daar is TestX niet zo goed mee.
+
+I: Nee, winforms is gewoon een native windows applicatie?
+
+S: Ja, zegmaar native windows applicatie op zelfs hele oude techniek. Maar dat kan TestX niet zo goed. Of protractor.
+
+I: Nee, dat is webbased, dus ja.
+
+S: Daar heeft iemand, die ken je denk ik wel, B.
+
+I: Ja ja.
+
+S: Ja G (iq-team lid) heeft daar een beginnetje mee gemaakt. toen is B door gaan ontwikkelen. Beetje hetzelfde idee als TestX. Is ook rondom Excel gebouwd. Maar die roept dan uiteindelijk geen protractor aan maar een soort native windows UI engine die <uhm> ja die test dan zegmaar de applicatie. Ja dat <eh>... Daar kunnen we het nog wel een weekje over hebben denk ik.
+
+J: <gelach>
+
+S: Maar in principe is dat in beheer bij ons.
+
+I: Maar is dat dan...
+
+S: Trouwens, we gebruiken een ding van jullie. XLS2Test.
+
+J: <ehh> Ja die staat voor winart wel aan geloof ik.
+
+S: Ja.
+
+J: Voor het <eh> Testx is die uiteindelijk weer uit gegaan. Maar voor winart is het allemaal aan blijven staan.
+
+S: Het is een module die zet die Excel sheets om.
+
+I: Ja, naar Testx <eh>
+
+ 15:29
+s: objecten. Ja. Dus dat word nog wel gebruikt voor onze windows applicatie. Want die excel sheets kan ik ..... doen en dan krijg ik daar een object voor terug. anders moet dat native ook weer gecodeerd worden.
+
+I: En jullie draaien dat zelf ergens. Ja precies. dat is volgen mij alweer oud.
+
+s: ja het is oud.
+
+J: het zal mij niet verbazen als wij nog de enige gebruiker daarvan zijn.
+
+I: ja dat zou kunnen ja.
+
+s: iemand heeft het een keertje uitgezet bij jullie. Ja ik weet niet of het jullie team is. Maar toen werkte het niet meer bij ons.
+
+I: Oh, het draaide eerst centraal?
+
+S: nee, het draaid denk ik in ons Docker <eh>
+
+I: Oh ok, handig om te weten. Maar opzich, bevalt TestX wel. Het moet alleen wel aansluiten bij de applicatie?
+
+J: Wat mij betreft voor nu voor zo'n moderne applicatie daar sluit de tool gewoon goed aan op de programmatuur en dan heb ik weinig klagen.
+
+s: Ja, als je het aan mij vraagt ben ik niet zo'n fan van Excel. Om dit soort dingen in Excel te doen.
+
+J: Het is misschien nog weer een volgende stap. ja en of Yaml daar de oplossing voor is dat denk ik eigenlijk niet.
+
+s: Ik vind ook niet dat wij onze 400 testen moeten gaan herschrijven.
+
+I: zou je daar misschien hulp bij nodig hebben. Niet dat wij dat met de hand gaan doen, maar meer in de zin van die testen automatisch migreren naar een ander formaat. de testen blijven hetzelfde, het is meer het formaat.
+
+s: Ja klopt.
+
+I: Bij Yaml zijn de keywords en alles blijft hetzelfde. Het is alleen een ander formaat.
+
+J: Ja ik vraag me alleen af wat de winst is als we dat nu zouden doen. In de zin van we hebben met heel veel effort uiteindelijk voor onze oude webapplicatie behoorlijk stabiel gekregen. Er wordt niet heel veel meer aan doorontwikkeld.
+
+S: Nee, dat is waar.
+
+J: Het is nu meer een beetje van... Het heeft heel veel effort gekost en het heeft nu een soort van volwassenheidsniveau bereikt. Die testen draaien nu al zo lang dat heel veel meer testen erbij schrijven willen we ook niet. Dan ben je zo een dag ART's aan het stampen. Het is nu iets van vier uur als we voor alle applicaties de geautomatiseerde testen aftrappen. Dus we zitten ook wel redelijk aan de limieten dat je niet meer testen erbij wil. En, dus ja wat win je dan zegmaar door heel veel effort te steken in het omzetten naar Yaml.
+
+I: Nee, en je kunt ook mixen en matchen. Je kun Excel en Yaml naast elkaar gebruiken.
+
+J: Het grote voordeel wat ik begreep van N is dat je geen merge conflicten meer hebt.
+
+I: Ja.
+
+J: en omdat wij toch eigenlijk voor die testen niet meer dan drie man tegelijk aan dezelfde test aan het ontwikkelen zijn.
+
+S: Naja, we coordineren dat heel goed. Toch? Als jij ART's aan het schrijven bent dan ga ik daar niet in rommelen.
+
+J: Ja, ook dat, ja.
+
+I: Ja, oke. Maar er is dus extra coordinatie binnen het team nodig.
+
+J: Maar we hebben ook wel periodes gehad toen we echt nog veel testen bij maakte. Dat het niet raar was als er drie man tegelijkertijd aan het ARTen waren. Maar dat hebben we ook al best een lange tijd niet meer. Toch?
+
+S: Nee, nee.
+
+I: Ok.
+
+J: En ik denk dat het voor WinART zal het sowieso niet kunnen om om te gaan naar Yaml.
+
+S: Nou, maar dan moeten we dat allemaal zelf gaan onderhouden.
+
+I: Ja, ik weet niet hoe dat precies opgezet is destijds door B.
+
+I: <ehm>, je zei net dat de doorlooptijd vier uur is, als je alle testen voor alle applicaties draait.
+
+J: Ja, ja.
+
+I: Doen jullie dat regelmatig?
+
+S: Ja, officieel. Eigenlijk willen we nog steeds een nightly run doen. <ehm>, maar onze kwaliteitsmanager heeft volgens mij de max staan op drie dagen. Dus als we dan drie dagen niet gedraaid hebben dan gaat het systeem piepen. Dus ja, ik weet niet of we dat doen elke drie dagen?
+
+J: Nee, de praktijk is een paar keer per sprint.
+
+S: Een keer per week minimaal.
+
+J: Ja zoiets. Behalve dan op het moment dat er specifiek voor een applicatie user stories opgelost zijn dat ik voor die applicatie los dan de hele ART draai.
+
+S: Maar niet alles.
+
+J: Niet alles van het hele landschap. Nee.
+
+I: Ok. <ehm>. Ja hoe  staat het met jullie met de  beschikbaarheid van de hele ontwikkelomgeving?
+
+s: die is 95% up ofzo. Dat is gewoon goed.
+
+I: Dat is ook iets dat gewoon hier wordt gehost door ITB?
+
+s: Ja.
+
+J: Ja is dat nog ITB officieel? Volgens mij is dat door het weggaan van L ook meer bij het team komen te liggen.
+
+20:31
