@@ -553,3 +553,59 @@ J: We zouden dat wel onderdeel van de review kunnen maken. Even twee minuten met
 S: Ik weet niet of het iets toevoegd.
 
 30:26
+
+I: En de testrapportage wordt ook opgeleverd aan de klant?
+
+J: Nou de testrapportage is eigenlijk ook niet meer dan de ART resultaten zoals die op het kwaliteitsdashboard staan. Ik schrijf niet los daarvan nog zegmaar een document of iets.
+
+I: Nee, maar die worden ook opgeleverd en daar wordt naar gekeken?
+
+J: Nee, daar geldt hetzelfde voor. die staan gewoon op het kwaliteitsdashboard. en dat is van buitenaf benaderdbaar voor hun. Dus als ze willen kunnen ze die openen.
+
+S: Ja maar daar staat alleen maar een getalletje. Zoveel testen geslaagd, gefaald.
+
+J: Ja, maar kunnen ze daar niet in doorklikken naar BIRT?
+
+S: Nou, dat werkt niet extern denk ik.
+
+J: Oooh, dat zou kunnen. Nou dan is het antwoord nee.
+
+I: Oke. En <uhm>, wat vind je eigenlijk van de manier hoe de testcases en dat soort zaken worden vastgelegd in Jira?
+
+J: Ja, ik vind een paar dingen. Af en toe doen wij redelijk kleine stories die eigenljik cosmetisch van aard zijn en dan vind ik het gewoon veel overhead om daar logical testcases voor te schrijven want of ik dan de testcase lees of de acceptatiecriteria in de story lees dat is bijna een op een hetzelfde omdat het zulke simpele stories zijn. Dus dan hebben wij inmiddels ook de vrijheid dat we mogen zeggen bij zo'n story om te zeggen van we verwachten nu nul logical testcases. Want anders zijn we echt aan werkverschaffing aan het doen.
+
+S: Voorbeeld. Een label aanpassen ofzo.
+
+J: Ja. Of verplaats een invoerveld. Naja, noem eens wat dom <eh>.
+
+J: Ennn.. Voor de overige stories vind ik het opzich goed om logical testcases te schrijven. Heb ik alleen nog wel eens wat moeite met het format zegmaar. Ik ben gewend dat ik of een beslistabelletje of zo'n matrixje of een graaf maak waarin je je logische paden tegen elkaar afzet. En zoiets kan ik niet kwijt in Jira. Dus nu heb ik dat ik alsnog voor mijzelf even uitteken wat de testgevallen moeten zijn. Dan denk ik van nou, nu heb ik voldoende informatie op m'n kladblok om die testen uit te kunnen voeren. Maar, oja, dan moet ik ze voor de administratie ook nog in Jira zetten. En op het moment dat die logical testcases daadwerkelijk geautomatiseeerd moeten worden. Dan denk ik van nou, dat is goed want dan hangt het samen met je kwaliteitsrapportage. Prima. Maar anders zou ik zeggen, wat voegt het toe.Je kunt die dingen ook op will not be executed zetten.
+
+I: Ja
+
+J: Wat betekend dat ze maar een keer uitgevoerd worden. Nou onze PO's kijken nooit naar die dingen. Ja jullie als ontwikkelaars doen vaak nog een review op de LTC's.
+
+S: Vaak, altijd.
+
+J: Altijd. Ja en daar wil het nog wel eens handig voor zijn dat een ontwikkelaar naar die testgevallen kijkt en dan ofwel tegen mij zegt van joh, je mist dit of dat. Ofwel dat je als ontwikkelaar ook kunt denken van, wacht, ik heb deze testsituatie over het hoofd gezien. Dat heb ik nog niet gebouwd. Dus, maar. Dat is wel handig. Maar ik vind dat het ook nog best vaak verzand in meer wat punten en comma's rechtzetten zegmaar in een administratief dingetje dan dat het echt de testen verbetered. Of dat het de kwaliteit van het ontwikkelproces verbeterd.
+
+S: Ja, eens.
+
+J: Toch.
+
+S: Ja. Ik moet zeggen dat ik het opzich best wel veel werk vind om zo'n LTC in Jira op te voeren. Je moet hem handmatig koppelen aan de story. Je moet, ja..
+
+J: Je moet er met het reviewen van de story ook nog aan denken om de status om te zetten naar reviewed.En hij moet op resolved staan, en.
+
+S: Je merkt echt.. Je kunt niet al die dingen achter elkaar uittypen. Je moet dan weer een nieuw issue maken, dingen koppelen. Het overzicht raak je ook best wel snel kwijt volgens mij.
+
+J: Ja klopt.
+
+S: Ik ben er wel aan gewend. Ik heb meestal twee schermpjes open staan. Links de story met de LTC's en rechts ga ik dan nieuwe dingen maken.
+
+J: Ja, doe ik ook, ja.
+
+S: Maar toch is het eh....
+
+J: Maar dat vind ik met reviewen ook. Je moet een LTC openen om te kunnen reviewen.
+
+34:42 
