@@ -606,6 +606,121 @@ J: Ja, doe ik ook, ja.
 
 S: Maar toch is het eh....
 
-J: Maar dat vind ik met reviewen ook. Je moet een LTC openen om te kunnen reviewen.
+J: Maar dat vind ik met reviewen ook. Je moet een LTC openen om te kunnen reviewen. Maar je mist dan de samenhang met andere LTC's terwijl in principe zou je dan willen zien van oke als de ene LTC dit afdekt, hoe hangt dat dan samen met wat de rest afdekt weetje wel. Dat overzicht mis je ook
 
-34:42 
+34:42
+
+S: Ja.
+
+J: Wat is de reden dat je dat vraagt eigenlijk.
+
+I: Nou omdat dat samenhangt met  <ehh>, bij de meeste projecten in elk geval, hoe de hele workflow is ingericht in zo'n continuous delivery straat. Want het begint natuurlijk met de wijziging die je wilt doen, je user story. En van daaruit begin je vaak te werken. En inderdaad, daar hangen die LTC's mee samen, de implementatie van de test case, de kwaliteitsrapportage. Het hangt allemaal met elkaar samen en <uhm>, ja als het ene heel veel extra werk of onnodige handelingen dan kan dat zie je bij sommige teams dat dat doorsijpelt in de rest van het werk.
+
+S: Ja, wij gaan daar best wel pragmatisch mee om. Soms heb je eigenlijk vijf LTC's nodig om verschillende scenario's te doen, maar die proppen wij vaak in 1 dan.
+
+J: Ja zeker als we toch al van.. Bij ons is er een mechanisme dat de PO per user story aangeeft of die hem belangrijk genoeg vindt om hem op te nemen in de ART.
+
+S: Ja of handmatig, we hebben ook nog een deel handmatig testen.
+
+J: Als die PO al zegt van joh, hij moet goed getest worden want hij moet goed opgeleverd worden, maar ach hij hoeft niet de regressietest in. Dan kun je iets makkelijker met je LTC's omgaan.
+
+S: Ja dat doen wij.
+
+J: Ja ik vind dat opzich ook wel terecht hoor.
+
+S: Ja, nee ik ook. Want anders zou ik het niet doen.
+
+I: Je zei dat jullie ook handmatig testen. Wat is de reden daarvan? Is dat heel moeilijk te automatiseren?
+
+S: Ja. <ehh> We hebben een aantal testen... We hebben een outlook plugin ontwikkeld. Ja, dat is gewoon moeilijk testen. We hebben het wel ooit op de backlog gezet om dat te maken. We hebben een proefje gedaan met de tooling die we ook gebruiken om de windows applicaties te testen. In theorie moet dat werken. Maar de klant vond dat teveel werk. En die plugin gaat er op termijn ook weer uit, dus. Dat gaan we ook niet meer doen denk ik. Zolang die in gebruik is gaan we dat elke keer handmatig testen, dat deel.
+
+I: Maar valt dat dan mee, het werk dat je daarmee hebt? Is dat ooit een probleem of niet?
+
+S: Ja, het is misschien een uurtje werk ofzo.
+
+J: Als ik hem helemaal doe ben ik een uurtje of twee bezig.
+
+I: Oke.
+
+S: En dan hebben we nog twee testjes denk ik, voor een service. Windows service die periodiek zegmaar draait. Ja vanuit de ART moeten we dat ding kunnen stoppen en starten zegmaar. Ja daar hebben we maatwerk voor nodig denk ik, want dat kan nu niet. Je moet eigenlijk op die Windows machine inloggen remote en dan de service stoppen en starten zegmaar.
+
+38:12
+
+S: Dat pastte toen niet in het automatiseringsproces dus dat doen we ook met de hand. En we hebben een hele set aan...
+
+I: Dat kan niet gewoon via powershell? Via dat scriptje?
+
+S: Jaja, dat kan wel.
+
+I: Maar je kunt niet op Windows remote inloggen en iets van powershell uitvoeren?
+
+S: Ja, dat kan je ook remote uitvoeren. Maar dat moet wel gemaakt worden. Laat ik het zo zeggen.
+
+J: Dan moet je de aansturing vanuit je tooling ook wel weer regelen. En dat zou dan weer custom werk zijn waarvan de klant zei, nou, laat maar zitten.
+
+S: Ja.
+
+J: En gezien hoe relatief weinig tijd, want het is maar een keer in de drie weken een uurtje voor een tester of ontwikkelaar om zo'n testje uit te voeren versus de ervaring die we toen hadden dat het best wel veel tijd kostte om dat in de tooling op te nemen, ja is toen besloten van het is het niet waard.
+
+I: Maar die handmatige testen is nooit een struikelblok? Aan het einde van de sprint, onder tijdsdruk?
+
+S: Ja,, ja.. we doen het liever niet maar. Het moet. We hebben geen andere oplossing er voor op korte termijn. We hebben nog een setje die is semi-automatisch. Een setje restful services die we testen.
+<eh> Ja ook een beetje een lang verhaal denk ik maar dat doen we met soap-ui. een test suite hebben we daarin gemaakt. Moet je af en toe wat handmatige dingetjes in doen.
+
+J: Ja het punt is, daar zouden we Win-ART voor moeten gebruiken..
+
+S: nou, of TestX.
+
+J: We willen natuurlijk.... We moeten eerst de uitgangssituatie goedzetten en controles doen.
+
+S: Ja dat kan ook in SQL heh.
+
+J: Misschien nog niet eens zo'n slecht idee trouwens.
+
+S: Nee, nee. Maar dan moet je..
+
+J: Ook dan moet je er weer effort in steken.
+
+S: Het idee was ooit van uh, services worden niet geautomatiseerd heeft iemand ooit gezegd. Automatisch getest. Ja de frontend die de service consumeert die moet je testen, maar de frontend is een mobiele applicatie die niet in beheer meer ligt bij de ontwikkelorganisatie. Dus ja die gaan wij nooit automatiseren.
+
+J: Het idee was we wachten met het automatiseren totdat die frontend ook bij ons in beheer komt, want dan gaan we die automatiseren.
+
+I: Maar dat is dus nog een andere applicatie die bij een andere partij in beheer is?
+
+S: Ja.
+
+I: En daar werken jullie dan wel nouw mee samen?
+
+S: Jawel.
+
+J: Wij bouwen de backend en zij bouwen de frontend. En uiteindelijk moet dat op elkaar klikken.
+
+S: Meestal gaat het wel goed.
+
+J: Totdat ze in productie gaan. en dan uh.
+
+S: Ja dan gaat het weer stuk, ik weet niet maar. Ja. 't is best wel complexe infra denk ik. Zit weer het Good platform tussen. Blackberry, is een of andere beveiliging. Lijkt een beetje op het Blackberry netwerk zeg maar. De applicaties draaien dan weer in een geisoleerde container. Met een VPN verbinding met het bedrijfsnetwerk. Maar die schil die er omheen zit veroorzaakt ook veel problemen.
+
+41:36
+
+I: Hebben jullie daar last van? Of zij juist?
+
+S: In principe hebben wij daar niet direct last van nee. Maar vaak dan in de ontwikkeling zie die Good schil er niet omheen en werkt alles. Dus ook met onze backend. Dan gaat het in productie met die Good schil er omhheen en de configuratie daar en dan werkt het niet meer.
+
+I: Ja, oke. Hebben jullie die mobile app ook hier om dingen mee te proberen?
+
+s: Nee eigenlijk niet.
+
+I: Hoe gaan jullie dan om met wijzigingen aan die backend service? Dat communiceren jullie op een of andere manier naar dat team?
+
+S: Ja, in principe ligt het een beetje bij ons. Er komt een wens van de klant, ik wil dit met die app doen. Wij kijken wat voor data daarvoor nodig is. Dan bedenken wij de interface en sturen we dan naar die andere partij. Die mogen daar wat van vinden. Meestal vinden ze er niks van.
+
+J: Het zijn opzich eenvoudige services. Het is niet alsof er zulke berichten over de lijn gaan.
+
+I: De communicatie met de klant loopt wel via jullie? dus jullie bouwen dan die backend service en dan communiceren jullie met het team dat de app bouwt..
+
+S: In principe niet, dat staat helemaal los dat doet de klant zelf. Ik heb technisch wel contact met ze maar functioneel en hoe die app eruit ziet daar doen wij niet zoveel mee. In principe niets.
+
+J: Het usability aspect wat natuurlijk aan zo'n app zit enzo dat is tussen die partij en de klant.
+
+43:04 
