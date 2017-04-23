@@ -723,4 +723,70 @@ S: In principe niet, dat staat helemaal los dat doet de klant zelf. Ik heb techn
 
 J: Het usability aspect wat natuurlijk aan zo'n app zit enzo dat is tussen die partij en de klant.
 
-43:04 
+43:04
+
+
+I: Hebben zij dan hun eigen setup van die tooling? Of van de applicaties om die app te kunnen testen.
+
+S: In principe testen zij niet met onze omgeving. zij hebben zelf een soort dummy service ingericht denk ik op basis van de interface beschrijving.
+
+I: Maar komt het dan echt pas voor het eerst samen in productie?
+
+S: Nee, nou, niet helemaal volgens mij. Wij lopen meestal een stuk voor met ontwikkeling van de backend. Dus die staat dan al in de testomgeving bij de klant.
+
+I: Ja.
+
+S: en op die omgeving kunnen ze dat wel testen.
+
+I: Oh ok. En daar wordt ook al gewerkt met dat beveilingsplatform, of dat dan weer niet?
+
+S: Nee, dat niet. Dat komt pas in productie naarboven en daar klapt het nog wel eens.
+
+J: Dat zou een goed idee zijn als ze dat al in de testomgeving doen.
+
+S: Ja dat weet ik maar dat was 'gedoe'.
+
+I: In dit geval is dit dus niet voor jullie een probleem en ook niet voor hun, maar meer voor de klant alleen?
+
+S: Uiteindelijk is het voor ons allemaal een probleem.
+
+J: Je krijgt vanuit productie dan vragen van kunnen jullie eens meekijken met wat er nu is gebeurd.
+
+S: Ja.
+
+J: En dan mis je inderdaad een geintegreerde omgeving. Die bouwer zegt dan van joh kunnen jullie je soap-ui projectje even sturen want dan weten wij precies hoe zo'n request eruit moet zien.
+En dan zeggen wij, stuur het berichtje wat er bij jullie uitkomt maar eerst naar ons misschien kunnen wij dat tegen onze software afvuren. En dat, ja, dan is het jammer dat je niet ergens een geintegreerde omgeving hebt waar we met z'n allen in kunnen kijken.
+
+S: Ja productie.
+
+<gelach>
+
+I: Of een soort pre-productie. Je weet ook niet wat de reden is dat ze dat niet gewoon in pre-productie of acceptatieomgeving hebben ingericht met dat beveiligsingsplatform erbij. Zijn dat licentiekosten waarschijnlijk?
+
+S: <eehm> Ja, ze hebben daar een omgeving voor, maar die is niet ingericht. Wat de reden daar precies van is weet ik niet. Tijd, kosten, kennis. Iets.
+
+I: Oke, duidelijk. <ehm> Andere teams die hebben de mogelijkheid.. <ehm> Jullie weten denk ik wel wat wij doen toch met het Docker platform? Of niet?
+
+S: Mja, ik weet wat Docker is.
+
+I: De andere teams hebben nu.. Kijk vroeger was het zo dat de contunous integration omgevingen werden beheerd door het interne beheer team. Dan had je 1 Jenkins, of iedereen had eigenlijk 1 Jenkins, 1 build server en daar werkte iedereen op. Of sommige teams hadden een eigen instantie. Maar daar kon je zelf niets op installeren, geen plugins of configuratie aanpassen naar de wensen van het team. Dat kan nu wel. Daarbij kunnen ze via het Docker Dashboard, die hebben jullie waarschijnlijk ook toch?
+
+s: Ja, hebben wij ook.
+
+I: Eigenlijk elke dienst starten die je nodig vindt ter ondersteuning van je ontwikkelstraat. Wat je als team maar wil. <ehm> Hebben jullie behoefte aan zo'n dienst? En dan met name in de Microsoft wereld. Docker komt natuurlijk ook naar Windows dus.
+
+S: Wij hebben daar nog niet echt behoefte aan denk ik. Misschien zou het het werk iets kunnen vergemakkelijken hoor. Maar het is nu allemaal ingericht.
+
+I: De standaard tooling die er is, werkt voldoende voor jullie project en team?
+
+S: Ja het werkt goed. Met alle scriptjes die wij eromheen gebouwd hebben zegmaar, naar onze eigen behoefte. Werkt dat opzich wel.
+
+I: Maar bijvoobeeld ad-hoc omgevingen kunnen...
+
+J: Ja, maar omdat het zo specifiek is, microsoft omgeving, denk ik dat de kans groot is dat je een beetje verzand in dezelfde situatie die we met de test tooling gehad hebben. Dat je dan een soort van standaardoplossing vanuit het IQ-team ondersteund kan worden. Maar dat dan in de praktijk gaat blijken dat die toch gezien onze omgeving niet helemaal voldoet en dat je dan best wel weer heel veel effort moet gaan steken in zoiets werkend te krijgen. en, ja dat is voor ons gezien alle investeringen die de klant heeft gedaan in zegmaar wat we nu draaiend hebben denk ik niet dat ze daar echt open voor zouden staan.
+
+s: Wat is Docker voor Windows exact.
+
+I: Dat is een hele goeie, daar moet ik ook nog beter in gaan duiken. Wat het nu is is dat Docker voor Windows ondersteund nu alleen Linux applicaties. Want Docker draait dan in de hypervisor. Je hebt dan eigenlijk Linux naast windows.
+
+48:04 
