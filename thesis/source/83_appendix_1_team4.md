@@ -789,4 +789,198 @@ s: Wat is Docker voor Windows exact.
 
 I: Dat is een hele goeie, daar moet ik ook nog beter in gaan duiken. Wat het nu is is dat Docker voor Windows ondersteund nu alleen Linux applicaties. Want Docker draait dan in de hypervisor. Je hebt dan eigenlijk Linux naast windows.
 
-48:04 
+48:04
+
+S: Je draait Docker op hyperv?
+
+I: Ja.
+
+S: Maar kun je daar binnen ook Windows?
+
+I: Nog niet dus. Neen nog niet. Dat komt wel.
+
+S: Maar ik kan dan in theorie een SQL instantie draaien?
+
+I: Ja. Dus dat is wel iets waar bij aankomend jaar ook echt naar willen gaan kijken. Het is nu nog niet productiewaardig. Maar dat zal wel komen.
+
+S: Ik denk niet dat wij dat snel binnen onze projecten ook zullen gaan gebruiken hoor. Waarschijnlijk worden alleen de nieuwste versies ondersteund.
+
+I: Ja, ik heb geen idee.
+
+S: Nou waarschijnlijk. Dat zie ik ook bij dot net core nu. Dot net vijf bestaat niet meer, dat heet nu dot net core.
+
+I: Ja.
+
+S: Werkt allemaal iets anders, lightweight, blabla. Dat draait, dat werkt in Docker volgens mij. Het is multiplatform gemaakt. Draait op Linux, dus ook in Docker volgens mij.
+
+I: Dus dat is dan open source of niet.
+
+S: Dot net core is ook open source ja. <ehm> Maar die technieken gebruiken wij niet. Wij zijn gebonden aan de oude  technieken. En ik denk die oude technieken waaraan wij gebonden zitten gaan nooit draaien in Docker. Ik denk niet dat ze oude spullen compatible gaan maken.
+
+J: Maar dat ligt dus niet zozeer aan Docker, maar die dot net vier gaan ze nooit.
+
+S: Dot net vier gaat denk ik nooit, nee. Waarom, nee, dat is veel te veel werk.
+
+I: Ik heb geen idee. Dot net core kun je op Linux draaien. Dat kan dan nu met Docker omdat Windows Docker Linux ondersteund via HyperV. Maar echte Windows applicaties kun je nog niet met Docker draaien. Maar dat, komt er als het goed is aan. Dan zou je in theorie elke Windows applicatie in een container moeten kunnen draaien. Dat zou dan ook voor oudere applicaties gelden.
+
+S: Maar het is allemaal...
+
+I: Geen idee wanneer dat zo ver is. Maar bijvoorbeeld iets als omgevingen on-demand. Want jullie hebben nu een x aantal statische omgevingen.
+
+S: Ja.
+
+I: Zouden jullie daar iets aan hebben? In de zin van, bijvoorbeeld, parallel testen draaien om te doorlooptijd te verkorten.
+
+S: Ja opzich wel. Dat was ook ooit het doel, om dynamische omgevingen in te richten. <emh>, ja L was daar mee bezig.
+
+J: Ja? Omdat ook echt voor elkaar te krijgen?
+
+S: Dat was de oorspronkelijke wens. Ik weet niet precies waarom, maar het lukte niet of... Toen hebben we die statische omgevingen gehad. En ja opzich werkt dat voor ons. We hebben tien van die dingen, we werken met vier man. We hebben in theorie twee omgevingen per persoon tot onze beschikking. Het kost denk ik wat om die servers in de lucht te houden, maar dat zien wij niet. Opzich is het mooier om het dynamisch te kunnen doen maar dat gaat niet zo makkelijk voor ons.
+
+I: Het is nu niet direct een bottleneck voor jullie?
+
+S: Nee,  het was een bottleneck omdat we maar vijf omgevingen hadden. En meer virtuele omgevingen kon niet, qua kosten denk ik. Toen hebben we die dubbele instantie erbij gedaan. Dat we twee instanties per vm kunnen draaien. En nu zijn we verre weg van... er is altijd wel iets vrij.
+
+51:29
+
+I: Hoe kijken jullie aan tegen de ondersteuning vanuit de organisatie voor jullie project? Misschien in technische zin, of procesmatige zin? Missen jullie daar iets? Wordt er teveel gestuurd? Deze vraag zit er met name in omdat bij andere teams Docker min of meer naar binnen is geschoven. Zo van, we gaan nu Docker doen, terwijl daar vanuit de organisatie misschien wel te weinig ondersteuning voor was.
+
+J: Dat hebben wij ervaren met de test tooling zeg maar. Dat is eigenlijk gepushed van je moet dit gebruiken. Ja, maar het werkt niet. Nouja.
+
+I: Dat is gepushed door de technical lead van het project?
+
+J: Ja.
+
+S: Docker wilden ze eigenlijk ook pushen.
+
+I: Maar hoe dan?
+
+S: Ja, dat kan niet, dus. Er waren toen ook al verhalen over Docker voor Windows. Maar vooralsnog is het er nog niet. Maar over ondersteuning vanuit de ontwikkelorganisatie.
+
+I: Ja, met name voor dit soort zaken dan.
+
+S: Ja ik vind niet dat er echt ondersteuning is voor ons.
+
+I: Maar mis je dat? Je zei net dat we alles wel in het team kunnen oplossen. Dat is natuurlijk ook heel goed.
+
+S: Ja, zo is dat een beetje gegroeid. <ehm> We moeten het wel zelf oplossen. We hebben ons eigen ding bedacht en dat draait nu. Maar ja. Voorbeeld, we willen die Exchange server hebben.
+
+I: Ja.
+
+S: Ja, dat moeten we zelf oplossen. Het wordt niet ondersteund door de ontwikkelorganisatie.
+
+I: Maar vind je het nu meer een nadeel dan een voordeel?
+
+S: Ja, dat vind ik een nadeel ja.
+
+I: Ja, maar in andere gevallen zou je ook kunnen denken van het is een voordeel. Je hebt zelf meer controle over je omgevingen.
+
+J: Ja, ik vind opzich het voordeel dat je een stukje flexibiliteit hebt. Vanuit het team weten we met elkaar best wat de juiste tooling of de juiste way to go is. Dat er ruimte voor is  dat je daar je eigen keuzes in kunt maken vind ik wel goed. Ik geloof namelijk niet in de omgekeerde gedachte die eerst bij de ontwikkelorganisatie heerste. Dat was van we hebben een blauwdruk en ieder project moet maar in die blauwdruk passen. Ja dat gaat niet. Als je een dot net project hebt of een Java project dat kun je niet allemaal in dezelfde blauwdruk stoppen. Dus dat die flexibiliteit er inmiddels is dat vind ik wel goed. Alleen dat staat los van een stukje technische of infrastructurele ondersteuning die misschien wel wat meer geboden kan worden.
+
+S: Ja nou het gaat ook niet goed nu merk je.
+
+I: Wat bedoel je dan?
+
+S: Ja, Exchange is iets dat wij buiten het team willen houden. We hebben aan de ontwikkelorganisatie gevraagd van los het op, wij kunnen dit niet, wij willen dit niet. <ehm> Het is uiteindelijk toch binnen het team gekomen. We zijn nu drie weken verder maar we zijn eigenlijk nog geen stap verder.
+
+J: En uiteindelijk gaan we het toch weer zelf doen.
+
+S: Ja we zijn het al zelf aan het doen. Maar er wordt ook veel heen en weer gebounced. Server verkeerd ingericht. Dat kunnen wij niet zelf. Dus er moet weer een nieuwe VM kloon komen.
+
+J: Ik denk dat dat vaak ook het nadeel is van deze vorm van ondersteuning zegmaar. Dat je eigenlijk net te ver van de projecten af zit om alle ins- en outs te weten. In hoeverre kun je dan echt adequate ondersteuning bieden. Ze kunnen prima dat servertje neerzetten, maar wat was er nou waarom het voor ons alsnog niet ging werken? Ja dan denk je, kunnen zij (technisch beheer) dat weten. Ja misschien als ze iets proactiever zijn en even wat meer vragen aan ons.
+
+S: Maar dat die eerste run verkeerd was?
+
+J: Ja.
+
+S: <eh> Ja. Ook ontbrekende kennis denk ik.
+
+J: Ik vind dat ook wel lastig hoor. Wat dat betreft hou ik m'n hart vast als straks ook die performance en security testen, wat ook nu meer een dienst moet gaan worden, in plaats van een of twee handige harries die hier over de werkvloer lopen. En dat model werkt opzich. R heeft voor ons performancetesten gedaan. Ja zodra hij er even niet uitkomt dan loopt hij gewoon naar ons, of wij naar hem.
+
+I: Ja.
+
+J: En uiteindelijk los je het dan op doordat je gewoon bij elkaar zit. En nu gaat dat ook weer losgetrokken worden van dat wordt een dienst en op afstand en.
+
+S: Eigenlijk wel een beetje hetzelfde idee als met IQteam en IT beheer. We gaan bijna nooit met elkaar samen zitten om iets op te lossen. We moeten een ticket aanmaken.
+
+J: En dan gaat iemand naar dat ticket kijken die waarschijnlijk onze omgeving nog nooit gezien heeft, weet je wel. Hoe kun je dan goede ondersteuning bieden. En dan zeggen wij ja die gasten die weten het ook allemaal niet.
+
+S: En zij roepen dat over ons.. Er zit een muur tussen eigenlijk.
+
+I: Ja daarom ben ik ook dit aan het doen. Er zitten twee kanten aan, het is voor m'n scriptie maar het helpt wel. We hebben als best veel nieuwe inzichten gekregen.
+
+S: Als wij ondersteuning willen hebben van IT beheer moeten wij exact zeggen wat we willen hebben. Wij willen een VM server dit hebben, met software X er op. We moeten hem zo geconfigureerd hebben.
+
+J: Je moet het eigenlijk weten tot op het niveau waarop je het eigenlijk net zo goed zelf kan doen.
+
+S: Als wij dus een foutje maken in onze aanvraag dan moeten we dus weer helemaal opnieuw beginnen.
+
+J: Terwijl we willen gewoon zeggen van dit is ons probleem...
+
+S: Lost het op.. <haha>
+
+I: Maar zou je dan toch niet liever zelf de mogelijkheid willen hebben om ergens met een paar kliks een vm aan te maken.
+
+J: Ja ik geloof meer, misschien spreek ik voor m'n beurt, maar ik persoonlijk geloof meer in een soort van inleen model. Op het moment dat wij die expertise nodig hebben, voor deze drie stories, trekken wij iemand van zo'n expert team intern bij ons in het team.
+
+S: Ik denk dat het veel efficienter is als wij iemand tijdelijk kunnen inhuren, of wat dan ook.
+
+J: Voor het IQ-team ook hoor. Stel dat we ooit op het punt komen dat we met Docker willen gaan werken. Ik zou zeggen zet maar gewoon dedicated een IQ-man in ons team neer tot het moment dat het werkt zeg maar.  Maar op afstand van hier heb je een server en dan tegen het team zeggen van nou ons taakje is gedaan, ga er maar wee werken.
+En dan zeggen wij na drie klikken ja maar dit werkt voor ons niet. Ja dan mikken wij dat weer terug over de schutting, weet je wel.
+
+I: Nee, nee. Dat is natuurlijk ook niet de agile gedachte. Maar zo hebben wij dat in het begin ook wel gedaan met de projecten die Docker gingen doen. Dat wij daar een aantal uur per week met hen samen gingen zitten om te kijken hoe we dat konden toepassen binnen hun project.
+
+J: Ik weet niet wat jullie ervaringen daar mee zijn, maar het lijkt mij wel een model wat zou moeten kunnen werken. En als het eenmaal werkt dan kun je op afstand ondersteuning bieden.
+
+I: Nou kijk de gedachten is natuurlijk dat, vroeger kon je als team zelf helemaal niets doen en moest je alles via technisch beheer regelen. En dan had je precies de problemen die je beschrijft.
+We zijn aan het kijken van je moet naar een juiste mix. Want je zei ook van ja, als team weet je goed welke services je nodig hebt in je ontwikkelstraat en hoe je bepaalde dingen wilt inrichten. Wat voor jou en voor dat project lekker werkt. Dus die vrijheid moet er ook zeker zijn, denk ik. We zijn aan het zoeken naar een juiste balans.
+
+S: Ja, maar wij zijn wel iets anders begonnen met L. erbij. In principe was L voor ons diegene die voor ons de externe problemen oplostte. Ja die zal ook wel met technisch beheer gecommuniceerd hebben maar. Daar hadden we eigenlijk geen problemen mee. Voor ons was dat wel dienstverlening.
+
+J: Ja, hij zat wel in dat team (technisch beheer) maar hij was een soort van dedicated...
+
+S: Nu hij er niet meer is, gaat het, ja, anders.
+
+J: Maar hij kon ons helpen doordat hij ook kennis had van onze omgeving.
+
+S: Ja, hij wist ook van het project inderdaad.
+
+J: En dan werkt dat inderdaad. Hij heeft kennis van de omgevingen en van het project. Dan heb je aan twee woorden genoeg om ons te helpen.
+
+S: Als hij er nu nog was en we zouden zeggen van we hebben een Exchange server nodig, fix het maar. Hij zou waarschijnlijk ook nog met de klant gaan bellen om na te vragen waarom het nodig is en op welke manier.
+
+I: Oke, duidelijk. Maar stel je zou iets in de cloud kunnen starten, dat zou niet een oplossing zijn? Dat je zou kunnen zeggen van we maken een image van Exchange.
+
+S: Ja, dat zou perfect zijn. Als wij klik Exchange kunnen doen en wij kunnen daarmee koppelen. Zou ideaal zijn. Ook wel SQL server. Ja dat hebben we nou allemaal draaien, maar voor nieuwe dingen.
+
+I: Misschien voor nieuwe dot net projecten die ooit gaan starten.
+
+S: Als we in theorie ooit nog met sharepoint moeten gaan babbelen ofzo.. Ik weet dat de klant ook sharepoint heeft. Ja, klik sharepointomgeving. zou ideaal zijn.
+
+J: Maar ja, dan zouden er dus dat soort Dockerized omgevingen moeten zijn. Out of the box die..
+
+I: Ja, Docker maakt het misschien makkelijker. Maar je kunt ook eerst met, weet ik veel, automatisering op VM niveau werken.
+
+S: Ja dat is ons om het even.
+
+I: Maar dit is toch een goede aanleiding voor ons om naar Docker voor windows te gaan kijken. Dit is natuurlijk te laat voor jullie nu.
+
+S: Nou dat weet ik niet. In principe kan dit project nog jaren en jaren draaien.
+
+J: Ja maar dan moeten we niet zo'n traject krijgen als met de ART tooling gehad hebben. Zo van, hier heb je een halve oplossing.
+
+S: Nee.
+
+1:04:20
+
+J: Uiteindelijk heeft dat niet heel veel goodwill bij onze klant oplgeverd ook. Want het wordt dan verkocht aan de klant van we hebben een werkende en kant en klare oplossing voor testautomatisering.
+
+I: Ja.
+
+J: Maar per saldo zien zij dat ze het hele jaar 25-30%, misschien wel meer, van hun sprint van hun velocity kwijt zijn aan het in de lucht brengen en houden van die tooling. Ja dat geeft toch een beetje scheve gezichten.
+
+I: Ja.
+
+J: Dus ik denk wel dat dat belangrijk is als we ooit besluiten om over te gaan op iets als Docker dat we hele goede afspraken met elkaar maken.
+
+I: Oke, dan waren dit mijn vragen.
