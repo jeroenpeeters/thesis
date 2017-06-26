@@ -62,7 +62,7 @@ Looking for the latest version?
   - Do you think this is a problem that you should be solving?
 - When the team responds to a question that their happy with the current situation, I want to know:
   - Whether the current situation is an improvement on the previous one
-  - How much time normally is spend on the activity, when applicable
+  - How much time normally is spent on the activity, when applicable
 
 # Notes
 
