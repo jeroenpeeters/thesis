@@ -197,20 +197,6 @@
                 <li><a href="#a-new-project"><span class="toc-section-number">6.3</span> A new project</a><ul>
                 <li><a href="#infrastructure-setup"><span class="toc-section-number">6.3.1</span> Infrastructure setup</a></li>
                 <li><a href="#project-setup"><span class="toc-section-number">6.3.2</span> Project setup</a></li>
-                <li><a href="#recurring-tasks"><span class="toc-section-number">6.3.3</span> Recurring tasks</a></li>
-                </ul></li>
-                <li><a href="#configuring-the-cd-pipeline"><span class="toc-section-number">6.4</span> Configuring the CD-pipeline</a><ul>
-                <li><a href="#docker-dashboard"><span class="toc-section-number">6.4.1</span> Docker Dashboard</a></li>
-                <li><a href="#configuration"><span class="toc-section-number">6.4.2</span> Configuration</a></li>
-                <li><a href="#nexus-1"><span class="toc-section-number">6.4.3</span> Nexus</a></li>
-                <li><a href="#gitlab-1"><span class="toc-section-number">6.4.4</span> Gitlab</a></li>
-                <li><a href="#docker-registry"><span class="toc-section-number">6.4.5</span> Docker Registry</a></li>
-                <li><a href="#sonar"><span class="toc-section-number">6.4.6</span> Sonar</a></li>
-                <li><a href="#reporting"><span class="toc-section-number">6.4.7</span> Reporting</a></li>
-                <li><a href="#selenium"><span class="toc-section-number">6.4.8</span> Selenium</a></li>
-                <li><a href="#quality-dashboard"><span class="toc-section-number">6.4.9</span> Quality-dashboard</a></li>
-                <li><a href="#jenkins"><span class="toc-section-number">6.4.10</span> Jenkins</a></li>
-                <li><a href="#application-under-development"><span class="toc-section-number">6.4.11</span> Application under development</a></li>
                 </ul></li>
                 </ul></li>
                 <li><a href="#stages-of-continuous-delivery"><span class="toc-section-number">7</span> Stages of Continuous Delivery</a><ul>
@@ -453,1392 +439,7 @@ introduces methodology used throughout the thesis.
 <li>Optional, import existing source code into Gitlab.</li>
 <li>Configure jobs in Jenkins to build, test and deploy (for every application)</li>
 <li>Configure the location of the SonarQube API in Jenkins</li>
-<li></li>
 </ol>
-<h3 id="recurring-tasks"><span class="header-section-number">6.3.3</span> Recurring tasks</h3>
-<h2 id="configuring-the-cd-pipeline"><span class="header-section-number">6.4</span> Configuring the CD-pipeline</h2>
-<h3 id="docker-dashboard"><span class="header-section-number">6.4.1</span> Docker Dashboard</h3>
-<p>Every project team is equipped with a Docker Dashboard. The dashboard is a web application through which the team can manage running applications on the Docker infrastructure. The dashboard exposes a user interface and a programmable interface for automation purposes. Through the dashboard the team manages:</p>
-<ol style="list-style-type: decimal">
-<li>Deployment of CD-pipeline support services</li>
-<li>Deployment of the application under development</li>
-</ol>
-<p>Upon project start a vanilla dashboard is deployed. The team has the freedom to start any combination of Docker containers.</p>
-<h3 id="configuration"><span class="header-section-number">6.4.2</span> Configuration</h3>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">jira-reporter-user</td>
-<td align="left">reporter</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">jira-reporter-password</td>
-<td align="left">****</td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="nexus-1"><span class="header-section-number">6.4.3</span> Nexus</h3>
-<h4 id="add-nexus-to-docker-dashboard."><span class="header-section-number">6.4.3.1</span> Add nexus to Docker dashboard.</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: nexus
-version: 2.13.0-01
-description: Sonatype Nexus repository manager.
-
-#login with admin / admin123
-
-#tags:infra
-
-www:
- image: sonatype/nexus:2.13.0-01
- user: root
- volumes:
- - /sonatype-work</code></pre>
-<p>Click 'Save changes' and start the application.</p>
-<h4 id="configure-security"><span class="header-section-number">6.4.3.2</span> Configure security</h4>
-<p>Go to the Nexus user interface and log in with</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Username</th>
-<th align="left">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Account</td>
-<td align="left">admin</td>
-<td align="left">admin123</td>
-</tr>
-</tbody>
-</table>
-<p>Go to 'Security', 'Users'. Select user <strong><em>anonymous</em></strong>. Give the user full control over all repositories. Click Add, select Repo: 'All Repositories (Full Control)'. Click 'OK' and 'Save'.</p>
-<h3 id="gitlab-1"><span class="header-section-number">6.4.4</span> Gitlab</h3>
-<h4 id="add-gitlab-to-docker-dashboard"><span class="header-section-number">6.4.4.1</span> Add Gitlab to Docker dashboard</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: gitlab
-version: 8.6.1
-
-#tags:infra
-
-www:
-  image: www.docker-registry.isd.tld:5000/gitlab-ce:8.6.1
-  volumes:
-    - /etc/gitlab
-    - /var/log/gitlab
-    - /var/opt/gitlab</code></pre>
-<p>Click 'Save changes' and start the application.</p>
-<h4 id="create-root-account"><span class="header-section-number">6.4.4.2</span> Create root account</h4>
-<p>Go to the Gitlab user interface. You will be asked to enter a new password for the root user. Enter the password twice and click 'Change your password'.</p>
-<h4 id="create-usergroup-and-users"><span class="header-section-number">6.4.4.3</span> Create usergroup and user(s)</h4>
-<p>Go to the Gitlab user interface. Log in with:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Username</th>
-<th align="left">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Account</td>
-<td align="left">root</td>
-<td align="left"><strong><em>see previous step</em></strong></td>
-</tr>
-</tbody>
-</table>
-<p>Go to 'Admin Area', 'Groups', 'New Group'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Group path</th>
-<th align="left">Visibility Level</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">test-group</td>
-<td align="left">Private</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Create Group'.</p>
-<p>Go to 'Admin Area', 'Users', 'New User'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Name</th>
-<th align="left">Username</th>
-<th align="left">Email</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><name></td>
-<td align="left"><username></td>
-<td align="left"><email></td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Create user'.</p>
-<p>Click 'Edit' and enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Password</th>
-<th align="left">Password confirmation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">user@123!</td>
-<td align="left">user@123!</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save Changes'.</p>
-<p>Go to 'Admin Area' &gt; 'Groups' &gt; 'test-group' Add user <username> to group with role 'Developer'.</p>
-<p>Repeat for each user in the development team.</p>
-<h4 id="create-jenkins-user"><span class="header-section-number">6.4.4.4</span> Create Jenkins user</h4>
-<p>Jenkins should be able to login to Gitlab in order to be able to checkout copies of the source code. Therefore a dedicated user should be created.</p>
-<p>Go to the Gitlab user interface. Log in with:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Username</th>
-<th align="left">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Account</td>
-<td align="left">root</td>
-<td align="left"><strong><em>see previous step</em></strong></td>
-</tr>
-</tbody>
-</table>
-<p>Go to 'Admin Area', 'Users', 'New User'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Name</th>
-<th align="left">Username</th>
-<th align="left">Email</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Jenkins</td>
-<td align="left">jenkins</td>
-<td align="left">noreply@jenkins.tld</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Create User'.</p>
-<p>Click 'Edit' and enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Password</th>
-<th align="left">Password confirmation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">jenkins@123!</td>
-<td align="left">jenkins@123!</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save Changes'.</p>
-<p>Go to 'Admin Area' &gt; 'Groups' &gt; 'test-group' Add user jenkins to group with role 'Master'.</p>
-<h4 id="import-jenkins-ssh-public-key"><span class="header-section-number">6.4.4.5</span> Import Jenkins SSH public key</h4>
-<p>Go to the Gitlab user interface. Log in with:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Username</th>
-<th align="left">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Account</td>
-<td align="left">jenkins</td>
-<td align="left">jenkins@123!</td>
-</tr>
-</tbody>
-</table>
-<p>Go to 'Profile Settings', 'SSH Keys'. Enter the SSH public key:</p>
-<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrSFSIYRJjTbWqYuU6cGQ0aNae
-wMQ/m0k3m/MA7mNb2LEGNb0CQAoJDwwuPiftfj9cP6UrTlFqKGRKuLlAD7qrf9kQ
-OSzgfwDJ7lSYY8QqMP4U1CuL5IuMV/Zwg0npA9SnPpD8KcrxMQgKZ62F12xoR+vX
-LMSgMnTwu7olZVQphdMcvu2H5ugV4kBNyyRfKSeDDatsYKnwVirhLBRMtdFTLqo2
-wFe8dMM/2mZIiGl5KXg0gCXpD2VEFiVCINARGLsdh9nzn2gxLoagIbXzxWjGRo0t
-u69GuS2YqNj7GX5QJMpTP4UAWPvymx1TiJqmWAatejdfhYeJWoTLA6dnxaFV</code></pre>
-<p>Click 'Add key'.</p>
-<h4 id="create-project-repository"><span class="header-section-number">6.4.4.6</span> Create project repository</h4>
-<p>Go to the Gitlab user interface. Log in with:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Username</th>
-<th align="left">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Account</td>
-<td align="left">root</td>
-<td align="left"><strong><em>see previous step</em></strong></td>
-</tr>
-</tbody>
-</table>
-<p>Go to 'Admin Area' &gt; 'Projects' &gt; 'New Project'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Project Path</th>
-<th align="left">Visibility</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">/test-group/test-project</td>
-<td align="left">Private</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Create project'.</p>
-<p>Go to 'Admin Area' &gt; 'Projects' &gt; 'test-group/test-project' &gt; 'Edit' &gt; 'Protected Branches' In table: 'Already Protected', Select Developers can push for branch master.</p>
-<h3 id="docker-registry"><span class="header-section-number">6.4.5</span> Docker Registry</h3>
-<h4 id="add-docker-registry-to-docker-dashboard"><span class="header-section-number">6.4.5.1</span> Add docker-registry to Docker dashboard</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: docker-registry
-version: 2.1.1
-
-#tags:infra
-
-www:
- image: distribution/registry:2.1.1
- mem_limit: 2048m
- environment:
-  - REGISTRY_VERSION=0.1
-  - REGISTRY_LOG_FIELDS_SERVICE=registry
-  - REGISTRY_LOG_FIELDS_ENVIRONMENT=production
-  - REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=inmemory
-  - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/docker-registry/
-  - &#39;REGISTRY_HTTP_ADDR=:5000&#39;
-  - REGISTRY_HTTP_HEADERS_X-CONTENT-TYPE-OPTIONS=[nosniff]
-  - REGISTRY_HEALTH_STORAGEDRIVER_ENABLED=true
-  - REGISTRY_HEALTH_STORAGEDRIVER_INTERVAL=10s
-  - REGISTRY_HEALTH_STORAGEDRIVER_THRESHOLD=3
- volumes:
-  - /docker-registry</code></pre>
-<p>Click 'Save changes' and start the application.</p>
-<h3 id="sonar"><span class="header-section-number">6.4.6</span> Sonar</h3>
-<h4 id="add-sonar-to-docker-dashboard"><span class="header-section-number">6.4.6.1</span> Add sonar to Docker dashboard</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: sonar
-version: 4.5.7
-description: Manage code quality
-
-#tags: infra
-#login with admin/admin
-
-www:
-  image: sonarqube:4.5.7
-  environment:
-    - SONARQUBE_JDBC_USERNAME=sonar
-    - SONARQUBE_JDBC_PASSWORD=sonar
-    - &quot;SONARQUBE_JDBC_URL=jdbc:mysql://db/sonar?useUnicode=true&amp;amp;characterEncoding=utf8&quot;
-  volumes:
-    - /opt/sonarqube/extensions/downloads
-    - /opt/sonarqube/extensions/plugins
-  links:
-    - db
-  enable_ssh: true
-
-db:
-  image: mysql:5.6
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=sonar
-    - MYSQL_USER=sonar
-    - MYSQL_PASSWORD=sonar
-  volumes:
-    - /var/lib/mysql</code></pre>
-<p>Click 'Save changes' and start the application.</p>
-<h4 id="install-plugins"><span class="header-section-number">6.4.6.2</span> Install plugins</h4>
-<p>From a local shell execute:</p>
-<pre><code>cd /path/to/dir/with/sonar/plugins
-scp sonar-checkstyle-plugin-2.4.jar \
-    sonar-findbugs-plugin-3.3.jar   \
-    sonar-java-plugin-3.14.jar      \
-    sonar-pmd-plugin-2.5.jar        \
-    sonar-web-plugin-2.4.jar        \
-    www.sonar.&lt;your-project&gt;.tld
-
-ssh www.sonar.&lt;your-project&gt;.tld
-cd /opt/sonarqube/extensions/plugins
-rm * &amp;&amp; cp ~/* .
-exit</code></pre>
-<p>Go to the Docker Dashboard user interface and restart the Sonar application.</p>
-<h4 id="add-quality-profiles"><span class="header-section-number">6.4.6.3</span> Add quality profiles</h4>
-<p>Go to the Sonar user interface. Login with:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Username</th>
-<th align="left">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Account</td>
-<td align="left">admin</td>
-<td align="left">admin</td>
-</tr>
-</tbody>
-</table>
-<p>Go to 'Quality Profiles', Click 'Restore Profile'. Select 'Development Organization Java profile' to import and click 'Restore'. Click 'Restore Profile'. Select 'Development Organization Web profile' to import and click 'Restore'.</p>
-<h3 id="reporting"><span class="header-section-number">6.4.7</span> Reporting</h3>
-<h4 id="create-jira-filter"><span class="header-section-number">6.4.7.1</span> Create Jira filter</h4>
-<p>Go to the Jira user interface. Login with:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Username</th>
-<th align="left">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Account</td>
-<td align="left">jira-reporter-user</td>
-<td align="left">jira-reporter-password</td>
-</tr>
-</tbody>
-</table>
-<p>Go to 'Issues', 'Search for issues'. If the basic search is shown instead of the advanced search, click Advanced. Enter the following query:</p>
-<pre><code>project = &lt;Jira project name&gt; AND type in (Story, &quot;Logical Test Case&quot;, Systeemfunctie) ORDER BY type</code></pre>
-<p>Click 'Save as'. Filter name: <name>. Click 'Submit'. Write down the filter-id of the filter (it’s displayed in the URL, https://jira.development-organization.nl/jira/issues/?filter=<filter-id>).</p>
-<h4 id="add-reporting-application-to-docker-dashboard"><span class="header-section-number">6.4.7.2</span> Add reporting application to Docker Dashboard</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: reporting
-version: 2.2.2
-description: Quality reporting
-
-#tags: autorun
-
-www:
-  image: docker-registry.isd.tld:5000/birt-reports:2.1.65
-  mem_limit: 2g
-  environment:
-    - REPORT_USER=reporter
-    - REPORT_PASSWORD=reporter007
-    - &#39;REPORT_URL=jdbc:postgresql://db:5432/birt&#39;
-    - REPORT_USER_RM=reporter
-    - REPORT_PASSWORD_RM=reporter007
-    - &#39;REPORT_URL_RM=jdbc:postgresql://db:5432/birt&#39;
-  links:
-    - db
-
-importer:
-  image: docker-registry.isd.tld:5000/birt-jira-importer:2.4.1
-  environment:
-    - &#39;report_jdbc_url=jdbc:postgresql://db:5432/birt&#39;
-    - &#39;jira_filter=filter=&lt;filter-id&gt;&#39;
-  links:
-    - db
-
-trr:
-  image: docker-registry.isd.tld:5000/birt-test-results-service:2.0.50
-  environment:
-    - &#39;report_jdbc_url=jdbc:postgresql://db:5432/birt&#39;
-  links:
-    - db
-
-db:
-    image: docker-registry.isd.tld:5000/birt-database:2.0.37
-    volumes:
-        - /var/lib/postgresql/data
-    environment:
-        - POSTGRES_PASSWORD=my-secret-pw
-    mem_limit: 2g
-
-rm:
-  image: docker-registry.isd.tld:5000/releasemanager:1.0.36
-  environment:
-    - DB_DRIVER=pdo_pgsql
-    - DB_HOST=db
-    - DB_PORT=5432
-    - DB_USER=releasemanager
-    - DB_PASSWORD=releasemanager007
-    - DB_DATABASE=birt
-  volumes:
-    - /mnt/publish
-  links:
-    - db</code></pre>
-<p>Click 'Save changes' and start the application.</p>
-<h3 id="selenium"><span class="header-section-number">6.4.8</span> Selenium</h3>
-<h4 id="add-selenium-to-docker-dashboard"><span class="header-section-number">6.4.8.1</span> Add Selenium to Docker dashboard</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: selenium
-version: official
-
-#tags: autorun
-
-server:
-  image: selenium/standalone-firefox</code></pre>
-<p>Click 'Save changes' and start the application.</p>
-<h3 id="quality-dashboard"><span class="header-section-number">6.4.9</span> Quality-dashboard</h3>
-<p><strong>TODO! detail how to setup the quality tracking and monitoring system</strong> See http://wiki.isd.org/index.php/HandleidingKwaliteitssysteem &gt; Opzet van een kwaliteitsdashboard</p>
-<h3 id="jenkins"><span class="header-section-number">6.4.10</span> Jenkins</h3>
-<h4 id="add-jenkins-to-docker-dashboard"><span class="header-section-number">6.4.10.1</span> Add Jenkins to Docker dashboard</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: jenkins
-version: 1.651.2
-description: An extendable open source CI server
-
-#tags: autorun
-
-www:
-  image: jenkins:1.651.2
-  volumes:
-    - /var/jenkins_home
-  environment:
-    - &quot;JAVA_OPTS=-Duser.timezone=Europe/Amsterdam&quot;
-  links:
-    - jnlp
-  enable_ssh: true
-
-jnlp:
-  image: tehranian/dind-jenkins-slave:latest
-  environment:
-    - &quot;DOCKER_DAEMON_ARGS=-H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375 --insecure-registry 10.25.0.0/16&quot;
-    - &quot;JAVA_OPTS=-Duser.timezone=Europe/Amsterdam&quot;
-  mem_limit: 2g
-  privileged: true
-  enable_ssh: true</code></pre>
-<p>Click 'Save changes' and start the application.</p>
-<h4 id="install-plugins-1"><span class="header-section-number">6.4.10.2</span> Install plugins</h4>
-<p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Manage Plugins', 'Available'. Tick the box next to the following plugins:</p>
-<ul>
-<li>Maven Release Plug-in Plug-in (0.14.0)</li>
-<li>Git plugin (3.0.0)</li>
-<li>SonarQube Plugin (2.4.4)</li>
-<li>OWASP Dependency-Check Plugin (1.4.3)</li>
-<li>Git client plugin (used by Git plugin)</li>
-<li>SCM API Plugin (used by Git plugin)</li>
-<li>Conditional BuildStep</li>
-<li>Run Condition Plugin</li>
-<li>Parameterized Trigger plugin</li>
-<li>Workspace Cleanup Plugin</li>
-<li>Build Pipeline Plugin</li>
-</ul>
-<h4 id="configure-system"><span class="header-section-number">6.4.10.3</span> Configure system</h4>
-<p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Configure System'. Look for the section 'SonarQube servers'. Click 'Click Add SonarQube'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Name</td>
-<td align="left">SonarQube</td>
-</tr>
-<tr class="even">
-<td align="left">Server URL</td>
-<td align="left">http://www.sonar.<your-project>.tld:9000</td>
-</tr>
-<tr class="odd">
-<td align="left">Server version</td>
-<td align="left">5.1 or lower</td>
-</tr>
-<tr class="even">
-<td align="left">Version of sonar-maven-plugin</td>
-<td align="left">3.0.1</td>
-</tr>
-<tr class="odd">
-<td align="left">Database URL</td>
-<td align="left">jdbc:mysql://db.sonar.<your-project>.tld:3306/sonar</td>
-</tr>
-<tr class="even">
-<td align="left">Database login</td>
-<td align="left">sonar</td>
-</tr>
-<tr class="odd">
-<td align="left">Database password</td>
-<td align="left">sonar</td>
-</tr>
-</tbody>
-</table>
-<p>Look for the section 'Git plugin, Global config'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">user.name</td>
-<td align="left">jenkins</td>
-</tr>
-<tr class="even">
-<td align="left">user.email</td>
-<td align="left">noreply@jenkins.tld</td>
-</tr>
-</tbody>
-</table>
-<p>Look for the section 'Maven'. Click 'Add Maven'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Name</td>
-<td align="left">Maven 3.3.9</td>
-</tr>
-<tr class="even">
-<td align="left">Version</td>
-<td align="left">3.3.9</td>
-</tr>
-</tbody>
-</table>
-<p>Look for the section 'E-mail Notification'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">SMT server</td>
-<td align="left">smtp.isd.org</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save'.</p>
-<h4 id="add-gitlab-user"><span class="header-section-number">6.4.10.4</span> Add Gitlab user</h4>
-<p>Go to the Jenkins user interface. Click 'Credentials', 'Global', 'Add credentials'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Kind</td>
-<td align="left">SSH username with private key</td>
-</tr>
-<tr class="even">
-<td align="left">Scope</td>
-<td align="left">Global</td>
-</tr>
-<tr class="odd">
-<td align="left">Username</td>
-<td align="left">jenkins</td>
-</tr>
-<tr class="even">
-<td align="left">Private key</td>
-<td align="left">Enter directly</td>
-</tr>
-<tr class="odd">
-<td align="left">Description</td>
-<td align="left">Gitlab user</td>
-</tr>
-</tbody>
-</table>
-<p>Enter the key:</p>
-<pre><code>-----BEGIN RSA PRIVATE KEY-----
-MIIEowIBAAKCAQEAq0hUiGESY021qmLlOnBkNGjWnsDEP5tJN5vzAO5jW9ixBjW9
-AkAKCQ8MLj4n7X4/XD+lK05RaihkSri5QA+6q3/ZEDks4H8Aye5UmGPEKjD+FNQr
-i+SLjFf2cINJ6QPUpz6Q/CnK8TEICmethddsaEfr1yzEoDJ08Lu6JWVUKYXTHL7t
-h+boFeJATcskXykngw2rbGCp8FYq4SwUTLXRUy6qNsBXvHTDP9pmSIhpeSl4NIAl
-6Q9lRBYlQiDQERi7HYfZ859oMS6GoCG188VoxkaNLbuvRrktmKjY+xl+UCTKUz+F
-AFj78psdU4iaplgGrXo3X4WHiVqEywOnZ8WhVQIDAQABAoIBAHSw9W5oe+eNpMut
-TrBuq8YM+tLzT4BqIgqxw2+J+cU0Lv6lE9z5lhyv1MOYcwlZLn+BmNyVIeBqHlHN
-4d+kF7AJjO+BlHJp9DaemaGsrpN0B1ZXakeHcA8wSmRC/dKzWmiKtqolKu8BUZIN
-Kmn55xBwl1tkU500YvkzXFFn5FvYg7NzvdgajfrywgU6GIm6miGWzkb0F5MRnXtb
-hhx32sSu9H87Fu54DpMIWQzzpqJuPPLL8SxZKheuceYcV/tXT6IG5WnSl3KnNVYX
-cSLRN4miN6dVlX9GIdwsAxdrqexm/OLw/J5Mgf2SaIKslMNoGciojtaQaLt/ofde
-UWa0lWECgYEA3kg9Tv8/iIWIzIYvgC8D/ZyjyExlcX6jVSrbFCjZyYhDqxA2LPSa
-SQwcHesLk4c4GS1in47Mo/otxdPYnmu2o0Ob4hoICGLEJiWdiI7ljJ8CWtsjNGts
-GhCsv3guTT1WnfOpWbsaKDodinEa2YNekxAjh/9EQZR4x6Y9EQ61C8kCgYEAxUOm
-W8orY6M4YYeb1nA9izW1twjrK0jZ6u07n3ooAVJx5WNr69/ATZx/Lw4ou1RGZ3qb
-q4/iol5DwenxcaETV5h5q/170pvnhkLoRIWd+Rd+oEu+GtYwVrLd/ybJZswJMYc/
-KIRHrw3DpM0yVxrilENe3TQ8k2O3VJRsucmHly0CgYEA2Jq+m5dh2vB9MQhli1zF
-X8LfWxUPGXzVPu4HFGsGZzvQ7QZcNIybOCmD0Ke13So8QVSXsXJe+j+VkRxyD1ZZ
-YFlGsxq4zysnhyDKlULib5iXm9/FO5Sef/vVyrMbM4tdN4g0c8s+nwqatMio6GL6
-qwZkCWd3pQxAchUNluylAfkCgYArkDIH6VDFs0D7QOBobecZfCYCIuUUbQU6/WMC
-aA63pAZlGxy1PXeRbDMmKCFUpVra9Ve1fpQVOW4LP+fDKUhFOvX7xoH209lAbDwx
-DbUCUm7zZWa5NH3+V4fxFha6LesF1hFbmELgZNDE70/jrptFFM+5WBTck9PjyNdt
-/BSGjQKBgDS8bI/B6uMos882AG4eOcUBEVdaTaOIBqJEM0s5u8PPNBaXsx4kfH62
-9vnfrX3tf8fj3UgrIsqEg/N2Pze2ktj8ikqz4cIJqX0fHHvEYC+FvqDcdit14Cv9
-q0lAlP1AXSP4kry7SguwMTlewfcMUXxwTEIs0PXujqx8uTBLnUBY
------END RSA PRIVATE KEY-----</code></pre>
-<p>Click 'OK'.</p>
-<h4 id="add-ssh-user-to-connect-to-dind-slave"><span class="header-section-number">6.4.10.5</span> Add SSH user to connect to dind-slave</h4>
-<p>Go to the Jenkins user interface. Click 'Credentials', 'Global', 'Add credentials'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Kind</td>
-<td align="left">SSH username with password</td>
-</tr>
-<tr class="even">
-<td align="left">Scope</td>
-<td align="left">Global</td>
-</tr>
-<tr class="odd">
-<td align="left">Username</td>
-<td align="left">jenkins</td>
-</tr>
-<tr class="even">
-<td align="left">Password</td>
-<td align="left">jenkins</td>
-</tr>
-<tr class="odd">
-<td align="left">Description</td>
-<td align="left">SSH user to connect to dind-node</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'</p>
-<h4 id="add-dind-node"><span class="header-section-number">6.4.10.6</span> Add dind node</h4>
-<p>Go to the Jenkins user interface. Click 'Manage Jenkins', 'Manage Nodes', 'New Node'. Enter:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Node name</td>
-<td align="left">docker-in-docker</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Dumb Slave</td>
-</tr>
-<tr class="odd">
-<td align="left">Number of executors</td>
-<td align="left">4</td>
-</tr>
-<tr class="even">
-<td align="left">Remote root directory</td>
-<td align="left">/tmp</td>
-</tr>
-<tr class="odd">
-<td align="left">Labels</td>
-<td align="left">docker</td>
-</tr>
-<tr class="even">
-<td align="left">Usage</td>
-<td align="left">Only build jobs with label restrictions matching this node</td>
-</tr>
-<tr class="odd">
-<td align="left">Launch method</td>
-<td align="left">Launch slave agents on Unix machines via SSH</td>
-</tr>
-<tr class="even">
-<td align="left">Host</td>
-<td align="left">jnlp.jenkins.<your-project>.tld</td>
-</tr>
-<tr class="odd">
-<td align="left">Credentials</td>
-<td align="left">jenkins (SSH user to connect to dind-node)</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save'</p>
-<h4 id="create-jenkins-job-for-sonar"><span class="header-section-number">6.4.10.7</span> Create Jenkins job for Sonar</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">sonar-app</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Maven project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job sonar-app</strong></p>
-<p>Go to the Jenkins user interface. Click 'sonar-app', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Git</td>
-<td align="left">Repository URL</td>
-<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Credentials</td>
-<td align="left">jenkins (gitlab user)</td>
-</tr>
-<tr class="even">
-<td align="left">Build</td>
-<td align="left">Root POM</td>
-<td align="left">testapp/pom.xml</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Goals</td>
-<td align="left">clean install -DskipTests</td>
-</tr>
-<tr class="even">
-<td align="left">Post-build Actions</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">SonarQube analysis with Maven</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save'.</p>
-<h4 id="create-jenkins-job-for-owasp-dependency-checker"><span class="header-section-number">6.4.10.8</span> Create Jenkins job for OWASP dependency checker</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">dependency-check-app</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Maven project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job dependency-check-app</strong></p>
-<p>Go to the Jenkins user interface. Click 'dependency-check-app', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Git</td>
-<td align="left">Repository URL</td>
-<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Credentials</td>
-<td align="left">jenkins (gitlab user)</td>
-</tr>
-<tr class="even">
-<td align="left">Build</td>
-<td align="left">Root POM</td>
-<td align="left">testapp/pom.xml</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Goals</td>
-<td align="left">clean install -DskipTests</td>
-</tr>
-<tr class="even">
-<td align="left">Post Steps</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Run regardless of build resultaat</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">Invoke OWASP Dependency-Check analysis</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left"><strong><em>click</em></strong></td>
-<td align="left">Advanced</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Generate optional HTML reports</td>
-</tr>
-<tr class="even">
-<td align="left">Post-build Actions</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Publish OWASP Dependency-Check analysis results</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save'.</p>
-<h4 id="create-job-build-app"><span class="header-section-number">6.4.10.9</span> Create job build-app</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">build-app</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Maven project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job build-app</strong> Go to the Jenkins user interface. Click 'build-app', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Git</td>
-<td align="left">Repository URL</td>
-<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Credentials</td>
-<td align="left">jenkins (gitlab user)</td>
-</tr>
-<tr class="even">
-<td align="left">Additional Behaviours</td>
-<td align="left"></td>
-<td align="left">Check out to specific local branch</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Branch name</td>
-<td align="left">master</td>
-</tr>
-<tr class="even">
-<td align="left">Build Triggers</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Poll SCM</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Schedule</td>
-<td align="left">H/5 * * * *</td>
-</tr>
-<tr class="even">
-<td align="left">Build environment</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Installed maven version</td>
-</tr>
-<tr class="odd">
-<td align="left">Build</td>
-<td align="left">Root POM</td>
-<td align="left">testapp/pom.xml</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">Goals</td>
-<td align="left">clean install</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save'.</p>
-<h4 id="create-job-build-image"><span class="header-section-number">6.4.10.10</span> Create job build-image</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">build-image</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Freestyle project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job build-image</strong> Go to the Jenkins user interface. Click 'build-image', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Restrict</td>
-<td align="left">Label Expression</td>
-<td align="left">docker</td>
-</tr>
-<tr class="odd">
-<td align="left">Git</td>
-<td align="left">Repository URL</td>
-<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">Credentials</td>
-<td align="left">jenkins (gitlab user)</td>
-</tr>
-<tr class="odd">
-<td align="left">Build</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Execute shell</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">Command</td>
-<td align="left">cd docker &amp;&amp; ./build.sh</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<h4 id="create-job-sonar-art"><span class="header-section-number">6.4.10.11</span> Create job sonar-art</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">sonar-art</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Maven project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job sonar-art</strong> Go to the Jenkins user interface. Click 'sonar-art', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Git</td>
-<td align="left">Repository URL</td>
-<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Credentials</td>
-<td align="left">jenkins (gitlab user)</td>
-</tr>
-<tr class="even">
-<td align="left">Build</td>
-<td align="left">Root POM</td>
-<td align="left">testART/pom.xml</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Goals</td>
-<td align="left">clean install -DskipTests</td>
-</tr>
-<tr class="even">
-<td align="left">Post-build Actions</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">SonarQube analysis with Maven</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save'.</p>
-<h4 id="create-job-build-art"><span class="header-section-number">6.4.10.12</span> Create job build-art</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">build-art</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Maven project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job build-art</strong> Go to the Jenkins user interface. Click 'build-art', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Git</td>
-<td align="left">Repository URL</td>
-<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Credentials</td>
-<td align="left">jenkins (gitlab user)</td>
-</tr>
-<tr class="even">
-<td align="left">Additional Behaviours</td>
-<td align="left"></td>
-<td align="left">Check out to specific local branch</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Branch name</td>
-<td align="left">master</td>
-</tr>
-<tr class="even">
-<td align="left">Build environment</td>
-<td align="left">Release Ggoals</td>
-<td align="left">-Dresume=false release:prepare release:perform -Darguments=&quot;-DskipTests&quot;</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">DryRun goals</td>
-<td align="left">-Dresume=false -DdryRun=true release:prepare -Darguments=&quot;-DskipTests&quot;</td>
-</tr>
-<tr class="even">
-<td align="left">Build</td>
-<td align="left">Root POM</td>
-<td align="left">testART/pom.xml</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Goals</td>
-<td align="left">clean install -DskipTests</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'Save'.</p>
-<h4 id="create-job-run-art"><span class="header-section-number">6.4.10.13</span> Create job run-art</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">run-art</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Maven project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job run-art</strong> Go to the Jenkins user interface. Click 'run-art', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Parameters</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">This build is parametrized</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Add String Parameter</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">Name</td>
-<td align="left">browserType</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Default Value</td>
-<td align="left">FIREFOX</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Add String Parameter</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Name</td>
-<td align="left">seleniumServerUrl</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">Default Value</td>
-<td align="left">http://server.selenium.<your-project>.tld:4444/wd/hub</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">Add String Parameter</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">Name</td>
-<td align="left">applicationServerUrl</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Default Value</td>
-<td align="left">http://www.testapp.<your-project>.tld:8080</td>
-</tr>
-<tr class="even">
-<td align="left">Git</td>
-<td align="left">Repository URL</td>
-<td align="left">git@www.gitlab.<your-project>.tld:test-group/test-project.git</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Credentials</td>
-<td align="left">jenkins (gitlab user)</td>
-</tr>
-<tr class="even">
-<td align="left">Build</td>
-<td align="left">Root POM</td>
-<td align="left">testART/pom.xml</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Goals</td>
-<td align="left">-DbrowserType=<span class="math inline"><em>b</em><em>r</em><em>o</em><em>w</em><em>s</em><em>e</em><em>r</em><em>T</em><em>y</em><em>p</em><em>e</em> − <em>D</em><em>s</em><em>e</em><em>l</em><em>e</em><em>n</em><em>i</em><em>u</em><em>m</em><em>S</em><em>e</em><em>r</em><em>v</em><em>e</em><em>r</em><em>U</em><em>r</em><em>l</em>=</span>seleniumServerUrl -DapplicationServerUrl=$applicationServerUrl clean test</td>
-</tr>
-</tbody>
-</table>
-<p>Add 'Execute shell' Post Step. Select 'Run only if build succeeds'. Enter command:</p>
-<pre><code>export \
-  URL=&quot;http://trr.reporting.&lt;your-project&gt;.tld:4567/upload&quot; \
-  APP_NAME=&quot;Testapp&quot; \
-  APP_VERSION=&quot;SNAPSHOT&quot; \
-  TEST_DESCRIPTION=&quot;ART Testapp&quot; \
-  TEST_USER=&quot;Jenkins&quot; \
-  TEST_VERSION=&quot;Master&quot; \
-  TEST_TARGET=&quot;$applicationServerUrl&quot; \
-  TEST_PLATFORM=&quot;$browserType&quot; \
-  TEST_RUN=&quot;ART&quot; \
-  DIR=&quot;testART/target/surefire-reports/junitreports&quot;
-
-# Parallele upload van resultaat
-echo &quot;Sending reports in ${DIR}&quot;
-echo &quot;${APP_NAME}&quot;
-for file in $DIR/\*.xml; do
-  [ -f $file ] || continue
-  echo $file
-done | xargs -I{} --max-procs 0 bash -c &#39;
-  curl ${URL} \
-    -s \
-    -F &quot;junit=@{}&quot; \
-    -F &quot;application_name=${APP_NAME}&quot; \
-    -F &quot;application_version=${APP_VERSION}&quot; \
-    -F &quot;testrun_description=${TEST_DESCRIPTION}&quot; \
-    -F &quot;testrun_user=${TEST_USER}&quot; \
-    -F &quot;testrun_version=${TEST_VERSION}&quot; \
-    -F &quot;test_target=${TEST_TARGET}&quot; \
-    -F &quot;test_platform=${TEST_PLATFORM}&quot; \
-    -F &quot;testrun=${TEST_RUN}&quot; \</code></pre>
-<h4 id="create-job-load-ltcs"><span class="header-section-number">6.4.10.14</span> Create job load-ltcs</h4>
-<p>Go to the Jenkins user interface. Click 'New item'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Item name</td>
-<td align="left">load-ltcs</td>
-</tr>
-<tr class="even">
-<td align="left">Type</td>
-<td align="left">Freestyle project</td>
-</tr>
-</tbody>
-</table>
-<p>Click 'OK'.</p>
-<p><strong>Configure job load-ltcs</strong> Go to the Jenkins user interface. Click 'load-ltcs', 'Configure'.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">Property</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Discard old builds</td>
-<td align="left">Max # of builds to keep</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Bruild Trigers</td>
-<td align="left"><strong><em>select</em></strong></td>
-<td align="left">periodically</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">Schedule</td>
-<td align="left">H 6-20 * * 1-5</td>
-</tr>
-</tbody>
-</table>
-<p>Add 'Execute shell' Build Step. Enter command:</p>
-<pre><code>#!/bin/bash -ex
-
-# JIRA importer aanroepen
-data=$(curl -s http://importer.reporting.&lt;your-project&gt;.tld:4567/import)
-
-if [ &quot;$data&quot; == &#39;Import completed&#39; ]
-then
-  exit 0
-else
-  exit 1
-fi</code></pre>
-<h3 id="application-under-development"><span class="header-section-number">6.4.11</span> Application under development</h3>
-<h4 id="add-application-to-docker-dashboard"><span class="header-section-number">6.4.11.1</span> Add application to Docker Dashboard</h4>
-<p>Go to the Docker Dashboard user interface, click 'Apps', 'New App'. Enter the following app definition:</p>
-<pre><code>name: testapp
-version: latest
-
-www:
-  image: www.docker-registry.&lt;your-project&gt;.tld:5000/testapp:latest
-  enable_ssh: true</code></pre>
-<p>Click 'Save changes' and start the application.</p>
 <!-- Wat is code
 hoe organiseren we het nu
 laat afhankelijkheden zien tussen applicaties
@@ -3208,6 +1809,219 @@ References are automatically generated from the BibTex file (References.bib)
 <p>J: We zouden dat wel onderdeel van de review kunnen maken. Even twee minuten met elkaar naar de kwaliteitsrapportage kijken ofzo. Ik weet niet of dat iets toevoegd aan het proces maar.</p>
 <p>S: Ik weet niet of het iets toevoegd.</p>
 <p>30:26</p>
+<p>I: En de testrapportage wordt ook opgeleverd aan de klant?</p>
+<p>J: Nou de testrapportage is eigenlijk ook niet meer dan de ART resultaten zoals die op het kwaliteitsdashboard staan. Ik schrijf niet los daarvan nog zegmaar een document of iets.</p>
+<p>I: Nee, maar die worden ook opgeleverd en daar wordt naar gekeken?</p>
+<p>J: Nee, daar geldt hetzelfde voor. die staan gewoon op het kwaliteitsdashboard. en dat is van buitenaf benaderdbaar voor hun. Dus als ze willen kunnen ze die openen.</p>
+<p>S: Ja maar daar staat alleen maar een getalletje. Zoveel testen geslaagd, gefaald.</p>
+<p>J: Ja, maar kunnen ze daar niet in doorklikken naar BIRT?</p>
+<p>S: Nou, dat werkt niet extern denk ik.</p>
+<p>J: Oooh, dat zou kunnen. Nou dan is het antwoord nee.</p>
+<p>I: Oke. En <uhm>, wat vind je eigenlijk van de manier hoe de testcases en dat soort zaken worden vastgelegd in Jira?</p>
+<p>J: Ja, ik vind een paar dingen. Af en toe doen wij redelijk kleine stories die eigenljik cosmetisch van aard zijn en dan vind ik het gewoon veel overhead om daar logical testcases voor te schrijven want of ik dan de testcase lees of de acceptatiecriteria in de story lees dat is bijna een op een hetzelfde omdat het zulke simpele stories zijn. Dus dan hebben wij inmiddels ook de vrijheid dat we mogen zeggen bij zo'n story om te zeggen van we verwachten nu nul logical testcases. Want anders zijn we echt aan werkverschaffing aan het doen.</p>
+<p>S: Voorbeeld. Een label aanpassen ofzo.</p>
+<p>J: Ja. Of verplaats een invoerveld. Naja, noem eens wat dom <eh>.</p>
+<p>J: Ennn.. Voor de overige stories vind ik het opzich goed om logical testcases te schrijven. Heb ik alleen nog wel eens wat moeite met het format zegmaar. Ik ben gewend dat ik of een beslistabelletje of zo'n matrixje of een graaf maak waarin je je logische paden tegen elkaar afzet. En zoiets kan ik niet kwijt in Jira. Dus nu heb ik dat ik alsnog voor mijzelf even uitteken wat de testgevallen moeten zijn. Dan denk ik van nou, nu heb ik voldoende informatie op m'n kladblok om die testen uit te kunnen voeren. Maar, oja, dan moet ik ze voor de administratie ook nog in Jira zetten. En op het moment dat die logical testcases daadwerkelijk geautomatiseeerd moeten worden. Dan denk ik van nou, dat is goed want dan hangt het samen met je kwaliteitsrapportage. Prima. Maar anders zou ik zeggen, wat voegt het toe.Je kunt die dingen ook op will not be executed zetten.</p>
+<p>I: Ja</p>
+<p>J: Wat betekend dat ze maar een keer uitgevoerd worden. Nou onze PO's kijken nooit naar die dingen. Ja jullie als ontwikkelaars doen vaak nog een review op de LTC's.</p>
+<p>S: Vaak, altijd.</p>
+<p>J: Altijd. Ja en daar wil het nog wel eens handig voor zijn dat een ontwikkelaar naar die testgevallen kijkt en dan ofwel tegen mij zegt van joh, je mist dit of dat. Ofwel dat je als ontwikkelaar ook kunt denken van, wacht, ik heb deze testsituatie over het hoofd gezien. Dat heb ik nog niet gebouwd. Dus, maar. Dat is wel handig. Maar ik vind dat het ook nog best vaak verzand in meer wat punten en comma's rechtzetten zegmaar in een administratief dingetje dan dat het echt de testen verbetered. Of dat het de kwaliteit van het ontwikkelproces verbeterd.</p>
+<p>S: Ja, eens.</p>
+<p>J: Toch.</p>
+<p>S: Ja. Ik moet zeggen dat ik het opzich best wel veel werk vind om zo'n LTC in Jira op te voeren. Je moet hem handmatig koppelen aan de story. Je moet, ja..</p>
+<p>J: Je moet er met het reviewen van de story ook nog aan denken om de status om te zetten naar reviewed.En hij moet op resolved staan, en.</p>
+<p>S: Je merkt echt.. Je kunt niet al die dingen achter elkaar uittypen. Je moet dan weer een nieuw issue maken, dingen koppelen. Het overzicht raak je ook best wel snel kwijt volgens mij.</p>
+<p>J: Ja klopt.</p>
+<p>S: Ik ben er wel aan gewend. Ik heb meestal twee schermpjes open staan. Links de story met de LTC's en rechts ga ik dan nieuwe dingen maken.</p>
+<p>J: Ja, doe ik ook, ja.</p>
+<p>S: Maar toch is het eh....</p>
+<p>J: Maar dat vind ik met reviewen ook. Je moet een LTC openen om te kunnen reviewen. Maar je mist dan de samenhang met andere LTC's terwijl in principe zou je dan willen zien van oke als de ene LTC dit afdekt, hoe hangt dat dan samen met wat de rest afdekt weetje wel. Dat overzicht mis je ook</p>
+<p>34:42</p>
+<p>S: Ja.</p>
+<p>J: Wat is de reden dat je dat vraagt eigenlijk.</p>
+<p>I: Nou omdat dat samenhangt met <ehh>, bij de meeste projecten in elk geval, hoe de hele workflow is ingericht in zo'n continuous delivery straat. Want het begint natuurlijk met de wijziging die je wilt doen, je user story. En van daaruit begin je vaak te werken. En inderdaad, daar hangen die LTC's mee samen, de implementatie van de test case, de kwaliteitsrapportage. Het hangt allemaal met elkaar samen en <uhm>, ja als het ene heel veel extra werk of onnodige handelingen dan kan dat zie je bij sommige teams dat dat doorsijpelt in de rest van het werk.</p>
+<p>S: Ja, wij gaan daar best wel pragmatisch mee om. Soms heb je eigenlijk vijf LTC's nodig om verschillende scenario's te doen, maar die proppen wij vaak in 1 dan.</p>
+<p>J: Ja zeker als we toch al van.. Bij ons is er een mechanisme dat de PO per user story aangeeft of die hem belangrijk genoeg vindt om hem op te nemen in de ART.</p>
+<p>S: Ja of handmatig, we hebben ook nog een deel handmatig testen.</p>
+<p>J: Als die PO al zegt van joh, hij moet goed getest worden want hij moet goed opgeleverd worden, maar ach hij hoeft niet de regressietest in. Dan kun je iets makkelijker met je LTC's omgaan.</p>
+<p>S: Ja dat doen wij.</p>
+<p>J: Ja ik vind dat opzich ook wel terecht hoor.</p>
+<p>S: Ja, nee ik ook. Want anders zou ik het niet doen.</p>
+<p>I: Je zei dat jullie ook handmatig testen. Wat is de reden daarvan? Is dat heel moeilijk te automatiseren?</p>
+<p>S: Ja. <ehh> We hebben een aantal testen... We hebben een outlook plugin ontwikkeld. Ja, dat is gewoon moeilijk testen. We hebben het wel ooit op de backlog gezet om dat te maken. We hebben een proefje gedaan met de tooling die we ook gebruiken om de windows applicaties te testen. In theorie moet dat werken. Maar de klant vond dat teveel werk. En die plugin gaat er op termijn ook weer uit, dus. Dat gaan we ook niet meer doen denk ik. Zolang die in gebruik is gaan we dat elke keer handmatig testen, dat deel.</p>
+<p>I: Maar valt dat dan mee, het werk dat je daarmee hebt? Is dat ooit een probleem of niet?</p>
+<p>S: Ja, het is misschien een uurtje werk ofzo.</p>
+<p>J: Als ik hem helemaal doe ben ik een uurtje of twee bezig.</p>
+<p>I: Oke.</p>
+<p>S: En dan hebben we nog twee testjes denk ik, voor een service. Windows service die periodiek zegmaar draait. Ja vanuit de ART moeten we dat ding kunnen stoppen en starten zegmaar. Ja daar hebben we maatwerk voor nodig denk ik, want dat kan nu niet. Je moet eigenlijk op die Windows machine inloggen remote en dan de service stoppen en starten zegmaar.</p>
+<p>38:12</p>
+<p>S: Dat pastte toen niet in het automatiseringsproces dus dat doen we ook met de hand. En we hebben een hele set aan...</p>
+<p>I: Dat kan niet gewoon via powershell? Via dat scriptje?</p>
+<p>S: Jaja, dat kan wel.</p>
+<p>I: Maar je kunt niet op Windows remote inloggen en iets van powershell uitvoeren?</p>
+<p>S: Ja, dat kan je ook remote uitvoeren. Maar dat moet wel gemaakt worden. Laat ik het zo zeggen.</p>
+<p>J: Dan moet je de aansturing vanuit je tooling ook wel weer regelen. En dat zou dan weer custom werk zijn waarvan de klant zei, nou, laat maar zitten.</p>
+<p>S: Ja.</p>
+<p>J: En gezien hoe relatief weinig tijd, want het is maar een keer in de drie weken een uurtje voor een tester of ontwikkelaar om zo'n testje uit te voeren versus de ervaring die we toen hadden dat het best wel veel tijd kostte om dat in de tooling op te nemen, ja is toen besloten van het is het niet waard.</p>
+<p>I: Maar die handmatige testen is nooit een struikelblok? Aan het einde van de sprint, onder tijdsdruk?</p>
+<p>S: Ja,, ja.. we doen het liever niet maar. Het moet. We hebben geen andere oplossing er voor op korte termijn. We hebben nog een setje die is semi-automatisch. Een setje restful services die we testen. <eh> Ja ook een beetje een lang verhaal denk ik maar dat doen we met soap-ui. een test suite hebben we daarin gemaakt. Moet je af en toe wat handmatige dingetjes in doen.</p>
+<p>J: Ja het punt is, daar zouden we Win-ART voor moeten gebruiken..</p>
+<p>S: nou, of TestX.</p>
+<p>J: We willen natuurlijk.... We moeten eerst de uitgangssituatie goedzetten en controles doen.</p>
+<p>S: Ja dat kan ook in SQL heh.</p>
+<p>J: Misschien nog niet eens zo'n slecht idee trouwens.</p>
+<p>S: Nee, nee. Maar dan moet je..</p>
+<p>J: Ook dan moet je er weer effort in steken.</p>
+<p>S: Het idee was ooit van uh, services worden niet geautomatiseerd heeft iemand ooit gezegd. Automatisch getest. Ja de frontend die de service consumeert die moet je testen, maar de frontend is een mobiele applicatie die niet in beheer meer ligt bij de ontwikkelorganisatie. Dus ja die gaan wij nooit automatiseren.</p>
+<p>J: Het idee was we wachten met het automatiseren totdat die frontend ook bij ons in beheer komt, want dan gaan we die automatiseren.</p>
+<p>I: Maar dat is dus nog een andere applicatie die bij een andere partij in beheer is?</p>
+<p>S: Ja.</p>
+<p>I: En daar werken jullie dan wel nouw mee samen?</p>
+<p>S: Jawel.</p>
+<p>J: Wij bouwen de backend en zij bouwen de frontend. En uiteindelijk moet dat op elkaar klikken.</p>
+<p>S: Meestal gaat het wel goed.</p>
+<p>J: Totdat ze in productie gaan. en dan uh.</p>
+<p>S: Ja dan gaat het weer stuk, ik weet niet maar. Ja. 't is best wel complexe infra denk ik. Zit weer het Good platform tussen. Blackberry, is een of andere beveiliging. Lijkt een beetje op het Blackberry netwerk zeg maar. De applicaties draaien dan weer in een geisoleerde container. Met een VPN verbinding met het bedrijfsnetwerk. Maar die schil die er omheen zit veroorzaakt ook veel problemen.</p>
+<p>41:36</p>
+<p>I: Hebben jullie daar last van? Of zij juist?</p>
+<p>S: In principe hebben wij daar niet direct last van nee. Maar vaak dan in de ontwikkeling zie die Good schil er niet omheen en werkt alles. Dus ook met onze backend. Dan gaat het in productie met die Good schil er omhheen en de configuratie daar en dan werkt het niet meer.</p>
+<p>I: Ja, oke. Hebben jullie die mobile app ook hier om dingen mee te proberen?</p>
+<p>s: Nee eigenlijk niet.</p>
+<p>I: Hoe gaan jullie dan om met wijzigingen aan die backend service? Dat communiceren jullie op een of andere manier naar dat team?</p>
+<p>S: Ja, in principe ligt het een beetje bij ons. Er komt een wens van de klant, ik wil dit met die app doen. Wij kijken wat voor data daarvoor nodig is. Dan bedenken wij de interface en sturen we dan naar die andere partij. Die mogen daar wat van vinden. Meestal vinden ze er niks van.</p>
+<p>J: Het zijn opzich eenvoudige services. Het is niet alsof er zulke berichten over de lijn gaan.</p>
+<p>I: De communicatie met de klant loopt wel via jullie? dus jullie bouwen dan die backend service en dan communiceren jullie met het team dat de app bouwt..</p>
+<p>S: In principe niet, dat staat helemaal los dat doet de klant zelf. Ik heb technisch wel contact met ze maar functioneel en hoe die app eruit ziet daar doen wij niet zoveel mee. In principe niets.</p>
+<p>J: Het usability aspect wat natuurlijk aan zo'n app zit enzo dat is tussen die partij en de klant.</p>
+<p>43:04</p>
+<p>I: Hebben zij dan hun eigen setup van die tooling? Of van de applicaties om die app te kunnen testen.</p>
+<p>S: In principe testen zij niet met onze omgeving. zij hebben zelf een soort dummy service ingericht denk ik op basis van de interface beschrijving.</p>
+<p>I: Maar komt het dan echt pas voor het eerst samen in productie?</p>
+<p>S: Nee, nou, niet helemaal volgens mij. Wij lopen meestal een stuk voor met ontwikkeling van de backend. Dus die staat dan al in de testomgeving bij de klant.</p>
+<p>I: Ja.</p>
+<p>S: en op die omgeving kunnen ze dat wel testen.</p>
+<p>I: Oh ok. En daar wordt ook al gewerkt met dat beveilingsplatform, of dat dan weer niet?</p>
+<p>S: Nee, dat niet. Dat komt pas in productie naarboven en daar klapt het nog wel eens.</p>
+<p>J: Dat zou een goed idee zijn als ze dat al in de testomgeving doen.</p>
+<p>S: Ja dat weet ik maar dat was 'gedoe'.</p>
+<p>I: In dit geval is dit dus niet voor jullie een probleem en ook niet voor hun, maar meer voor de klant alleen?</p>
+<p>S: Uiteindelijk is het voor ons allemaal een probleem.</p>
+<p>J: Je krijgt vanuit productie dan vragen van kunnen jullie eens meekijken met wat er nu is gebeurd.</p>
+<p>S: Ja.</p>
+<p>J: En dan mis je inderdaad een geintegreerde omgeving. Die bouwer zegt dan van joh kunnen jullie je soap-ui projectje even sturen want dan weten wij precies hoe zo'n request eruit moet zien. En dan zeggen wij, stuur het berichtje wat er bij jullie uitkomt maar eerst naar ons misschien kunnen wij dat tegen onze software afvuren. En dat, ja, dan is het jammer dat je niet ergens een geintegreerde omgeving hebt waar we met z'n allen in kunnen kijken.</p>
+<p>S: Ja productie.</p>
+<p><gelach></p>
+<p>I: Of een soort pre-productie. Je weet ook niet wat de reden is dat ze dat niet gewoon in pre-productie of acceptatieomgeving hebben ingericht met dat beveiligsingsplatform erbij. Zijn dat licentiekosten waarschijnlijk?</p>
+<p>S: <eehm> Ja, ze hebben daar een omgeving voor, maar die is niet ingericht. Wat de reden daar precies van is weet ik niet. Tijd, kosten, kennis. Iets.</p>
+<p>I: Oke, duidelijk. <ehm> Andere teams die hebben de mogelijkheid.. <ehm> Jullie weten denk ik wel wat wij doen toch met het Docker platform? Of niet?</p>
+<p>S: Mja, ik weet wat Docker is.</p>
+<p>I: De andere teams hebben nu.. Kijk vroeger was het zo dat de contunous integration omgevingen werden beheerd door het interne beheer team. Dan had je 1 Jenkins, of iedereen had eigenlijk 1 Jenkins, 1 build server en daar werkte iedereen op. Of sommige teams hadden een eigen instantie. Maar daar kon je zelf niets op installeren, geen plugins of configuratie aanpassen naar de wensen van het team. Dat kan nu wel. Daarbij kunnen ze via het Docker Dashboard, die hebben jullie waarschijnlijk ook toch?</p>
+<p>s: Ja, hebben wij ook.</p>
+<p>I: Eigenlijk elke dienst starten die je nodig vindt ter ondersteuning van je ontwikkelstraat. Wat je als team maar wil. <ehm> Hebben jullie behoefte aan zo'n dienst? En dan met name in de Microsoft wereld. Docker komt natuurlijk ook naar Windows dus.</p>
+<p>S: Wij hebben daar nog niet echt behoefte aan denk ik. Misschien zou het het werk iets kunnen vergemakkelijken hoor. Maar het is nu allemaal ingericht.</p>
+<p>I: De standaard tooling die er is, werkt voldoende voor jullie project en team?</p>
+<p>S: Ja het werkt goed. Met alle scriptjes die wij eromheen gebouwd hebben zegmaar, naar onze eigen behoefte. Werkt dat opzich wel.</p>
+<p>I: Maar bijvoobeeld ad-hoc omgevingen kunnen...</p>
+<p>J: Ja, maar omdat het zo specifiek is, microsoft omgeving, denk ik dat de kans groot is dat je een beetje verzand in dezelfde situatie die we met de test tooling gehad hebben. Dat je dan een soort van standaardoplossing vanuit het IQ-team ondersteund kan worden. Maar dat dan in de praktijk gaat blijken dat die toch gezien onze omgeving niet helemaal voldoet en dat je dan best wel weer heel veel effort moet gaan steken in zoiets werkend te krijgen. en, ja dat is voor ons gezien alle investeringen die de klant heeft gedaan in zegmaar wat we nu draaiend hebben denk ik niet dat ze daar echt open voor zouden staan.</p>
+<p>s: Wat is Docker voor Windows exact.</p>
+<p>I: Dat is een hele goeie, daar moet ik ook nog beter in gaan duiken. Wat het nu is is dat Docker voor Windows ondersteund nu alleen Linux applicaties. Want Docker draait dan in de hypervisor. Je hebt dan eigenlijk Linux naast windows.</p>
+<p>48:04</p>
+<p>S: Je draait Docker op hyperv?</p>
+<p>I: Ja.</p>
+<p>S: Maar kun je daar binnen ook Windows?</p>
+<p>I: Nog niet dus. Neen nog niet. Dat komt wel.</p>
+<p>S: Maar ik kan dan in theorie een SQL instantie draaien?</p>
+<p>I: Ja. Dus dat is wel iets waar bij aankomend jaar ook echt naar willen gaan kijken. Het is nu nog niet productiewaardig. Maar dat zal wel komen.</p>
+<p>S: Ik denk niet dat wij dat snel binnen onze projecten ook zullen gaan gebruiken hoor. Waarschijnlijk worden alleen de nieuwste versies ondersteund.</p>
+<p>I: Ja, ik heb geen idee.</p>
+<p>S: Nou waarschijnlijk. Dat zie ik ook bij dot net core nu. Dot net vijf bestaat niet meer, dat heet nu dot net core.</p>
+<p>I: Ja.</p>
+<p>S: Werkt allemaal iets anders, lightweight, blabla. Dat draait, dat werkt in Docker volgens mij. Het is multiplatform gemaakt. Draait op Linux, dus ook in Docker volgens mij.</p>
+<p>I: Dus dat is dan open source of niet.</p>
+<p>S: Dot net core is ook open source ja. <ehm> Maar die technieken gebruiken wij niet. Wij zijn gebonden aan de oude technieken. En ik denk die oude technieken waaraan wij gebonden zitten gaan nooit draaien in Docker. Ik denk niet dat ze oude spullen compatible gaan maken.</p>
+<p>J: Maar dat ligt dus niet zozeer aan Docker, maar die dot net vier gaan ze nooit.</p>
+<p>S: Dot net vier gaat denk ik nooit, nee. Waarom, nee, dat is veel te veel werk.</p>
+<p>I: Ik heb geen idee. Dot net core kun je op Linux draaien. Dat kan dan nu met Docker omdat Windows Docker Linux ondersteund via HyperV. Maar echte Windows applicaties kun je nog niet met Docker draaien. Maar dat, komt er als het goed is aan. Dan zou je in theorie elke Windows applicatie in een container moeten kunnen draaien. Dat zou dan ook voor oudere applicaties gelden.</p>
+<p>S: Maar het is allemaal...</p>
+<p>I: Geen idee wanneer dat zo ver is. Maar bijvoorbeeld iets als omgevingen on-demand. Want jullie hebben nu een x aantal statische omgevingen.</p>
+<p>S: Ja.</p>
+<p>I: Zouden jullie daar iets aan hebben? In de zin van, bijvoorbeeld, parallel testen draaien om te doorlooptijd te verkorten.</p>
+<p>S: Ja opzich wel. Dat was ook ooit het doel, om dynamische omgevingen in te richten. <emh>, ja L was daar mee bezig.</p>
+<p>J: Ja? Omdat ook echt voor elkaar te krijgen?</p>
+<p>S: Dat was de oorspronkelijke wens. Ik weet niet precies waarom, maar het lukte niet of... Toen hebben we die statische omgevingen gehad. En ja opzich werkt dat voor ons. We hebben tien van die dingen, we werken met vier man. We hebben in theorie twee omgevingen per persoon tot onze beschikking. Het kost denk ik wat om die servers in de lucht te houden, maar dat zien wij niet. Opzich is het mooier om het dynamisch te kunnen doen maar dat gaat niet zo makkelijk voor ons.</p>
+<p>I: Het is nu niet direct een bottleneck voor jullie?</p>
+<p>S: Nee, het was een bottleneck omdat we maar vijf omgevingen hadden. En meer virtuele omgevingen kon niet, qua kosten denk ik. Toen hebben we die dubbele instantie erbij gedaan. Dat we twee instanties per vm kunnen draaien. En nu zijn we verre weg van... er is altijd wel iets vrij.</p>
+<p>51:29</p>
+<p>I: Hoe kijken jullie aan tegen de ondersteuning vanuit de organisatie voor jullie project? Misschien in technische zin, of procesmatige zin? Missen jullie daar iets? Wordt er teveel gestuurd? Deze vraag zit er met name in omdat bij andere teams Docker min of meer naar binnen is geschoven. Zo van, we gaan nu Docker doen, terwijl daar vanuit de organisatie misschien wel te weinig ondersteuning voor was.</p>
+<p>J: Dat hebben wij ervaren met de test tooling zeg maar. Dat is eigenlijk gepushed van je moet dit gebruiken. Ja, maar het werkt niet. Nouja.</p>
+<p>I: Dat is gepushed door de technical lead van het project?</p>
+<p>J: Ja.</p>
+<p>S: Docker wilden ze eigenlijk ook pushen.</p>
+<p>I: Maar hoe dan?</p>
+<p>S: Ja, dat kan niet, dus. Er waren toen ook al verhalen over Docker voor Windows. Maar vooralsnog is het er nog niet. Maar over ondersteuning vanuit de ontwikkelorganisatie.</p>
+<p>I: Ja, met name voor dit soort zaken dan.</p>
+<p>S: Ja ik vind niet dat er echt ondersteuning is voor ons.</p>
+<p>I: Maar mis je dat? Je zei net dat we alles wel in het team kunnen oplossen. Dat is natuurlijk ook heel goed.</p>
+<p>S: Ja, zo is dat een beetje gegroeid. <ehm> We moeten het wel zelf oplossen. We hebben ons eigen ding bedacht en dat draait nu. Maar ja. Voorbeeld, we willen die Exchange server hebben.</p>
+<p>I: Ja.</p>
+<p>S: Ja, dat moeten we zelf oplossen. Het wordt niet ondersteund door de ontwikkelorganisatie.</p>
+<p>I: Maar vind je het nu meer een nadeel dan een voordeel?</p>
+<p>S: Ja, dat vind ik een nadeel ja.</p>
+<p>I: Ja, maar in andere gevallen zou je ook kunnen denken van het is een voordeel. Je hebt zelf meer controle over je omgevingen.</p>
+<p>J: Ja, ik vind opzich het voordeel dat je een stukje flexibiliteit hebt. Vanuit het team weten we met elkaar best wat de juiste tooling of de juiste way to go is. Dat er ruimte voor is dat je daar je eigen keuzes in kunt maken vind ik wel goed. Ik geloof namelijk niet in de omgekeerde gedachte die eerst bij de ontwikkelorganisatie heerste. Dat was van we hebben een blauwdruk en ieder project moet maar in die blauwdruk passen. Ja dat gaat niet. Als je een dot net project hebt of een Java project dat kun je niet allemaal in dezelfde blauwdruk stoppen. Dus dat die flexibiliteit er inmiddels is dat vind ik wel goed. Alleen dat staat los van een stukje technische of infrastructurele ondersteuning die misschien wel wat meer geboden kan worden.</p>
+<p>S: Ja nou het gaat ook niet goed nu merk je.</p>
+<p>I: Wat bedoel je dan?</p>
+<p>S: Ja, Exchange is iets dat wij buiten het team willen houden. We hebben aan de ontwikkelorganisatie gevraagd van los het op, wij kunnen dit niet, wij willen dit niet. <ehm> Het is uiteindelijk toch binnen het team gekomen. We zijn nu drie weken verder maar we zijn eigenlijk nog geen stap verder.</p>
+<p>J: En uiteindelijk gaan we het toch weer zelf doen.</p>
+<p>S: Ja we zijn het al zelf aan het doen. Maar er wordt ook veel heen en weer gebounced. Server verkeerd ingericht. Dat kunnen wij niet zelf. Dus er moet weer een nieuwe VM kloon komen.</p>
+<p>J: Ik denk dat dat vaak ook het nadeel is van deze vorm van ondersteuning zegmaar. Dat je eigenlijk net te ver van de projecten af zit om alle ins- en outs te weten. In hoeverre kun je dan echt adequate ondersteuning bieden. Ze kunnen prima dat servertje neerzetten, maar wat was er nou waarom het voor ons alsnog niet ging werken? Ja dan denk je, kunnen zij (technisch beheer) dat weten. Ja misschien als ze iets proactiever zijn en even wat meer vragen aan ons.</p>
+<p>S: Maar dat die eerste run verkeerd was?</p>
+<p>J: Ja.</p>
+<p>S: <eh> Ja. Ook ontbrekende kennis denk ik.</p>
+<p>J: Ik vind dat ook wel lastig hoor. Wat dat betreft hou ik m'n hart vast als straks ook die performance en security testen, wat ook nu meer een dienst moet gaan worden, in plaats van een of twee handige harries die hier over de werkvloer lopen. En dat model werkt opzich. R heeft voor ons performancetesten gedaan. Ja zodra hij er even niet uitkomt dan loopt hij gewoon naar ons, of wij naar hem.</p>
+<p>I: Ja.</p>
+<p>J: En uiteindelijk los je het dan op doordat je gewoon bij elkaar zit. En nu gaat dat ook weer losgetrokken worden van dat wordt een dienst en op afstand en.</p>
+<p>S: Eigenlijk wel een beetje hetzelfde idee als met IQteam en IT beheer. We gaan bijna nooit met elkaar samen zitten om iets op te lossen. We moeten een ticket aanmaken.</p>
+<p>J: En dan gaat iemand naar dat ticket kijken die waarschijnlijk onze omgeving nog nooit gezien heeft, weet je wel. Hoe kun je dan goede ondersteuning bieden. En dan zeggen wij ja die gasten die weten het ook allemaal niet.</p>
+<p>S: En zij roepen dat over ons.. Er zit een muur tussen eigenlijk.</p>
+<p>I: Ja daarom ben ik ook dit aan het doen. Er zitten twee kanten aan, het is voor m'n scriptie maar het helpt wel. We hebben als best veel nieuwe inzichten gekregen.</p>
+<p>S: Als wij ondersteuning willen hebben van IT beheer moeten wij exact zeggen wat we willen hebben. Wij willen een VM server dit hebben, met software X er op. We moeten hem zo geconfigureerd hebben.</p>
+<p>J: Je moet het eigenlijk weten tot op het niveau waarop je het eigenlijk net zo goed zelf kan doen.</p>
+<p>S: Als wij dus een foutje maken in onze aanvraag dan moeten we dus weer helemaal opnieuw beginnen.</p>
+<p>J: Terwijl we willen gewoon zeggen van dit is ons probleem...</p>
+<p>S: Lost het op.. <haha></p>
+<p>I: Maar zou je dan toch niet liever zelf de mogelijkheid willen hebben om ergens met een paar kliks een vm aan te maken.</p>
+<p>J: Ja ik geloof meer, misschien spreek ik voor m'n beurt, maar ik persoonlijk geloof meer in een soort van inleen model. Op het moment dat wij die expertise nodig hebben, voor deze drie stories, trekken wij iemand van zo'n expert team intern bij ons in het team.</p>
+<p>S: Ik denk dat het veel efficienter is als wij iemand tijdelijk kunnen inhuren, of wat dan ook.</p>
+<p>J: Voor het IQ-team ook hoor. Stel dat we ooit op het punt komen dat we met Docker willen gaan werken. Ik zou zeggen zet maar gewoon dedicated een IQ-man in ons team neer tot het moment dat het werkt zeg maar. Maar op afstand van hier heb je een server en dan tegen het team zeggen van nou ons taakje is gedaan, ga er maar wee werken. En dan zeggen wij na drie klikken ja maar dit werkt voor ons niet. Ja dan mikken wij dat weer terug over de schutting, weet je wel.</p>
+<p>I: Nee, nee. Dat is natuurlijk ook niet de agile gedachte. Maar zo hebben wij dat in het begin ook wel gedaan met de projecten die Docker gingen doen. Dat wij daar een aantal uur per week met hen samen gingen zitten om te kijken hoe we dat konden toepassen binnen hun project.</p>
+<p>J: Ik weet niet wat jullie ervaringen daar mee zijn, maar het lijkt mij wel een model wat zou moeten kunnen werken. En als het eenmaal werkt dan kun je op afstand ondersteuning bieden.</p>
+<p>I: Nou kijk de gedachten is natuurlijk dat, vroeger kon je als team zelf helemaal niets doen en moest je alles via technisch beheer regelen. En dan had je precies de problemen die je beschrijft. We zijn aan het kijken van je moet naar een juiste mix. Want je zei ook van ja, als team weet je goed welke services je nodig hebt in je ontwikkelstraat en hoe je bepaalde dingen wilt inrichten. Wat voor jou en voor dat project lekker werkt. Dus die vrijheid moet er ook zeker zijn, denk ik. We zijn aan het zoeken naar een juiste balans.</p>
+<p>S: Ja, maar wij zijn wel iets anders begonnen met L. erbij. In principe was L voor ons diegene die voor ons de externe problemen oplostte. Ja die zal ook wel met technisch beheer gecommuniceerd hebben maar. Daar hadden we eigenlijk geen problemen mee. Voor ons was dat wel dienstverlening.</p>
+<p>J: Ja, hij zat wel in dat team (technisch beheer) maar hij was een soort van dedicated...</p>
+<p>S: Nu hij er niet meer is, gaat het, ja, anders.</p>
+<p>J: Maar hij kon ons helpen doordat hij ook kennis had van onze omgeving.</p>
+<p>S: Ja, hij wist ook van het project inderdaad.</p>
+<p>J: En dan werkt dat inderdaad. Hij heeft kennis van de omgevingen en van het project. Dan heb je aan twee woorden genoeg om ons te helpen.</p>
+<p>S: Als hij er nu nog was en we zouden zeggen van we hebben een Exchange server nodig, fix het maar. Hij zou waarschijnlijk ook nog met de klant gaan bellen om na te vragen waarom het nodig is en op welke manier.</p>
+<p>I: Oke, duidelijk. Maar stel je zou iets in de cloud kunnen starten, dat zou niet een oplossing zijn? Dat je zou kunnen zeggen van we maken een image van Exchange.</p>
+<p>S: Ja, dat zou perfect zijn. Als wij klik Exchange kunnen doen en wij kunnen daarmee koppelen. Zou ideaal zijn. Ook wel SQL server. Ja dat hebben we nou allemaal draaien, maar voor nieuwe dingen.</p>
+<p>I: Misschien voor nieuwe dot net projecten die ooit gaan starten.</p>
+<p>S: Als we in theorie ooit nog met sharepoint moeten gaan babbelen ofzo.. Ik weet dat de klant ook sharepoint heeft. Ja, klik sharepointomgeving. zou ideaal zijn.</p>
+<p>J: Maar ja, dan zouden er dus dat soort Dockerized omgevingen moeten zijn. Out of the box die..</p>
+<p>I: Ja, Docker maakt het misschien makkelijker. Maar je kunt ook eerst met, weet ik veel, automatisering op VM niveau werken.</p>
+<p>S: Ja dat is ons om het even.</p>
+<p>I: Maar dit is toch een goede aanleiding voor ons om naar Docker voor windows te gaan kijken. Dit is natuurlijk te laat voor jullie nu.</p>
+<p>S: Nou dat weet ik niet. In principe kan dit project nog jaren en jaren draaien.</p>
+<p>J: Ja maar dan moeten we niet zo'n traject krijgen als met de ART tooling gehad hebben. Zo van, hier heb je een halve oplossing.</p>
+<p>S: Nee.</p>
+<p>1:04:20</p>
+<p>J: Uiteindelijk heeft dat niet heel veel goodwill bij onze klant oplgeverd ook. Want het wordt dan verkocht aan de klant van we hebben een werkende en kant en klare oplossing voor testautomatisering.</p>
+<p>I: Ja.</p>
+<p>J: Maar per saldo zien zij dat ze het hele jaar 25-30%, misschien wel meer, van hun sprint van hun velocity kwijt zijn aan het in de lucht brengen en houden van die tooling. Ja dat geeft toch een beetje scheve gezichten.</p>
+<p>I: Ja.</p>
+<p>J: Dus ik denk wel dat dat belangrijk is als we ooit besluiten om over te gaan op iets als Docker dat we hele goede afspraken met elkaar maken.</p>
+<p>I: Oke, dan waren dit mijn vragen.</p>
 <div id="refs" class="references">
 
 </div>
