@@ -1,3 +1,12 @@
+verhaallijn:
+
+1. cd -> proces en tooling voor nodig -> inregelen.
+2. er bestaan veel goede online cd tools (ref)
+3. overheid kan die niet gebruiken ivm regelgeving (on premise in nederland)
+4. elk team zelf cd pipeline laten bouwen is te kostbaar en niet nuttig.
+5. zelf cd tooling ontwikkeld obv docker
+6. hoe sluit deze tooling aan bij ontwikkelteams?
+
 # Thesis
 This repo contains the source text of my Master's thesis in Software Engineering. It is a work in progress.
 
