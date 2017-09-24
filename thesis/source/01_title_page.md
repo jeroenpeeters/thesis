@@ -9,7 +9,7 @@ and add the centred logo
       \vspace*{2.5cm}
 
       \huge
-      An Agile Continuous Delivery Approach 
+      An Agile Continuous Delivery Approach
 
       \Large
       A story on freedom versus standardization
@@ -40,7 +40,7 @@ and add the centred logo
 
       \normalsize
       The University of Amsterdam\\
-      September 2016
+      September 2017
 
     \end{center}
 \end{titlepage}
