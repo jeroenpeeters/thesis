@@ -13,10 +13,7 @@ related to the field of Continuous Delivery in software engineering.
 Secondly, this chapter contains a field study on existing private cloud solutions
 that support an Agile Continuous Development process.
 
-## Tools
+## Literature review
 
-## Process
 
-## People
-
-## Methodoloy
+## Field study
