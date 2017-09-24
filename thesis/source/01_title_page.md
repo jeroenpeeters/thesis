@@ -9,10 +9,10 @@ and add the centred logo
       \vspace*{2.5cm}
 
       \huge
-      Docker Driven Continuous Delivery
-      
+      An Agile Continuous Delivery Approach 
+
       \Large
-      On the gaps between tooling
+      A story on freedom versus standardization
 
       \vspace{1.5cm}
 
